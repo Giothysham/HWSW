@@ -44,18 +44,10 @@ void print_dec(unsigned int val) {
         }
 	}
 
-    int sizeofnumber = i;
-
-    for (int j = 0; j < i >> 1; j++) {
-        temp = buffer[j];
-        buffer[j] = buffer[i - 1 - j];
-        buffer[i - 1 - j] = temp;
-    }
-
-    buffer[i] = '\0';
-
-    for(int size = 0; size++; size < i) {
-        print_chr(buffer[size]);
+    while(i > 0) {
+        char character = buffer[i];
+        print_chr(character);
+        i--;
     }
 }
 
