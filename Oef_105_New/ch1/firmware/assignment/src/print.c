@@ -34,7 +34,7 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
         buffer[i++] = remainder + '0';
-		print_chr(remainder);
+		print_chr((char) remainder);
 
         // Simulate division by 10
         unsigned int tempNum = val;
