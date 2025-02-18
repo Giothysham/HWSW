@@ -33,7 +33,8 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
 
-        buffer[i++] = remainder + '0';
+        buffer[i] = remainder + '0';
+        i++;
 
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
