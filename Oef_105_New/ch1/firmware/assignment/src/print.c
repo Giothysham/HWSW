@@ -51,8 +51,9 @@ void print_dec(unsigned int val) {
         buffer[i - 1 - j] = temp;
     }
 
-    print_str(&buffer[0]);
-
+    for(int size = 0; size < i; size++) {
+        print_chr(buffer[size]);
+    }
 		
 }
 
