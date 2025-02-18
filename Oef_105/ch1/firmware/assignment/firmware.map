@@ -37,7 +37,7 @@ RAM              0x00000800         0x00000800         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x27a
+.text           0x00000000      0x1f2
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000       0x90 build/start.o
@@ -51,15 +51,15 @@ Linker script and memory map
  .text          0x00000128       0x28 build/convert.o
                 0x00000128                convert
  .text          0x00000150        0x0 build/firmware.o
- .text.startup  0x00000150       0xac build/firmware.o
+ .text.startup  0x00000150       0x24 build/firmware.o
                 0x00000150                main
- .text          0x000001fc        0x0 build/start.o
- .text          0x000001fc       0x7e /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(div.o)
-                0x000001fc                __divsi3
-                0x00000204                __hidden___udivsi3
-                0x00000204                __udivsi3
-                0x00000230                __umodsi3
-                0x00000254                __modsi3
+ .text          0x00000174        0x0 build/start.o
+ .text          0x00000174       0x7e /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(div.o)
+                0x00000174                __divsi3
+                0x0000017c                __hidden___udivsi3
+                0x0000017c                __udivsi3
+                0x000001a8                __umodsi3
+                0x000001cc                __modsi3
 
 .data           0x00000800        0x0
                 0x00000000                        . = 0x0
@@ -84,11 +84,12 @@ Linker script and memory map
                 0x00000c00                        . = ALIGN (0x4)
  FILL mask 0xff
 
-.rodata.str1.4  0x00000c00       0x15
+.rodata.str1.4  0x00000c00       0x27
  .rodata.str1.4
-                0x00000c00       0x15 build/print.o
+                0x00000c00       0x27 build/print.o
+                                 0x15 (size before relaxing)
  .rodata.str1.4
-                0x00000c15        0x2 build/firmware.o
+                0x00000c27        0xf build/firmware.o
 
 /DISCARD/
  *(.note*)
