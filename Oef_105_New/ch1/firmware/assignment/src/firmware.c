@@ -2,6 +2,6 @@
 
 int main(void) {
 
-	print_str("hello world\n");
+	print_str("3\n");
 
 }
