@@ -22,7 +22,7 @@ void print_dec(unsigned int val) {
         return;
     }
     
-    char buffer[sizeof(char)*10];
+    char buffer[10*sizeof(char)];
     int i = 0;
 	char temp;
     
