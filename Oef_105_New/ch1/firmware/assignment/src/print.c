@@ -35,8 +35,8 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
 
-        buffer[i++] = remainder + '0';
-
+        buffer[i++] = '0' + remainder;
+        
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
         val = 0;
@@ -45,8 +45,6 @@ void print_dec(unsigned int val) {
             val++;
         }
 	}
-
-    buffer[i] = '\0'; 
 
     for (j = 0; j < i >> 1; j++) {
         temp = buffer[j];
