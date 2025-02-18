@@ -35,7 +35,7 @@ void print_dec(unsigned int val) {
         }
 
         buffer[i++] = remainder + '0';
-        
+        print_chr(remainder + '0');
 
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
@@ -46,9 +46,9 @@ void print_dec(unsigned int val) {
         }
 	}
 
-    while (buffer[i--] != 0){
-        print_chr(buffer[i]);
-    }
+    // while (buffer[i--] != 0){
+    //     print_chr(buffer[i]);
+    // }
 		
 }
 
