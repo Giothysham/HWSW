@@ -34,7 +34,6 @@ void print_dec(unsigned int val) {
         }
 
         buffer[i++] = remainder + '0';
-		print_chr(remainder + '0');
 
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
@@ -44,6 +43,18 @@ void print_dec(unsigned int val) {
             val++;
         }
 	}
+
+    for (int j = 0; j < i >> 1; j++) {
+        temp = buffer[j];
+        buffer[j] = buffer[i - 1 - j];
+        buffer[i - 1 - j] = temp;
+    }
+
+    buffer[i] = '\0';
+
+    for(int size = 0; size++; size < i) {
+        print_chr(buffer[size]);
+    }
 }
 
 void print_hex(unsigned int val, int digits) {
