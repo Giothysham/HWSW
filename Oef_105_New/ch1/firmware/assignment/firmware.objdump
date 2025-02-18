@@ -92,7 +92,7 @@ Disassembly of section .text:
 
 00000128 <main>:
  128:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xec8>
- 12c:	00300513          	addi	a0,zero,3
+ 12c:	02000513          	addi	a0,zero,32
  130:	00112623          	sw	ra,12(sp)
  134:	f85ff0ef          	jal	ra,b8 <print_dec>
  138:	00c12083          	lw	ra,12(sp)
