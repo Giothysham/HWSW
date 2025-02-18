@@ -47,7 +47,7 @@ void print_dec(unsigned int val) {
 	}
 
     while (buffer[i--] != 0){
-        *((volatile unsigned int*)OUTPORT) = (buffer[i]);
+        print_chr(buffer[i]);
     }
 		
 }
