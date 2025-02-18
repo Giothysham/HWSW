@@ -44,6 +44,8 @@ void print_dec(unsigned int val) {
         }
 	}
 
+    int sizeofnumber = i;
+
     for (int j = 0; j < i >> 1; j++) {
         temp = buffer[j];
         buffer[j] = buffer[i - 1 - j];
