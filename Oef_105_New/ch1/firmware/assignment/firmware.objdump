@@ -59,51 +59,51 @@ Disassembly of section .text:
   b4:	fedff06f          	jal	zero,a0 <print_str+0x4>
 
 000000b8 <print_dec>:
-  b8:	00051a63          	bne	a0,zero,cc <print_dec+0x14>
-  bc:	800007b7          	lui	a5,0x80000
-  c0:	03000713          	addi	a4,zero,48
-  c4:	00e7a023          	sw	a4,0(a5) # 80000000 <main+0x7ffffe4c>
-  c8:	00008067          	jalr	zero,0(ra)
-  cc:	fe010113          	addi	sp,sp,-32 # fe0 <main+0xe2c>
-  d0:	00410793          	addi	a5,sp,4
-  d4:	00050713          	addi	a4,a0,0
-  d8:	00112e23          	sw	ra,28(sp)
-  dc:	00010223          	sb	zero,4(sp)
-  e0:	00078813          	addi	a6,a5,0
-  e4:	00100693          	addi	a3,zero,1
-  e8:	00078513          	addi	a0,a5,0
-  ec:	00900893          	addi	a7,zero,9
-  f0:	00070593          	addi	a1,a4,0
-  f4:	0080006f          	jal	zero,fc <print_dec+0x44>
-  f8:	ff658593          	addi	a1,a1,-10
-  fc:	feb8eee3          	bltu	a7,a1,f8 <print_dec+0x40>
- 100:	03058593          	addi	a1,a1,48
- 104:	00b800a3          	sb	a1,1(a6)
- 108:	00168613          	addi	a2,a3,1
- 10c:	00070593          	addi	a1,a4,0
- 110:	00000713          	addi	a4,zero,0
- 114:	00b8ea63          	bltu	a7,a1,128 <print_dec+0x70>
- 118:	00180813          	addi	a6,a6,1
- 11c:	00070c63          	beq	a4,zero,134 <print_dec+0x7c>
- 120:	00060693          	addi	a3,a2,0
- 124:	fcdff06f          	jal	zero,f0 <print_dec+0x38>
- 128:	ff658593          	addi	a1,a1,-10
- 12c:	00170713          	addi	a4,a4,1
- 130:	fe5ff06f          	jal	zero,114 <print_dec+0x5c>
- 134:	40165613          	srai	a2,a2,0x1
- 138:	00d78733          	add	a4,a5,a3
- 13c:	00f60633          	add	a2,a2,a5
- 140:	00074583          	lbu	a1,0(a4)
- 144:	0007c683          	lbu	a3,0(a5)
- 148:	00178793          	addi	a5,a5,1
- 14c:	feb78fa3          	sb	a1,-1(a5)
- 150:	00d70023          	sb	a3,0(a4)
- 154:	fff70713          	addi	a4,a4,-1
- 158:	fec794e3          	bne	a5,a2,140 <print_dec+0x88>
- 15c:	f41ff0ef          	jal	ra,9c <print_str>
- 160:	01c12083          	lw	ra,28(sp)
- 164:	02010113          	addi	sp,sp,32
- 168:	00008067          	jalr	zero,0(ra)
+  b8:	02050663          	beq	a0,zero,e4 <print_dec+0x2c>
+  bc:	fe010113          	addi	sp,sp,-32 # fe0 <main+0xe2c>
+  c0:	00410793          	addi	a5,sp,4
+  c4:	00050713          	addi	a4,a0,0
+  c8:	00112e23          	sw	ra,28(sp)
+  cc:	00078813          	addi	a6,a5,0
+  d0:	00000693          	addi	a3,zero,0
+  d4:	00078513          	addi	a0,a5,0
+  d8:	00900893          	addi	a7,zero,9
+  dc:	00070593          	addi	a1,a4,0
+  e0:	0180006f          	jal	zero,f8 <print_dec+0x40>
+  e4:	800007b7          	lui	a5,0x80000
+  e8:	03000713          	addi	a4,zero,48
+  ec:	00e7a023          	sw	a4,0(a5) # 80000000 <main+0x7ffffe4c>
+  f0:	00008067          	jalr	zero,0(ra)
+  f4:	ff658593          	addi	a1,a1,-10
+  f8:	feb8eee3          	bltu	a7,a1,f4 <print_dec+0x3c>
+  fc:	03058593          	addi	a1,a1,48
+ 100:	00b80023          	sb	a1,0(a6)
+ 104:	00168613          	addi	a2,a3,1
+ 108:	00070593          	addi	a1,a4,0
+ 10c:	00000713          	addi	a4,zero,0
+ 110:	00b8ea63          	bltu	a7,a1,124 <print_dec+0x6c>
+ 114:	00180813          	addi	a6,a6,1
+ 118:	00070c63          	beq	a4,zero,130 <print_dec+0x78>
+ 11c:	00060693          	addi	a3,a2,0
+ 120:	fbdff06f          	jal	zero,dc <print_dec+0x24>
+ 124:	ff658593          	addi	a1,a1,-10
+ 128:	00170713          	addi	a4,a4,1
+ 12c:	fe5ff06f          	jal	zero,110 <print_dec+0x58>
+ 130:	40165613          	srai	a2,a2,0x1
+ 134:	00d78733          	add	a4,a5,a3
+ 138:	00f60633          	add	a2,a2,a5
+ 13c:	00c79a63          	bne	a5,a2,150 <print_dec+0x98>
+ 140:	f5dff0ef          	jal	ra,9c <print_str>
+ 144:	01c12083          	lw	ra,28(sp)
+ 148:	02010113          	addi	sp,sp,32
+ 14c:	00008067          	jalr	zero,0(ra)
+ 150:	00074583          	lbu	a1,0(a4)
+ 154:	0007c683          	lbu	a3,0(a5)
+ 158:	fff70713          	addi	a4,a4,-1
+ 15c:	00b78023          	sb	a1,0(a5)
+ 160:	00d700a3          	sb	a3,1(a4)
+ 164:	00178793          	addi	a5,a5,1
+ 168:	fd5ff06f          	jal	zero,13c <print_dec+0x84>
 
 0000016c <print_hex>:
  16c:	04058263          	beq	a1,zero,1b0 <print_hex+0x44>
