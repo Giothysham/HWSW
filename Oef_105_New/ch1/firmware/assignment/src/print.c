@@ -23,10 +23,9 @@ void print_dec(unsigned int val) {
     }
     
     char buffer[10];
-    int i = 1;
+    int i = 0;
     int j;
 	char temp;
-    buffer[0] = '\0';
     
     while (val != 0) {
         unsigned int remainder = val;
