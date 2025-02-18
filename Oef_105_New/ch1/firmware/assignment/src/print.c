@@ -46,8 +46,10 @@ void print_dec(unsigned int val) {
         }
 	}
 
-    while (buffer[i--] != 0)
-		*((volatile unsigned int*)OUTPORT) = (buffer[i]);
+    while (buffer[i--] != 0){
+        *((volatile unsigned int*)OUTPORT) = (buffer[i]);
+    }
+		
 }
 
 void print_hex(unsigned int val, int digits) {
