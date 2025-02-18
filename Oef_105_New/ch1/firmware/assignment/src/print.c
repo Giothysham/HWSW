@@ -54,7 +54,10 @@ void print_dec(unsigned int val) {
         buffer[i - 1 - j] = temp;
     }
 
-    print_str(&buffer[0]);
+    for (j = 0; buffer[j] != '\0'; j++) {
+        *((volatile unsigned int*)OUTPORT) = buffer[j];
+    }
+
 		
 }
 
