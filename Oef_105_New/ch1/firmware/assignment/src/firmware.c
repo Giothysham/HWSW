@@ -2,6 +2,6 @@
 
 int main(void) {
 
-	print_dec(9);
+	print_dec(3);
 
 }
