@@ -16,19 +16,16 @@ void print_str(const char *p) {
 		*((volatile unsigned int*)OUTPORT) = *(p++);
 }
 
-
 void print_dec(unsigned int val) {
-	int i = 0;
-    int j;
-    char temp;
-	char* buffer;
-
-    if (val == 0) {
-        buffer[0] = '0';
-        buffer[1] = '\0';
+	if (val == 0) {
+        print_chr('0');
         return;
     }
-
+    
+    char buffer[10];
+    int i = 0;
+	char temp;
+    
     while (val != 0) {
         // Simulate modulo 10
         unsigned int remainder = val;
@@ -37,6 +34,7 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
         buffer[i++] = remainder + '0';
+		print_chr(remainder);
 
         // Simulate division by 10
         unsigned int tempNum = val;
@@ -46,19 +44,6 @@ void print_dec(unsigned int val) {
             tempNum = tempNum - divisorDiv;
             val++;
         }
-    }
-
-    // Reverse the string
-    for (j = 0; j < i / 2; j++) {
-        temp = buffer[j];
-        buffer[j] = buffer[i - 1 - j];
-        buffer[i - 1 - j] = temp;
-    }
-
-    buffer[i] = '\0';
-
-	for (int k = 0; buffer[k] != '\0'; k++) {
-		print_chr(buffer[k]);
 	}
 }
 
