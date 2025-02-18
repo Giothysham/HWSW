@@ -25,6 +25,7 @@ void print_dec(unsigned int val) {
     char buffer[10*sizeof(char)];
     int i = 0;
 	char temp;
+    buffer[0] = 0;
     
     while (val != 0) {
         unsigned int remainder = val;
@@ -33,8 +34,8 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
 
-        buffer[i] = remainder + '0';
-        i++;
+        buffer[i++] = remainder + '0';
+        
 
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
@@ -45,13 +46,9 @@ void print_dec(unsigned int val) {
         }
 	}
 
-    i--;
-
-    while(i >= 0) {
+    while (buffer[i] != 0)
+		*((volatile unsigned int*)OUTPORT) = (buffer[i]);
         i--;
-        char character = buffer[i];
-        print_chr(character);
-    }
 }
 
 void print_hex(unsigned int val, int digits) {
