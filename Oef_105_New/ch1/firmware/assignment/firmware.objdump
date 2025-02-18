@@ -81,10 +81,10 @@ Disassembly of section .text:
  104:	02e6e663          	bltu	a3,a4,130 <print_dec+0x78>
  108:	fc0510e3          	bne	a0,zero,c8 <print_dec+0x10>
  10c:	80000737          	lui	a4,0x80000
- 110:	00410693          	addi	a3,sp,4
- 114:	00f686b3          	add	a3,a3,a5
- 118:	0006c683          	lbu	a3,0(a3)
- 11c:	fff78793          	addi	a5,a5,-1
+ 110:	fff78793          	addi	a5,a5,-1
+ 114:	00410693          	addi	a3,sp,4
+ 118:	00f686b3          	add	a3,a3,a5
+ 11c:	0006c683          	lbu	a3,0(a3)
  120:	00d72023          	sw	a3,0(a4) # 80000000 <main+0x7ffffe7c>
  124:	fe0796e3          	bne	a5,zero,110 <print_dec+0x58>
  128:	01010113          	addi	sp,sp,16
