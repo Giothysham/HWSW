@@ -55,7 +55,6 @@ void print_dec(unsigned int val) {
     }
 
     print_str(&buffer[0]);
-
 		
 }
 
