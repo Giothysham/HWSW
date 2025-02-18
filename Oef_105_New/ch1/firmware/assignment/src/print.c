@@ -26,7 +26,7 @@ void print_dec(unsigned int val) {
     int i = 1;
     int j;
 	char temp;
-    buffer[0] = 0;
+    buffer[0] = '\0';
     
     while (val != 0) {
         unsigned int remainder = val;
