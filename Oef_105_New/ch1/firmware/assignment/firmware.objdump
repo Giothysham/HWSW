@@ -78,23 +78,23 @@ Disassembly of section .text:
   f8:	00050713          	addi	a4,a0,0
   fc:	00178693          	addi	a3,a5,1
  100:	00000513          	addi	a0,zero,0
- 104:	00e66c63          	bltu	a2,a4,11c <print_dec+0x64>
- 108:	02051063          	bne	a0,zero,128 <print_dec+0x70>
- 10c:	80000737          	lui	a4,0x80000
- 110:	02079063          	bne	a5,zero,130 <print_dec+0x78>
- 114:	01010113          	addi	sp,sp,16
- 118:	00008067          	jalr	zero,0(ra)
- 11c:	ff670713          	addi	a4,a4,-10 # 7ffffff6 <main+0x7ffffe66>
- 120:	00150513          	addi	a0,a0,1
- 124:	fe1ff06f          	jal	zero,104 <print_dec+0x4c>
- 128:	00068793          	addi	a5,a3,0
- 12c:	f9dff06f          	jal	zero,c8 <print_dec+0x10>
- 130:	fff78793          	addi	a5,a5,-1
- 134:	00410693          	addi	a3,sp,4
- 138:	00f686b3          	add	a3,a3,a5
- 13c:	0006c683          	lbu	a3,0(a3)
- 140:	00d72023          	sw	a3,0(a4)
- 144:	fcdff06f          	jal	zero,110 <print_dec+0x58>
+ 104:	02e66863          	bltu	a2,a4,134 <print_dec+0x7c>
+ 108:	02051c63          	bne	a0,zero,140 <print_dec+0x88>
+ 10c:	800006b7          	lui	a3,0x80000
+ 110:	fff00713          	addi	a4,zero,-1
+ 114:	fff78793          	addi	a5,a5,-1
+ 118:	00410613          	addi	a2,sp,4
+ 11c:	00f60633          	add	a2,a2,a5
+ 120:	00064603          	lbu	a2,0(a2)
+ 124:	00c6a023          	sw	a2,0(a3) # 80000000 <main+0x7ffffe70>
+ 128:	fee796e3          	bne	a5,a4,114 <print_dec+0x5c>
+ 12c:	01010113          	addi	sp,sp,16
+ 130:	00008067          	jalr	zero,0(ra)
+ 134:	ff670713          	addi	a4,a4,-10
+ 138:	00150513          	addi	a0,a0,1
+ 13c:	fc9ff06f          	jal	zero,104 <print_dec+0x4c>
+ 140:	00068793          	addi	a5,a3,0
+ 144:	f85ff06f          	jal	zero,c8 <print_dec+0x10>
 
 00000148 <print_hex>:
  148:	04058263          	beq	a1,zero,18c <print_hex+0x44>
@@ -122,12 +122,19 @@ Disassembly of section .text:
  198:	c1850513          	addi	a0,a0,-1000 # c18 <main+0xa88>
  19c:	00112623          	sw	ra,12(sp)
  1a0:	efdff0ef          	jal	ra,9c <print_str>
- 1a4:	02000513          	addi	a0,zero,32
+ 1a4:	00900513          	addi	a0,zero,9
  1a8:	f11ff0ef          	jal	ra,b8 <print_dec>
- 1ac:	00c12083          	lw	ra,12(sp)
- 1b0:	00000513          	addi	a0,zero,0
- 1b4:	01010113          	addi	sp,sp,16
- 1b8:	00008067          	jalr	zero,0(ra)
+ 1ac:	02000513          	addi	a0,zero,32
+ 1b0:	f09ff0ef          	jal	ra,b8 <print_dec>
+ 1b4:	14000513          	addi	a0,zero,320
+ 1b8:	f01ff0ef          	jal	ra,b8 <print_dec>
+ 1bc:	00002537          	lui	a0,0x2
+ 1c0:	d2250513          	addi	a0,a0,-734 # 1d22 <main+0x1b92>
+ 1c4:	ef5ff0ef          	jal	ra,b8 <print_dec>
+ 1c8:	00c12083          	lw	ra,12(sp)
+ 1cc:	00000513          	addi	a0,zero,0
+ 1d0:	01010113          	addi	sp,sp,16
+ 1d4:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
