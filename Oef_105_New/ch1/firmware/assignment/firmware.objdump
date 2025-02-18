@@ -91,14 +91,15 @@ Disassembly of section .text:
  124:	00008067          	jalr	zero,0(ra)
 
 00000128 <main>:
- 128:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xec8>
- 12c:	00300513          	addi	a0,zero,3
- 130:	00112623          	sw	ra,12(sp)
- 134:	f85ff0ef          	jal	ra,b8 <print_dec>
- 138:	00c12083          	lw	ra,12(sp)
- 13c:	00000513          	addi	a0,zero,0
- 140:	01010113          	addi	sp,sp,16
- 144:	00008067          	jalr	zero,0(ra)
+ 128:	00009537          	lui	a0,0x9
+ 12c:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xec8>
+ 130:	69150513          	addi	a0,a0,1681 # 9691 <main+0x9569>
+ 134:	00112623          	sw	ra,12(sp)
+ 138:	f81ff0ef          	jal	ra,b8 <print_dec>
+ 13c:	00c12083          	lw	ra,12(sp)
+ 140:	00000513          	addi	a0,zero,0
+ 144:	01010113          	addi	sp,sp,16
+ 148:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
