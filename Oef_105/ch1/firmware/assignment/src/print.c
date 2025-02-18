@@ -26,8 +26,15 @@ void print_dec(unsigned int val) {
 	}
 
 	while (val > 0) {
-		buffer[i++] = (val % 10) + '0';
-		val /= 10;
+		unsigned int temp = val;
+		unsigned int divisor = 1;
+		while (temp >= 10) {
+			temp -= 10;
+			divisor++;
+		}
+		buffer[i++] = temp + '0';
+		for(i = 0; i < temp; i++);
+		val -= divisor;
 	}
 
 	while (i > 0) {
