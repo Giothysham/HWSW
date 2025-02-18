@@ -86,14 +86,17 @@ Disassembly of section .text:
  110:	00008067          	jalr	zero,0(ra)
 
 00000114 <main>:
- 114:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xedc>
- 118:	02000513          	addi	a0,zero,32
- 11c:	00112623          	sw	ra,12(sp)
- 120:	f99ff0ef          	jal	ra,b8 <print_dec>
- 124:	00c12083          	lw	ra,12(sp)
- 128:	00000513          	addi	a0,zero,0
- 12c:	01010113          	addi	sp,sp,16
- 130:	00008067          	jalr	zero,0(ra)
+ 114:	00001537          	lui	a0,0x1
+ 118:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xedc>
+ 11c:	c1850513          	addi	a0,a0,-1000 # c18 <main+0xb04>
+ 120:	00112623          	sw	ra,12(sp)
+ 124:	f79ff0ef          	jal	ra,9c <print_str>
+ 128:	02000513          	addi	a0,zero,32
+ 12c:	f8dff0ef          	jal	ra,b8 <print_dec>
+ 130:	00c12083          	lw	ra,12(sp)
+ 134:	00000513          	addi	a0,zero,0
+ 138:	01010113          	addi	sp,sp,16
+ 13c:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
@@ -107,4 +110,11 @@ Disassembly of section .rodata.str1.4:
  c0c:	3938                	.insn	2, 0x3938
  c0e:	4241                	.insn	2, 0x4241
  c10:	46454443          	.insn	4, 0x46454443
+ c14:	0000                	.insn	2, 0x
+ c16:	0000                	.insn	2, 0x
+ c18:	6548                	.insn	2, 0x6548
+ c1a:	6c6c                	.insn	2, 0x6c6c
+ c1c:	57202c6f          	jal	s8,318e <main+0x307a>
+ c20:	646c726f          	jal	tp,c8266 <main+0xc8152>
+ c24:	0a21                	.insn	2, 0x0a21
 	...
