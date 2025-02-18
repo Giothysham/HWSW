@@ -133,31 +133,14 @@ Disassembly of section .text:
  1c4:	ff010113          	addi	sp,sp,-16
  1c8:	c1850513          	addi	a0,a0,-1000 # c18 <main+0xa58>
  1cc:	00112623          	sw	ra,12(sp)
- 1d0:	00812423          	sw	s0,8(sp)
- 1d4:	ec9ff0ef          	jal	ra,9c <print_str>
- 1d8:	00900513          	addi	a0,zero,9
- 1dc:	00001437          	lui	s0,0x1
- 1e0:	ed9ff0ef          	jal	ra,b8 <print_dec>
- 1e4:	c0040513          	addi	a0,s0,-1024 # c00 <main+0xa40>
- 1e8:	eb5ff0ef          	jal	ra,9c <print_str>
- 1ec:	02000513          	addi	a0,zero,32
- 1f0:	ec9ff0ef          	jal	ra,b8 <print_dec>
- 1f4:	c0040513          	addi	a0,s0,-1024
- 1f8:	ea5ff0ef          	jal	ra,9c <print_str>
- 1fc:	14000513          	addi	a0,zero,320
- 200:	eb9ff0ef          	jal	ra,b8 <print_dec>
- 204:	c0040513          	addi	a0,s0,-1024
- 208:	e95ff0ef          	jal	ra,9c <print_str>
- 20c:	00002537          	lui	a0,0x2
- 210:	d2250513          	addi	a0,a0,-734 # 1d22 <main+0x1b62>
- 214:	ea5ff0ef          	jal	ra,b8 <print_dec>
- 218:	c0040513          	addi	a0,s0,-1024
- 21c:	e81ff0ef          	jal	ra,9c <print_str>
- 220:	00c12083          	lw	ra,12(sp)
- 224:	00812403          	lw	s0,8(sp)
- 228:	00000513          	addi	a0,zero,0
- 22c:	01010113          	addi	sp,sp,16
- 230:	00008067          	jalr	zero,0(ra)
+ 1d0:	ecdff0ef          	jal	ra,9c <print_str>
+ 1d4:	00002537          	lui	a0,0x2
+ 1d8:	d2250513          	addi	a0,a0,-734 # 1d22 <main+0x1b62>
+ 1dc:	eddff0ef          	jal	ra,b8 <print_dec>
+ 1e0:	00c12083          	lw	ra,12(sp)
+ 1e4:	00000513          	addi	a0,zero,0
+ 1e8:	01010113          	addi	sp,sp,16
+ 1ec:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
