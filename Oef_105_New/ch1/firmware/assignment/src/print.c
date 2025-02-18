@@ -33,7 +33,7 @@ void print_dec(unsigned int val) {
             remainder = remainder - divisor;
         }
 
-        buffer[i++] = remainder + '0';
+        //buffer[i++] = remainder + '0';
 		print_chr((char) remainder);
 
         unsigned int tempNum = val;
