@@ -27,17 +27,15 @@ void print_dec(unsigned int val) {
 	char temp;
     
     while (val != 0) {
-        // Simulate modulo 10
         unsigned int remainder = val;
         unsigned int divisor = 10;
         while (remainder >= divisor) {
             remainder = remainder - divisor;
         }
-        
+
         buffer[i++] = remainder + '0';
 		print_chr((char) remainder);
 
-        // Simulate division by 10
         unsigned int tempNum = val;
         unsigned int divisorDiv = 10;
         val = 0;
