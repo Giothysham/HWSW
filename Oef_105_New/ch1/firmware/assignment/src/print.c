@@ -55,7 +55,7 @@ void print_dec(unsigned int val) {
     }
 
     for (j = 0; buffer[j] != '\0'; j++) {
-        print_chr(&buffer[j]);
+        print_chr(buffer[j]);
     }
 
 		
