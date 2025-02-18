@@ -48,7 +48,7 @@ void print_dec(unsigned int val) {
 
     buffer[i] = '\0'; 
 
-    for (j = 0; j < i / 2; j++) {
+    for (j = 0; j < i >> 1; j++) {
         temp = buffer[j];
         buffer[j] = buffer[i - 1 - j];
         buffer[i - 1 - j] = temp;
