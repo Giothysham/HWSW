@@ -46,9 +46,9 @@ void print_dec(unsigned int val) {
 	}
 
     while(i > 0) {
+        i--;
         char character = buffer[i];
         print_chr(character);
-        i--;
     }
 }
 
