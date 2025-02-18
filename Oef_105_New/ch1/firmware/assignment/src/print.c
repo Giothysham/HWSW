@@ -33,6 +33,7 @@ void print_dec(unsigned int val) {
         while (remainder >= divisor) {
             remainder = remainder - divisor;
         }
+        
         buffer[i++] = remainder + '0';
 		print_chr((char) remainder);
 
