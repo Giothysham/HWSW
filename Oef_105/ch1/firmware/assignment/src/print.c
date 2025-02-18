@@ -17,29 +17,30 @@ void print_str(const char *p) {
 }
 
 void print_dec(unsigned int val) {
-	char buffer[10];
-	int i = 0;
-
 	if (val == 0) {
-		print_chr('0');
-		return;
-	}
-
-	while (val > 0) {
-		unsigned int temp = val;
-		unsigned int divisor = 1;
-		while (temp >= 10) {
-			temp -= 10;
-			divisor++;
-		}
-		buffer[i++] = temp + '0';
-		for(i = 0; i < temp; i++);
-		val -= divisor;
-	}
-
-	while (i > 0) {
-		print_chr(buffer[--i]);
-	}
+        print_chr('0');
+        return;
+    }
+    
+    char digits[10];
+    int i = 0;
+    
+    while (val > 0) {
+        unsigned int temp = val;
+        unsigned int digit = 0;
+        
+        while (temp >= 1) {
+            temp -= 1;
+            digit++;
+        }
+        
+        digits[i++] = digit + '0';
+        val = temp;
+    }
+    
+    while (i > 0) {
+        print_chr(digits[--i]);
+    }
 }
 
 void print_hex(unsigned int val, int digits) {
