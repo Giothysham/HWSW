@@ -18,7 +18,7 @@ int main(void) {
 	print_str(&buffer_string[0]);
 	print_str("\n");
 	print_str("buffer_number with print_str\n");
-	print_dec(&buffer_number[0]);
+	print_str(&buffer_number[0]);
 	print_str("\n");
 	print_str("buffer_string with print_chr\n");
 	for(int i = 0; i < 4; i++) {
