@@ -15,19 +15,19 @@ int main(void) {
 	// print_str("\n");
 
 	print_str("buffer_string with print_str\n");
-	print_str(&buffer_string);
+	print_str(&buffer_string[0]);
 	print_str("\n");
 	print_str("buffer_number with print_str\n");
-	print_dec(&buffer_number);
+	print_dec(&buffer_number[0]);
 	print_str("\n");
 	print_str("buffer_string with print_chr\n");
 	for(int i = 0; i < 4; i++) {
-		print_chr(&buffer_string[i]);
+		print_chr(buffer_string[i]);
 	}
 	print_str("\n");
 	print_str("buffer_number with print_chr\n");
 	for(int i = 0; i < 4; i++) {
-		print_chr(&buffer_number[i]);
+		print_chr(buffer_number[i]);
 	}
 	print_str("\n");
 
