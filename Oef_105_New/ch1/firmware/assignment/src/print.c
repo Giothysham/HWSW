@@ -16,6 +16,24 @@ void print_str(const char *p) {
 		*((volatile unsigned int*)OUTPORT) = *(p++);
 }
 
+int mul(int x, int y){
+    int result = 0;
+    for(int i = 0; i < x; i++){
+        result = result + y;
+    }
+    return result;
+}
+
+int Pow(int x,int n){
+    int i;
+    int number = 1;
+
+    for (i = 0; i < n; ++i){
+        number = mul(number,x);
+    }
+    return(number);
+}
+
 void print_dec(unsigned int val) {
     unsigned int dividend = val;
     unsigned int divided = 0;
@@ -44,7 +62,7 @@ void print_dec(unsigned int val) {
             
         }
         print_chr(buffer + '0');
-        order = Pow(10,quotient);
+        order = 10 * quotient;
         buffer = mul(buffer, order);
         divided = divided + buffer;
         dividend = val - divided;
@@ -73,20 +91,4 @@ void print_hex(unsigned int val, int digits) {
 	print_str("\n");
 }
 
-int mul(int x, int y){
-    int result = 0;
-    for(int i = 0; i < x; i++){
-        result = result + y;
-    }
-    return result;
-}
 
-int Pow(int x,int n){
-    int i;
-    int number = 1;
-
-    for (i = 0; i < n; ++i){
-        number = mul(number,x);
-    }
-    return(number);
-}
