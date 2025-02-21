@@ -43,30 +43,30 @@ Linker script and memory map
  .data          0x00000800        0x0 build/firmware.o
  .data          0x00000800        0x0 build/start.o
 
-.sdata          0x00000800        0x9
- .sdata         0x00000800        0x9 build/firmware.o
+.sdata          0x00000800        0xd
+ .sdata         0x00000800        0xd build/firmware.o
                 0x00000800                buffer_number
-                0x00000804                buffer_string
+                0x00000808                buffer_string
 
-.bss            0x00000809        0x0
- .bss           0x00000809        0x0 build/print.o
- .bss           0x00000809        0x0 build/firmware.o
- .bss           0x00000809        0x0 build/start.o
+.bss            0x0000080d        0x0
+ .bss           0x0000080d        0x0 build/print.o
+ .bss           0x0000080d        0x0 build/firmware.o
+ .bss           0x0000080d        0x0 build/start.o
 
-.rodata         0x00000809      0x403
+.rodata         0x0000080d      0x403
                 0x00000400                        . = 0x400
- *fill*         0x00000809      0x400 
+ *fill*         0x0000080d      0x400 
  *(.rodata)
-                0x00000c0c                        . = ALIGN (0x4)
- *fill*         0x00000c09        0x3 
+                0x00000c10                        . = ALIGN (0x4)
+ *fill*         0x00000c0d        0x3 
  FILL mask 0xff
 
-.rodata.str1.4  0x00000c0c       0x9d
+.rodata.str1.4  0x00000c10       0x96
  .rodata.str1.4
-                0x00000c0c       0x9d build/print.o
+                0x00000c10       0x96 build/print.o
                                  0x15 (size before relaxing)
  .rodata.str1.4
-                0x00000ca9       0x89 build/firmware.o
+                0x00000ca6       0x82 build/firmware.o
 
 /DISCARD/
  *(.note*)
