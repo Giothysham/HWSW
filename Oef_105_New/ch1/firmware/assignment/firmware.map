@@ -34,7 +34,7 @@ RAM              0x00000800         0x00000800         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x34e
+.text           0x00000000      0x2d6
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000       0x90 build/start.o
@@ -48,11 +48,11 @@ Linker script and memory map
                 0x00000120                Pow
                 0x00000178                print_dec
  .text          0x0000024c        0x0 build/firmware.o
- .text.startup  0x0000024c       0xec build/firmware.o
+ .text.startup  0x0000024c       0x74 build/firmware.o
                 0x0000024c                main
- .text          0x00000338        0x0 build/start.o
- .text          0x00000338       0x16 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(muldi3.o)
-                0x00000338                __mulsi3
+ .text          0x000002c0        0x0 build/start.o
+ .text          0x000002c0       0x16 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(muldi3.o)
+                0x000002c0                __mulsi3
 
 .data           0x00000800        0x0
                 0x00000000                        . = 0x0
@@ -81,12 +81,12 @@ Linker script and memory map
  *fill*         0x00000c0d        0x3 
  FILL mask 0xff
 
-.rodata.str1.4  0x00000c10       0x96
+.rodata.str1.4  0x00000c10       0x27
  .rodata.str1.4
-                0x00000c10       0x96 build/print.o
+                0x00000c10       0x27 build/print.o
                                  0x15 (size before relaxing)
  .rodata.str1.4
-                0x00000ca6       0x82 build/firmware.o
+                0x00000c37       0x12 build/firmware.o
 
 /DISCARD/
  *(.note*)
