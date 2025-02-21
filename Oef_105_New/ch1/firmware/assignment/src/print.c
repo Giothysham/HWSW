@@ -62,8 +62,8 @@ void print_dec(unsigned int val) {
             
         }
         print_chr(buffer + '0');
-        order = 10 * quotient;
-        buffer = mul(buffer, order);
+        order = Pow(10,quotient);
+        buffer = buffer * order;
         divided = divided + buffer;
         dividend = val - divided;
         quotient = 0;
