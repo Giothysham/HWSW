@@ -96,6 +96,10 @@ architecture Behavioural of riscv is
     signal pc_adder_x_sel, pc_adder_y_sel : STD_LOGIC;
     signal jump, jump_condition : STD_LOGIC;
     
+    --chip enable
+    signal chip_enable : STD_LOGIC;
+    signal counter_clock : integer := 0;
+    
     -- other
     signal imm_sh12, pc_inc_imm_sh12 : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
     signal pc_inc_imm_sh12_c : STD_LOGIC_VECTOR(C_WIDTH downto 0);
@@ -105,6 +109,8 @@ architecture Behavioural of riscv is
     signal to_CSR : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
     signal program_counter_interrupted : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
     signal interrupt : STD_LOGIC;
+    
+    
 
 begin
 
@@ -135,6 +141,7 @@ begin
         clock => clock_i,
         reset => reset_i,
         we => ctrl_regfile_we,
+        chip_enable => chip_enable,
         src1 => inst_rs1,
         src2 => inst_rs2,
         dest => inst_rd,
@@ -226,7 +233,23 @@ begin
         end case;
     end process;
 
-
+    -------------------------------------------------------------------------------
+    -- CHIP_ENABLE
+    -------------------------------------------------------------------------------
+    CHIP_EN: process(clock_i)
+    begin
+        if rising_edge(clock_i) then
+            if counter_clock = 2 then
+                counter_clock <= 0;
+                chip_enable <= '1';
+            else
+                chip_enable <= '0';
+                counter_clock <= counter_clock + 1;
+            end if;
+        end if;
+    end process;
+    
+    
     -------------------------------------------------------------------------------
     -- PC
     -------------------------------------------------------------------------------
@@ -236,7 +259,9 @@ begin
             if reset_i = '1' then 
                 program_counter <= C_GND;
             else
-                program_counter <= pc_sum;
+                if chip_enable = '1' then
+                    program_counter <= pc_sum;
+                end if;
             end if;
         end if;
     end process;

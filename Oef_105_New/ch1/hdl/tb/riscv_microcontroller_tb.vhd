@@ -20,9 +20,9 @@ entity riscv_microcontroller_tb is
         G_DATA_WIDTH : integer := 32;
         G_DEPTH_LOG2 : integer := 11;
 
-        FNAME_IMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105\ch1\firmware\assignment\firmware_imem.hex";
-        FNAME_DMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105\ch1\firmware\assignment\firmware_dmem.hex";
-        FNAME_OUT_FILE :       string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105\ch1\firmware\assignment\simulation_output.txt"
+        FNAME_IMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\firmware_imem.hex";
+        FNAME_DMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\firmware_dmem.hex";
+        FNAME_OUT_FILE :       string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\simulation_output.txt"
     );                                     
 end entity riscv_microcontroller_tb;
 
@@ -49,6 +49,9 @@ architecture Behavioural of riscv_microcontroller_tb is
     -- constants
     constant C_ZEROES: STD_LOGIC_VECTOR(G_DATA_WIDTH-1 downto 0) := (others => '0');
     constant clock_period : time := 10 ns;
+    
+    --chip_enable
+    signal chip_enable : STD_LOGIC;
 
 begin
 
@@ -57,7 +60,6 @@ begin
     -------------------------------------------------------------------------------
     PSTIM: process(reset_i, program_counter)
     begin
-        
         if reset_i = '0' then 
             if program_counter(G_DATA_WIDTH-1 downto G_DEPTH_LOG2+2) /= C_zeroes(G_DATA_WIDTH-1 downto G_DEPTH_LOG2+2) then
                 report "ERROR: IMEM OUT OF RANGE" severity error;

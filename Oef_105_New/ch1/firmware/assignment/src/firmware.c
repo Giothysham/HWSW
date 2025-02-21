@@ -1,7 +1,7 @@
 #include "print.h"
 
 char buffer_string[5] = {'1', '5', '6', '5', '\0'};
-char *buffer_number = "8855";
+char buffer_number[5] = "8855\0";
 
 int main(void) {
 	// print_str("Hello, World!\n");

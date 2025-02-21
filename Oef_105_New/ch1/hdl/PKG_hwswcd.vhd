@@ -52,6 +52,7 @@ package PKG_hwswcd is
             clock : IN STD_LOGIC;
             reset : IN STD_LOGIC;
             we : in std_logic;
+            chip_enable : in std_logic;
             src1 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             src2 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             dest : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);

@@ -9,9 +9,9 @@
 # launch with: source /home/jvliegen/Desktop/temp/ch1/scripts/tcl/vivado_proj.tcl
 ################################################################################
 
-set pname "hwswcd_chapter_1_example"
-  set path D:/School/MA/HWSW/VHDL/test
-  set srcpath D:/School/MA/HWSW/Source_code/HWSW/ch1
+set pname "Slower_clock"
+  set path D:/School/MA/HWSW/VHDL/v2_slower_clock/slower_clock_test
+  set srcpath D:/School/MA/HWSW/Source_code/HWSW/Oef_105_New/ch1
 
 set part "xc7vx485tffg1761-2"
 set board "xilinx.com:vc707:part0:1.4"

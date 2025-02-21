@@ -21,6 +21,7 @@ entity reg_file is
         clock : IN STD_LOGIC;
         reset : IN STD_LOGIC;
         we : in std_logic;
+        chip_enable : in std_logic; 
         src1 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
         src2 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
         dest : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
@@ -46,6 +47,8 @@ architecture Behavioural of reg_file is
     signal src1_int : natural range 0 to C_REGCOUNT-1;
     signal src2_int : natural range 0 to C_REGCOUNT-1;
     signal dest_int : natural range 0 to C_REGCOUNT-1;
+    
+    signal chip_enable_i : std_logic;
 
     signal rf : T_regfile;
 begin
@@ -62,6 +65,7 @@ begin
     data_i <= data;
     data1 <= data1_o;
     data2 <= data2_o;
+    chip_enable_i <= chip_enable;
 
 
     -------------------------------------------------------------------------------
@@ -82,7 +86,9 @@ begin
                 rf <= (others => (others => '0'));
             else
                 if we_i = '1' and dest_int /= 0 then 
-                    rf(dest_int) <= data_i;
+                    if chip_enable_i = '1' then
+                        rf(dest_int) <= data_i;
+                    end if;
                 end if;
             end if;
         end if;
