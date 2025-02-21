@@ -51,9 +51,26 @@ architecture Behavioural of riscv_microcontroller_tb is
     constant clock_period : time := 10 ns;
     
     --chip_enable
-    signal chip_enable : STD_LOGIC;
+    signal chip_enable_tb : STD_LOGIC;
+    signal counter_clock : integer := 0;
 
 begin
+
+    -------------------------------------------------------------------------------
+    -- CHIP_ENABLE
+    -------------------------------------------------------------------------------
+    CHIP_EN: process(clock_i)
+    begin
+        if rising_edge(clock_i) then
+            if counter_clock = 2 then
+                counter_clock <= 0;
+                chip_enable_tb <= '1';
+            else
+                chip_enable_tb <= '0';
+                counter_clock <= counter_clock + 1;
+            end if;
+        end if;
+    end process;
 
     -------------------------------------------------------------------------------
     -- STIMULI
@@ -66,6 +83,8 @@ begin
             end if;
         end if;
     end process;
+    
+    
 
 
     -------------------------------------------------------------------------------

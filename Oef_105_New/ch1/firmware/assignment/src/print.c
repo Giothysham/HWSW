@@ -17,45 +17,42 @@ void print_str(const char *p) {
 }
 
 void print_dec(unsigned int val) {
-	if (val == 0) {
-        print_chr('0');
-        return;
-    }
+    unsigned int dividend = val;
+    unsigned int divided = 0;
+    unsigned int quotient = 0;
+    unsigned int divisor = 10; 
+    unsigned int buffer = 10;
+    unsigned int rem = 0;
+    unsigned int order = 0;
     
-    char buffer[10];
-    int i = 0;
-    int j;
-	char temp;
-    
-    while (val != 0) {
-        unsigned int remainder = val;
-        unsigned int divisor = 10;
-        while (remainder >= divisor) {
-            remainder = remainder - divisor;
-        }
-
-        buffer[i++] = '0' + remainder;
-        
-        unsigned int tempNum = val;
-        unsigned int divisorDiv = 10;
-        val = 0;
-        while (tempNum >= divisorDiv) {
-            tempNum = tempNum - divisorDiv;
-            val++;
-        }
-	}
-
-    for (j = 0; j < i >> 1; j++) {
-        temp = buffer[j];
-        buffer[j] = buffer[i - 1 - j];
-        buffer[i - 1 - j] = temp;
+    if(divided < divisor){
+        rem = val;
     }
-
-    for(int size = 0; size < i; size++) {
-        print_chr(buffer[size]);
+    while(dividend >= divisor){
+        while(buffer >= divisor){
+            if(dividend >= divisor){
+                quotient = quotient + 1;
+                buffer = 0;
+            }
+            
+            while(dividend >= divisor){
+                dividend = dividend - divisor;
+                buffer = buffer + 1;
+            }
+            rem = dividend;
+            dividend = buffer;
+            
+        }
+        print_chr(buffer + '0');
+        order = Pow(10,quotient);
+        buffer = mul(buffer, order);
+        divided = divided + buffer;
+        dividend = val - divided;
+        quotient = 0;
     }
-		
+    print_chr(rem + '0');
 }
+		
 
 void print_hex(unsigned int val, int digits) {
 	unsigned int index, max;
@@ -74,4 +71,22 @@ void print_hex(unsigned int val, int digits) {
 		*((volatile unsigned int*)OUTPORT) = x;
 	}
 	print_str("\n");
+}
+
+int mul(int x, int y){
+    int result = 0;
+    for(int i = 0; i < x; i++){
+        result = result + y;
+    }
+    return result;
+}
+
+int Pow(int x,int n){
+    int i;
+    int number = 1;
+
+    for (i = 0; i < n; ++i){
+        number = mul(number,x);
+    }
+    return(number);
 }
