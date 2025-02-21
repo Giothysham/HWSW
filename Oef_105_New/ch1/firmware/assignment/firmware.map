@@ -43,10 +43,10 @@ Linker script and memory map
  .text          0x00000090      0x1bc build/print.o
                 0x00000090                print_chr
                 0x0000009c                print_str
-                0x000000b8                print_hex
-                0x00000100                mul
-                0x00000120                Pow
-                0x00000178                print_dec
+                0x000000b8                mul
+                0x000000d8                Pow
+                0x00000130                print_dec
+                0x00000204                print_hex
  .text          0x0000024c        0x0 build/firmware.o
  .text.startup  0x0000024c       0x74 build/firmware.o
                 0x0000024c                main
