@@ -36,6 +36,7 @@ int Pow(int x,int n){
 
 void print_dec(unsigned int val) {
     unsigned int dividend = val;
+    char x;
     unsigned int divided = 0;
     unsigned int quotient = 0;
     unsigned int divisor = 10; 
@@ -61,14 +62,16 @@ void print_dec(unsigned int val) {
             dividend = buffer;
             
         }
-        print_chr(buffer + '0');
+        x="0123456789"[buffer];
+		*((volatile unsigned int*)OUTPORT) = x;
         order = Pow(10,quotient);
-        buffer = buffer * order;
+        buffer = mul(buffer, order);
         divided = divided + buffer;
         dividend = val - divided;
         quotient = 0;
     }
-    print_chr(rem + '0');
+    x="0123456789"[rem];
+	*((volatile unsigned int*)OUTPORT) = x;
 }
 		
 
