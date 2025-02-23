@@ -13,8 +13,8 @@ MKDIR = mkdir
 ARCHITECTURE = rv32i
 ABI = ilp32
 
-CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99
-SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99
+CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 --verbose
+SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 --verbose
 LDFLAGS = -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march=$(ARCHITECTURE) -mabi=$(ABI) -nostartfiles
 
 LIBS = -L/opt/riscv/lib/gcc/riscv32-unknown-elf/14.2.0/libgcc.a -lgcc
