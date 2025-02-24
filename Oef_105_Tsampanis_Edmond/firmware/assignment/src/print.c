@@ -25,14 +25,16 @@ int mul(int x, int y){
 }
 
 int Pow(int x,int n){
-    int i;
-    int number = 0;
-
-    for (i = 0; i < n; ++i){
-        int filler = mul(x,x);
-        number = number + filler;
+    if (n == 0) {
+        return 1; // x^0 = 1
     }
-    return(number);
+    
+    int result = x;
+    for (int i = 1; i < n; i++) {
+        result = mul(result, x);
+    }
+    
+    return(result);
 }
 
 void print_dec(unsigned int val) {
