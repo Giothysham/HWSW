@@ -23,7 +23,7 @@ entity riscv_microcontroller_tb is
         FNAME_IMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_Tsampanis_Edmond\firmware\assignment\firmware_imem.hex";
         FNAME_DMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_Tsampanis_Edmond\firmware\assignment\firmware_dmem.hex";
         FNAME_OUT_FILE :       string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_Tsampanis_Edmond\firmware\assignment\simulation_output.txt"
-    );                                     
+    );
 end entity riscv_microcontroller_tb;
 
 architecture Behavioural of riscv_microcontroller_tb is

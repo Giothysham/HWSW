@@ -26,10 +26,10 @@ int mul(int x, int y){
 
 int Pow(int x,int n){
     int i;
-    int number = 1;
+    int number = 0;
 
     for (i = 0; i < n; ++i){
-        number = mul(number,x);
+        number = number + mul(x,x);
     }
     return(number);
 }
@@ -63,7 +63,8 @@ void print_dec(unsigned int val) {
             
         }
         x="0123456789"[buffer];
-		*((volatile unsigned int*)OUTPORT) = x;
+	    *((volatile unsigned int*)OUTPORT) = x;
+
         order = Pow(10,quotient);
         buffer = mul(buffer, order);
         divided = divided + buffer;

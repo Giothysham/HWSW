@@ -174,6 +174,20 @@ package PKG_hwswcd is
         );
     end component basicIO_model;
 
+    component wrapped_timer is
+        generic(
+            G_WIDTH : natural := 8
+        );
+        port(
+            clock : in STD_LOGIC;
+            reset : in STD_LOGIC;
+            iface_di : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+            iface_a : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+            iface_we : in STD_LOGIC;
+            iface_do : out STD_LOGIC_VECTOR(C_WIDTH-1 downto 0)
+        );
+    end component wrapped_timer;
+
 end package;
 
 package body PKG_hwswcd is
