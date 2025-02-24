@@ -29,7 +29,8 @@ int Pow(int x,int n){
     int number = 0;
 
     for (i = 0; i < n; ++i){
-        number = number + mul(x,x);
+        int filler = mul(x,x);
+        number = number + filler;
     }
     return(number);
 }
