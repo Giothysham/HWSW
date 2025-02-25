@@ -25,26 +25,15 @@ int convert(unsigned int x)
 int main(void) {
     unsigned int c = 0;
 
-	// c = convert(212);
-    // print_hex(c,4);
-    // c = convert(100);
-    // print_hex(c,4);
-    // c =convert(32);
-    // print_hex(c,4);
-    // c = convert(359);
-    // print_hex(c,4);
-    // c = convert(500);
-    // print_hex(c,4);
-
-    // c = convert(212);
+    c = convert(212);
      print_dec(212);
-    // c = convert(100);
+    c = convert(100);
     print_dec(15);
-    // c =convert(32);
-    // print_dec(c);
-    // c = convert(359);
-    // print_dec(c);
-    // c = convert(500);
-    // print_dec(c);
+    c =convert(32);
+    print_dec(c);
+    c = convert(359);
+    print_dec(c);
+    c = convert(500);
+    print_dec(c);
 
 }
