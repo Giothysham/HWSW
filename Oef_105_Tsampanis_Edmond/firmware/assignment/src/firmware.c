@@ -38,6 +38,4 @@ int main(void) {
 	print_chr('\n');
     c = convert(500);
     print_dec(c);
-	print_chr('\n');
-
 }
