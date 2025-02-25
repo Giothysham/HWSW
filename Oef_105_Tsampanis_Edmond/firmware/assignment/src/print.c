@@ -16,11 +16,17 @@ void print_str(const char *p) {
 		*((volatile unsigned int*)OUTPORT) = *(p++);
 }
 
-int Multiply(int x, int y){
-    int result = 0;
-    for(int i = 0; i < x; i++){
-        result = result + y;
+unsigned int Multiply(unsigned int a, unsigned int b) {
+    unsigned int result = 0;
+
+    while (b > 0) {
+        if (b & 1) { // Check if the least significant bit of b is 1
+            result += a;
+        }
+        a <<= 1; // Left shift a (multiply by 2)
+        b >>= 1; // Right shift b (divide by 2)
     }
+
     return result;
 }
 
