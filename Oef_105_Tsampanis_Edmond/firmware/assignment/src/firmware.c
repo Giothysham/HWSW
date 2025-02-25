@@ -26,14 +26,18 @@ int main(void) {
     unsigned int c = 0;
 
     c = convert(212);
-     print_dec(212);
+    print_dec(212);
+	print_chr('\n');
     c = convert(100);
     print_dec(15);
+	print_chr('\n');
     c =convert(32);
     print_dec(c);
     c = convert(359);
     print_dec(c);
+	print_chr('\n');
     c = convert(500);
     print_dec(c);
+	print_chr('\n');
 
 }
