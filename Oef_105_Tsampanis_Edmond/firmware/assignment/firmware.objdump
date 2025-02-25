@@ -194,10 +194,19 @@ Disassembly of section .text:
  2a0:	e99ff0ef          	jal	ra,138 <print_dec>
  2a4:	00f00513          	addi	a0,zero,15
  2a8:	e91ff0ef          	jal	ra,138 <print_dec>
- 2ac:	00c12083          	lw	ra,12(sp)
- 2b0:	00000513          	addi	a0,zero,0
- 2b4:	01010113          	addi	sp,sp,16
- 2b8:	00008067          	jalr	zero,0(ra)
+ 2ac:	02000513          	addi	a0,zero,32
+ 2b0:	fbdff0ef          	jal	ra,26c <convert>
+ 2b4:	e85ff0ef          	jal	ra,138 <print_dec>
+ 2b8:	16700513          	addi	a0,zero,359
+ 2bc:	fb1ff0ef          	jal	ra,26c <convert>
+ 2c0:	e79ff0ef          	jal	ra,138 <print_dec>
+ 2c4:	1f400513          	addi	a0,zero,500
+ 2c8:	fa5ff0ef          	jal	ra,26c <convert>
+ 2cc:	e6dff0ef          	jal	ra,138 <print_dec>
+ 2d0:	00c12083          	lw	ra,12(sp)
+ 2d4:	00000513          	addi	a0,zero,0
+ 2d8:	01010113          	addi	sp,sp,16
+ 2dc:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
