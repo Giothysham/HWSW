@@ -44,33 +44,58 @@ int Power(int x,int n){
 }
 
 void print_dec(unsigned int val) {
-    char digits[10];
-    char temp;
-    int i = 0;
-    int j;
+    unsigned int dividend = val;
     char x;
-    
-    while (val > 0) {
-        unsigned int temp = val;
-        unsigned int digit = 0;
-        
-        while (temp >= 10) {
-            temp -= 10;
-            digit++;
-        }
-        
-        digits[i++] = temp;
-        val = digit;
-    }
-    
-    for (j = 0; j < i >> 1; j++) {
-        temp = digits[j];
-        digits[j] = digits[i - 1 - j];
-        digits[i - 1 - j] = temp;
+  
+    if (dividend == 0) {
+        x = '0';
+        *((volatile unsigned int*)OUTPORT) = x;  // Print the '0'
+        return;
     }
 
-    for (j = 0; j < i; j++) {
-        x="0123456789ABCDEF"[digits[j]];
+    unsigned int divisor = 10;
+    unsigned int buffer = 0;
+    unsigned int number = val;
+    unsigned int quotient = 0;
+    unsigned int msb = 0;
+
+    unsigned int divisor_power = 1;
+    
+    while(number >= divisor){
+            if(dividend >= divisor){
+                quotient = quotient + 1;
+                number = 0;
+            }
+            
+            while(dividend >= divisor){
+                dividend = dividend - divisor;
+                number = number + 1;
+            }
+            dividend = number;
+            
+        }
+    
+    divisor_power = Power(divisor, quotient);
+    dividend = val;
+
+    while (divisor_power > 0) {
+         while(dividend >= divisor_power){
+            dividend = dividend - divisor_power;
+            msb = msb + 1;
+        }
+        x = "0123456789"[msb]; 
+        msb = 0;
+        
+        while(dividend >= divisor_power){
+            dividend = dividend - divisor_power;
+        }
+
+        while(divisor_power >= divisor){
+            divisor_power = divisor_power - divisor;
+            buffer = buffer + 1;
+        }
+        divisor_power = buffer;
+        buffer = 0;
     }
 }
 
