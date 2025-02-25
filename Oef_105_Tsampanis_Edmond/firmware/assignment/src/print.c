@@ -44,44 +44,35 @@ int Power(int x,int n){
 }
 
 void print_dec(unsigned int val) {
-    unsigned int dividend = val;
+    char digits[10];
+    char temp;
+    int i = 0;
+    int j;
     char x;
-    unsigned int divided = 0;
-    unsigned int quotient = 0;
-    unsigned int divisor = 10; 
-    unsigned int buffer = 10;
-    unsigned int rem = 0;
-    unsigned int order = 0;
     
-    if(divided < divisor){
-        rem = val;
-    }
-    while(dividend >= divisor){
-        while(buffer >= divisor){
-            if(dividend >= divisor){
-                quotient = quotient + 1;
-                buffer = 0;
-            }
-            
-            while(dividend >= divisor){
-                dividend = dividend - divisor;
-                buffer = buffer + 1;
-            }
-            rem = dividend;
-            dividend = buffer;
-            
+    while (val > 0) {
+        unsigned int temp = val;
+        unsigned int digit = 0;
+        
+        while (temp >= 1) {
+            temp -= 1;
+            digit++;
         }
-        x="0123456789"[buffer];
-	    *((volatile unsigned int*)OUTPORT) = x;
-
-        order = Power(10,quotient);
-        buffer = Multiply(buffer, order);
-        divided = divided + buffer;
-        dividend = val - divided;
-        quotient = 0;
+        
+        digits[i++] = digit + '0';
+        val = temp;
     }
-    x="0123456789"[rem];
-	*((volatile unsigned int*)OUTPORT) = x;
+    
+    for (j = 0; j < i >> 1; j++) {
+        temp = digits[j];
+        digits[j] = digits[i - 1 - j];
+        digits[i - 1 - j] = temp;
+    }
+
+    for (j = 0; j < i; j++) {
+        x="0123456789ABCDEF"[digits[j]];
+		*((volatile unsigned int*)OUTPORT) = x;
+    }
 }
 
 void print_hex(unsigned int val, int digits) {
