@@ -54,13 +54,13 @@ void print_dec(unsigned int val) {
         unsigned int temp = val;
         unsigned int digit = 0;
         
-        while (temp >= 1) {
-            temp -= 1;
+        while (temp >= 10) {
+            temp -= 10;
             digit++;
         }
         
-        digits[i++] = digit + '0';
-        val = temp;
+        digits[i++] = temp;
+        val = digit;
     }
     
     for (j = 0; j < i >> 1; j++) {
@@ -71,7 +71,6 @@ void print_dec(unsigned int val) {
 
     for (j = 0; j < i; j++) {
         x="0123456789ABCDEF"[digits[j]];
-		*((volatile unsigned int*)OUTPORT) = x;
     }
 }
 
