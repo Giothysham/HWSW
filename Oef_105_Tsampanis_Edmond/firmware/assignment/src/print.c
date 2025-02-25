@@ -16,22 +16,22 @@ void print_str(const char *p) {
 		*((volatile unsigned int*)OUTPORT) = *(p++);
 }
 
-// int mul(int x, int y){
-//     int result = 0;
-//     for(int i = 0; i < x; i++){
-//         result = result + y;
-//     }
-//     return result;
-// }
+int Multiply(int x, int y){
+    int result = 0;
+    for(int i = 0; i < x; i++){
+        result = result + y;
+    }
+    return result;
+}
 
-int Pow(int x,int n){
+int Power(int x,int n){
     if (n == 0) {
         return 1;
     }
     
     int result = x;
     for (int i = 1; i < n; i++) {
-        result = result * x;
+        result = Multiply(result, x);
     }
     
     return(result);
@@ -68,8 +68,8 @@ void print_dec(unsigned int val) {
         x="0123456789"[buffer];
 	    *((volatile unsigned int*)OUTPORT) = x;
 
-        order = Pow(10,quotient);
-        buffer = buffer * order;
+        order = Power(10,quotient);
+        buffer = Multiply(buffer, order);
         divided = divided + buffer;
         dividend = val - divided;
         quotient = 0;
