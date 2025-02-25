@@ -192,21 +192,29 @@ Disassembly of section .text:
  298:	0d400513          	addi	a0,zero,212
  29c:	00112623          	sw	ra,12(sp)
  2a0:	e99ff0ef          	jal	ra,138 <print_dec>
- 2a4:	00f00513          	addi	a0,zero,15
- 2a8:	e91ff0ef          	jal	ra,138 <print_dec>
- 2ac:	02000513          	addi	a0,zero,32
- 2b0:	fbdff0ef          	jal	ra,26c <convert>
- 2b4:	e85ff0ef          	jal	ra,138 <print_dec>
- 2b8:	16700513          	addi	a0,zero,359
- 2bc:	fb1ff0ef          	jal	ra,26c <convert>
- 2c0:	e79ff0ef          	jal	ra,138 <print_dec>
- 2c4:	1f400513          	addi	a0,zero,500
- 2c8:	fa5ff0ef          	jal	ra,26c <convert>
- 2cc:	e6dff0ef          	jal	ra,138 <print_dec>
- 2d0:	00c12083          	lw	ra,12(sp)
- 2d4:	00000513          	addi	a0,zero,0
- 2d8:	01010113          	addi	sp,sp,16
- 2dc:	00008067          	jalr	zero,0(ra)
+ 2a4:	00a00513          	addi	a0,zero,10
+ 2a8:	de9ff0ef          	jal	ra,90 <print_chr>
+ 2ac:	00f00513          	addi	a0,zero,15
+ 2b0:	e89ff0ef          	jal	ra,138 <print_dec>
+ 2b4:	00a00513          	addi	a0,zero,10
+ 2b8:	dd9ff0ef          	jal	ra,90 <print_chr>
+ 2bc:	02000513          	addi	a0,zero,32
+ 2c0:	fadff0ef          	jal	ra,26c <convert>
+ 2c4:	e75ff0ef          	jal	ra,138 <print_dec>
+ 2c8:	16700513          	addi	a0,zero,359
+ 2cc:	fa1ff0ef          	jal	ra,26c <convert>
+ 2d0:	e69ff0ef          	jal	ra,138 <print_dec>
+ 2d4:	00a00513          	addi	a0,zero,10
+ 2d8:	db9ff0ef          	jal	ra,90 <print_chr>
+ 2dc:	1f400513          	addi	a0,zero,500
+ 2e0:	f8dff0ef          	jal	ra,26c <convert>
+ 2e4:	e55ff0ef          	jal	ra,138 <print_dec>
+ 2e8:	00a00513          	addi	a0,zero,10
+ 2ec:	da5ff0ef          	jal	ra,90 <print_chr>
+ 2f0:	00c12083          	lw	ra,12(sp)
+ 2f4:	00000513          	addi	a0,zero,0
+ 2f8:	01010113          	addi	sp,sp,16
+ 2fc:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
