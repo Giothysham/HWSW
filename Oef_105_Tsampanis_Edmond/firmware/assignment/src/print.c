@@ -84,6 +84,7 @@ void print_dec(unsigned int val) {
             msb = msb + 1;
         }
         x = "0123456789"[msb]; 
+        *((volatile unsigned int*)OUTPORT) = x;  // Output the digit
         msb = 0;
         
         while(dividend >= divisor_power){
