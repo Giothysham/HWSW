@@ -28,14 +28,14 @@ int main(void) {
     c = convert(212);
     print_dec(c);
 	print_chr('\n');
-    c = convert(100);
-    print_dec(c);
-	print_chr('\n');
-    c =convert(32);
-    print_dec(c);
-    c = convert(359);
-    print_dec(c);
-	print_chr('\n');
-    c = convert(500);
-    print_dec(c);
+    // c = convert(100);
+    // print_dec(c);
+	// print_chr('\n');
+    // c =convert(32);
+    // print_dec(c);
+    // c = convert(359);
+    // print_dec(c);
+	// print_chr('\n');
+    // c = convert(500);
+    // print_dec(c);
 }
