@@ -16,13 +16,13 @@ void print_str(const char *p) {
 		*((volatile unsigned int*)OUTPORT) = *(p++);
 }
 
-int mul(int x, int y){
-    int result = 0;
-    for(int i = 0; i < x; i++){
-        result = result + y;
-    }
-    return result;
-}
+// int mul(int x, int y){
+//     int result = 0;
+//     for(int i = 0; i < x; i++){
+//         result = result + y;
+//     }
+//     return result;
+// }
 
 int Pow(int x,int n){
     if (n == 0) {
@@ -31,7 +31,7 @@ int Pow(int x,int n){
     
     int result = x;
     for (int i = 1; i < n; i++) {
-        result = mul(result, x);
+        result = result * x;
     }
     
     return(result);
@@ -69,7 +69,7 @@ void print_dec(unsigned int val) {
 	    *((volatile unsigned int*)OUTPORT) = x;
 
         order = Pow(10,quotient);
-        buffer = mul(buffer, order);
+        buffer = buffer * order;
         divided = divided + buffer;
         dividend = val - divided;
         quotient = 0;
