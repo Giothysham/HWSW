@@ -9,7 +9,7 @@
 # launch with: source /home/jvliegen/Desktop/temp/ch1/scripts/tcl/vivado_proj.tcl
 ################################################################################
 
-set pname "hwswcd_chapter_1_example"
+set pname "Oef_105"
   set path D:/School/MA/HWSW/VHDL/Basic_RISCV
   set srcpath D:/School/MA/HWSW/Source_code/HWSW/Oef_105_Tsampanis_Edmond
 

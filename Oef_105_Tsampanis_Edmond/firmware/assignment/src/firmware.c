@@ -25,14 +25,14 @@ int convert(unsigned int x)
 int main(void) {
     unsigned int c = 0;
     c = convert(212);
-    print_dec(c);
+    print_hex(c);
     c = convert(100);
-    print_dec(c);
+    print_hex(c);
     c =convert(32);
-    print_dec(c);
+    print_hex(c);
     c = convert(359);
-    print_dec(c);
+    print_hex(c);
     c = convert(500);
-    print_dec(c);
+    print_hex(c);
 
 }

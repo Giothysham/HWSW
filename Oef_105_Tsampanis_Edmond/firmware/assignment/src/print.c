@@ -26,7 +26,7 @@ int mul(int x, int y){
 
 int Pow(int x,int n){
     if (n == 0) {
-        return 1; // x^0 = 1
+        return 1;
     }
     
     int result = x;
