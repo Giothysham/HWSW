@@ -209,12 +209,10 @@ Disassembly of section .text:
  2dc:	1f400513          	addi	a0,zero,500
  2e0:	f8dff0ef          	jal	ra,26c <convert>
  2e4:	e55ff0ef          	jal	ra,138 <print_dec>
- 2e8:	00a00513          	addi	a0,zero,10
- 2ec:	da5ff0ef          	jal	ra,90 <print_chr>
- 2f0:	00c12083          	lw	ra,12(sp)
- 2f4:	00000513          	addi	a0,zero,0
- 2f8:	01010113          	addi	sp,sp,16
- 2fc:	00008067          	jalr	zero,0(ra)
+ 2e8:	00c12083          	lw	ra,12(sp)
+ 2ec:	00000513          	addi	a0,zero,0
+ 2f0:	01010113          	addi	sp,sp,16
+ 2f4:	00008067          	jalr	zero,0(ra)
 
 Disassembly of section .rodata.str1.4:
 
