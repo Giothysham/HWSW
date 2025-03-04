@@ -49,6 +49,8 @@ architecture Behavioural of reg_file is
     signal dest_int : natural range 0 to C_REGCOUNT-1;
     
     signal chip_enable_i : std_logic;
+    
+    signal we_buffer : std_logic;
 
     signal rf : T_regfile;
 begin
@@ -78,22 +80,22 @@ begin
 
     -------------------------------------------------------------------------------
     -- REGISTER
-    -------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------;
     PREG: process(clock_i)
     begin
         if rising_edge(clock_i) then
             if reset_i = '1' then 
                 rf <= (others => (others => '0'));
-            else
-                if we_i = '1' and dest_int /= 0 then 
-                    if chip_enable_i = '1' then
+            else  
+                if we_i = '1' and dest_int /= 0 then   
+                    if chip_enable_i = '1' then  
                         rf(dest_int) <= data_i;
-                    end if;
+                    end if; 
                 end if;
             end if;
         end if;
     end process;
-
+    
     data1_o <= rf(src1_int);
     data2_o <= rf(src2_int);
 

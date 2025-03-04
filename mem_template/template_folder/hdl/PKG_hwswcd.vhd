@@ -47,22 +47,12 @@ package PKG_hwswcd is
     -------------------------------------------------------------------------------
     -- DECLARATIONS
     -------------------------------------------------------------------------------
-    component clock_and_reset_pynq is
-        port(
-            sysclock : IN STD_LOGIC;
-            sysreset : IN STD_LOGIC;
-            sreset : out STD_LOGIC;
-            clock : out STD_LOGIC;
-            heartbeat : out STD_LOGIC
-        );
-    end component clock_and_reset_pynq;
-    
     component reg_file is
         port(
             clock : IN STD_LOGIC;
             reset : IN STD_LOGIC;
+            ce : in std_logic;
             we : in std_logic;
-            chip_enable : in std_logic;
             src1 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             src2 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             dest : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
@@ -117,6 +107,7 @@ package PKG_hwswcd is
         port(
             clock : IN STD_LOGIC;
             reset : IN STD_LOGIC;
+            ce: IN STD_LOGIC;
             dmem_do : in STD_LOGIC_VECTOR(31 downto 0);
             dmem_we : out STD_LOGIC;
             dmem_a : out STD_LOGIC_VECTOR(31 downto 0);
@@ -128,14 +119,10 @@ package PKG_hwswcd is
 
     component riscv_microcontroller is
         port(
-            clock : in STD_LOGIC;
-            reset : in STD_LOGIC;
-            dmem_do : in STD_LOGIC_VECTOR(31 downto 0);
-            dmem_we : out STD_LOGIC;
-            dmem_a : out STD_LOGIC_VECTOR(31 downto 0);
-            dmem_di : out STD_LOGIC_VECTOR(31 downto 0);
-            instruction : in STD_LOGIC_VECTOR(31 downto 0);
-            PC : out STD_LOGIC_VECTOR(31 downto 0)
+            sys_clock_p : in STD_LOGIC;
+            sys_clock_n : in STD_LOGIC;
+            sys_reset : in STD_LOGIC;
+            gpio_leds : out STD_LOGIC_VECTOR(7 downto 0)
         );
     end component riscv_microcontroller;
 
