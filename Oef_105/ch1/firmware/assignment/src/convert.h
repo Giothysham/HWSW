@@ -1,1 +1,0 @@
-unsigned int convert(unsigned int x);
