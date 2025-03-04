@@ -30,14 +30,15 @@ unsigned int Multiply(unsigned int a, unsigned int b) {
     return result;
 }
 
-int Power(int x,int n){
+unsigned int Power(int x,int n){
+    int result = 0;
     if (n == 0) {
-        return 1;
-    }
-    
-    int result = x;
-    for (int i = 1; i < n; i++) {
-        result = Multiply(result, x);
+        result = 1;
+    } else {
+        result = x;
+        for (int i = 1; i < n; i++) {
+            result = Multiply(result, x);
+        }
     }
     
     return(result);
