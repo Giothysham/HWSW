@@ -46,6 +46,12 @@ int Power(int x,int n){
 void print_dec(unsigned int val) {
     unsigned int dividend = val;
     char x;
+  
+    if (dividend == 0) {
+        x = '0';
+        *((volatile unsigned int*)OUTPORT) = x;  // Print the '0'
+        return;
+    }
 
     unsigned int divisor = 10;
     unsigned int buffer = 0;

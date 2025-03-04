@@ -64,7 +64,6 @@ begin
     funct7_i <= funct7;
 
     branch <= branch_o;
-    mem_we <= mem_we_o;
     arith_logic_b <= arith_logic_b_o;
     signed_unsigned_b <= signed_unsigned_b_o;
     result_filter <= result_filter_o;
@@ -80,8 +79,8 @@ begin
         mem_we_buffer <= mem_we_o;
     else
         mem_we <= '0';
-        mem_we_buffer <= mem_we_o;
     end if;
+    mem_we_buffer <= mem_we_o;
     end process;
     
     process(opcode_i, funct7, funct3)
