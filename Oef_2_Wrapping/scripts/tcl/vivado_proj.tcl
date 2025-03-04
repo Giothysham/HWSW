@@ -9,14 +9,14 @@
 # launch with: source /home/jvliegen/Desktop/temp/ch1/scripts/tcl/vivado_proj.tcl
 ################################################################################
 
-set pname "hwswcd_chapter_1_example"
-  set path D:/School/MA/HWSW/VHDL/test
-  set srcpath D:/School/MA/HWSW/Source_code/HWSW/ch1
+set pname "Oef_2_Wrapping"
+set path "D:/School/MA/HWSW/VHDL/Oef_2_Wrapping/"
+set srcpath "D:/School/MA/HWSW/Source_code/HWSW/Oef_2_Wrapping"
 
 set part "xc7vx485tffg1761-2"
 set board "xilinx.com:vc707:part0:1.4"
 
-# delete older versions
+# delete older versions 
 cd $path
 exec rm -Rf $pname
 

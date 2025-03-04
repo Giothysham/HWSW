@@ -20,10 +20,10 @@ entity riscv_microcontroller_tb is
         G_DATA_WIDTH : integer := 32;
         G_DEPTH_LOG2 : integer := 11;
 
-        FNAME_IMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\firmware_imem.hex";
-        FNAME_DMEM_INIT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\firmware_dmem.hex";
-        FNAME_OUT_FILE :       string := "D:\School\MA\HWSW\Source_code\HWSW\Oef_105_New\ch1\firmware\assignment\simulation_output.txt"
-    );                                     
+        FNAME_IMEM_INIT_FILE : string := "D:/School/MA/HWSW/Source_code/HWSW/Oef_2_Wrapping/firmware/firmware_imem.hex";
+        FNAME_DMEM_INIT_FILE : string := "D:/School/MA/HWSW/Source_code/HWSW/Oef_2_Wrapping/firmware/firmware_dmem.hex";
+        FNAME_OUT_FILE :       string := "D:/School/MA/HWSW/Source_code/HWSW/Oef_2_Wrapping/firmware/simulation_output.txt"
+    );
 end entity riscv_microcontroller_tb;
 
 architecture Behavioural of riscv_microcontroller_tb is
@@ -49,42 +49,21 @@ architecture Behavioural of riscv_microcontroller_tb is
     -- constants
     constant C_ZEROES: STD_LOGIC_VECTOR(G_DATA_WIDTH-1 downto 0) := (others => '0');
     constant clock_period : time := 10 ns;
-    
-    --chip_enable
-    signal chip_enable_tb : STD_LOGIC;
-    signal counter_clock : integer := 0;
 
 begin
-
-    -------------------------------------------------------------------------------
-    -- CHIP_ENABLE
-    -------------------------------------------------------------------------------
-    CHIP_EN: process(clock_i)
-    begin
-        if rising_edge(clock_i) then
-            if counter_clock = 2 then
-                counter_clock <= 0;
-                chip_enable_tb <= '1';
-            else
-                chip_enable_tb <= '0';
-                counter_clock <= counter_clock + 1;
-            end if;
-        end if;
-    end process;
 
     -------------------------------------------------------------------------------
     -- STIMULI
     -------------------------------------------------------------------------------
     PSTIM: process(reset_i, program_counter)
     begin
+        
         if reset_i = '0' then 
             if program_counter(G_DATA_WIDTH-1 downto G_DEPTH_LOG2+2) /= C_zeroes(G_DATA_WIDTH-1 downto G_DEPTH_LOG2+2) then
                 report "ERROR: IMEM OUT OF RANGE" severity error;
             end if;
         end if;
     end process;
-    
-    
 
 
     -------------------------------------------------------------------------------

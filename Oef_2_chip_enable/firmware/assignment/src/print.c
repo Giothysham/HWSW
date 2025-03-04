@@ -98,6 +98,8 @@ void print_dec(unsigned int val) {
         divisor_power = buffer;
         buffer = 0;
     }
+
+    return;
 }
 
 void print_hex(unsigned int val, int digits) {
