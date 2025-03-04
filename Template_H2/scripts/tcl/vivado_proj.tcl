@@ -9,9 +9,9 @@
 # launch with: source /home/jvliegen/vc/github/KULeuven-Diepenbeek/course_hwswcodesign_internal/ch2/scripts/tcl/vivado_proj.tcl
 ################################################################################
 
-set pname "hwswcd_chapter_2"
-set path "/home/jvliegen/Documents/courses/KULeuven/sem8_HWSWCD/vivado/"
-set srcpath "/home/jvliegen/vc/github/KULeuven-Diepenbeek/course_hwswcodesign_internal/ch2"
+set pname "full_oef_2"
+set path "D:/School/MA/HWSW/VHDL/Oef_2_full"
+set srcpath "D:/School/MA/HWSW/Source_code/HWSW/template_H2"
 
 set part "xc7z020clg400-1"
 set board "tul.com.tw:pynq-z2:part0:1.0"
