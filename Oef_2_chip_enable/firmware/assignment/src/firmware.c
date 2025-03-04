@@ -1,29 +1,41 @@
 #include "print.h"
 
+
+int convert(unsigned int x)
+{
+	unsigned int y = 0;
+	unsigned int buffer = 0;
+	buffer = x - 32;
+	
+    unsigned int mul_buffer = 0;
+	for(int i = 0; i < 5; i++)
+	{
+		mul_buffer = mul_buffer + buffer;
+	}
+
+	while(mul_buffer >= 9)
+	{
+		mul_buffer = mul_buffer - 9;
+		y = y + 1;
+	}
+	
+	return y;
+}
+
 int main(void) {
-	print_str("Hello, World!\n");
-	print_dec(32);
-	print_str("\n");
-	print_dec(320);
-	print_str("\n");
-	print_dec(7458);
-	print_str("\n");
+    unsigned int c = 0;
 
-	// print_str("buffer_string with print_str\0\n");
-	// print_str(&buffer_string[0]);
-	// print_str("\n");
-	// print_str("buffer_number with print_str\0\n");
-	// print_str(&buffer_number[0]);
-	// print_str("\n");
-	// print_str("buffer_string with print_chr\ n");
-	// for(int i = 0; i < 4; i++) {
-	// 	print_chr(buffer_string[i]);
-	// }
-	// print_str("\n");
-	// print_str("buffer_number with print_chr\n");
-	// for(int i = 0; i < 4; i++) {
-	// 	print_chr(buffer_number[i]);
-	// }
-	// print_str("\n");
-
+    c = convert(212);
+    print_dec(c);
+	print_chr('\n');
+    c = convert(100);
+    print_dec(c);
+	print_chr('\n');
+    c =convert(32);
+    print_dec(c);
+    c = convert(359);
+    print_dec(c);
+	print_chr('\n');
+    c = convert(500);
+    print_dec(c);
 }
