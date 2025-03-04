@@ -47,6 +47,21 @@ package PKG_hwswcd is
     -------------------------------------------------------------------------------
     -- DECLARATIONS
     -------------------------------------------------------------------------------
+    component two_k_bram is
+    port(
+        clock : in STD_LOGIC;
+
+        init_data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        init_write_enable : in STD_LOGIC;
+        init_address : in STD_LOGIC_VECTOR(10 downto 0);
+
+        data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        write_enable : in STD_LOGIC;
+        address : in STD_LOGIC_VECTOR(10 downto 0);
+        data_out : out STD_LOGIC_VECTOR(31 downto 0)
+    );
+    end component two_k_bram;
+    
     component clock_and_reset_pynq is
         port(
             sysclock : IN STD_LOGIC;

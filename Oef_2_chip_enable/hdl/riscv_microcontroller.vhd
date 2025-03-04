@@ -77,6 +77,28 @@ begin
         instruction => instruction_i,
         PC => PC_o
     );
+    
+    imem_bram: component two_k_bram port map(
+        clock => clock_i_riscv,
+        init_data_in => C_GND,
+        init_write_enable => C_GND(0),
+        init_address => C_GND(10 downto 0),
+        data_in => C_GND,
+        write_enable => C_GND(0),
+        address => PC_o(12 downto 2),
+        data_out => instruction_i
+    );
+    
+    dram_bram: component two_k_bram port map(
+        clock => clock_i_riscv,
+        init_data_in => C_GND,
+        init_write_enable => C_GND(0),
+        init_address => C_GND(10 downto 0),
+        data_in => dmem_di_o,
+        write_enable => dmem_we_o,
+        address => dmem_a_o(10 downto 0),
+        data_out  => dmem_do_i
+    );
         
    clock_manager: component clock_and_reset_pynq port map(
         sysclock => clock_i,
