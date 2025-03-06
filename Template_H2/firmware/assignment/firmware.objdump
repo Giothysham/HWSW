@@ -45,7 +45,14 @@ Disassembly of section .text:
   8c:	0000006f          	jal	zero,8c <end>
 
 00000090 <main>:
-  90:	800007b7          	lui	a5,0x80000
-  94:	00300713          	addi	a4,zero,3
-  98:	00e7a023          	sw	a4,0(a5) # 80000000 <main+0x7fffff70>
-  9c:	ffdff06f          	jal	zero,98 <main+0x8>
+  90:	00000713          	addi	a4,zero,0
+  94:	06500693          	addi	a3,zero,101
+  98:	06400613          	addi	a2,zero,100
+  9c:	800005b7          	lui	a1,0x80000
+  a0:	00000793          	addi	a5,zero,0
+  a4:	00178793          	addi	a5,a5,1
+  a8:	fed78ce3          	beq	a5,a3,a0 <main+0x10>
+  ac:	fec79ce3          	bne	a5,a2,a4 <main+0x14>
+  b0:	00170713          	addi	a4,a4,1
+  b4:	00e5a023          	sw	a4,0(a1) # 80000000 <main+0x7fffff70>
+  b8:	fedff06f          	jal	zero,a4 <main+0x14>
