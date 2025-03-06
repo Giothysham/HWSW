@@ -11,8 +11,8 @@ int main(void) {
 					i = 0;
 					*((volatile unsigned int *)OUTPORT) = i;
 				} else {
-					i = i + 1;
-				*((volatile unsigned int *)OUTPORT) = i;
+					i = 7;
+					*((volatile unsigned int *)OUTPORT) = i;
 				}
 			}
 		}
