@@ -1,6 +1,9 @@
 
 Discarded input sections
 
+ .comment       0x00000000       0x1c build/print.o
+ .riscv.attributes
+                0x00000000       0x1c build/print.o
  .comment       0x00000000       0x1c build/firmware.o
  .riscv.attributes
                 0x00000000       0x1c build/firmware.o
@@ -17,24 +20,33 @@ RAM              0x00000800         0x00000800         xrw
 Linker script and memory map
 
 
-.text           0x00000000       0xa4
+.text           0x00000000      0x234
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000       0x90 build/start.o
                 0x00000000                start
  *(.text*)
- .text          0x00000090        0x0 build/firmware.o
- .text.startup  0x00000090       0x14 build/firmware.o
-                0x00000090                main
- .text          0x000000a4        0x0 build/start.o
+ .text          0x00000090      0x190 build/print.o
+                0x00000090                print_chr
+                0x0000009c                print_str
+                0x000000b8                Multiply
+                0x000000e0                Power
+                0x00000138                print_dec
+                0x000001d8                print_hex
+ .text          0x00000220        0x0 build/firmware.o
+ .text.startup  0x00000220       0x14 build/firmware.o
+                0x00000220                main
+ .text          0x00000234        0x0 build/start.o
 
 .data           0x00000800        0x0
                 0x00000000                        . = 0x0
  *(.data)
+ .data          0x00000800        0x0 build/print.o
  .data          0x00000800        0x0 build/firmware.o
  .data          0x00000800        0x0 build/start.o
 
 .bss            0x00000800        0x0
+ .bss           0x00000800        0x0 build/print.o
  .bss           0x00000800        0x0 build/firmware.o
  .bss           0x00000800        0x0 build/start.o
 
@@ -45,6 +57,11 @@ Linker script and memory map
                 0x00000c00                        . = ALIGN (0x4)
  FILL mask 0xff
 
+.rodata.str1.4  0x00000c00       0x25
+ .rodata.str1.4
+                0x00000c00       0x25 build/print.o
+                                 0x21 (size before relaxing)
+
 /DISCARD/
  *(.note*)
  *(.iplt*)
@@ -52,6 +69,7 @@ Linker script and memory map
  *(.rel*)
  *(.comment)
  *(.riscv.attributes)
+LOAD build/print.o
 LOAD build/firmware.o
 LOAD build/start.o
 LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
