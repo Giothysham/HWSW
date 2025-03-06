@@ -2,9 +2,17 @@
 
 
 int main(void) {
-	int i;
-	for (i = 0; i < 10; i++) {
-		*((volatile unsigned int *)OUTPORT) = i;
+	int i = 0;
+	for (;;) {
+		if(i = 0x00000000) {
+			*((volatile unsigned int *)OUTPORT) = 0;
+			i = 1;
+		}
+		else {
+			*((volatile unsigned int *)OUTPORT) = 3;
+			i = 0;
+		}
+		
 	}
 	return 0;
 }
