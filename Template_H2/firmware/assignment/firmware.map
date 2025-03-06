@@ -1,8 +1,11 @@
 
 Discarded input sections
 
+ .comment       0x00000000       0x1c build/firmware.o
  .riscv.attributes
-                0x00000000       0x1a build/firmware.o
+                0x00000000       0x1c build/firmware.o
+ .riscv.attributes
+                0x00000000       0x1a build/start.o
 
 Memory Configuration
 
@@ -14,21 +17,26 @@ RAM              0x00000800         0x00000800         xrw
 Linker script and memory map
 
 
-.text           0x00000000       0x98
+.text           0x00000000       0xa4
                 0x00000000                        . = 0x0
  *(.init)
- .init          0x00000000       0x98 build/firmware.o
+ .init          0x00000000       0x90 build/start.o
                 0x00000000                start
  *(.text*)
- .text          0x00000098        0x0 build/firmware.o
+ .text          0x00000090        0x0 build/firmware.o
+ .text.startup  0x00000090       0x14 build/firmware.o
+                0x00000090                main
+ .text          0x000000a4        0x0 build/start.o
 
 .data           0x00000800        0x0
                 0x00000000                        . = 0x0
  *(.data)
  .data          0x00000800        0x0 build/firmware.o
+ .data          0x00000800        0x0 build/start.o
 
 .bss            0x00000800        0x0
  .bss           0x00000800        0x0 build/firmware.o
+ .bss           0x00000800        0x0 build/start.o
 
 .rodata         0x00000800      0x400
                 0x00000400                        . = 0x400
@@ -45,6 +53,7 @@ Linker script and memory map
  *(.comment)
  *(.riscv.attributes)
 LOAD build/firmware.o
+LOAD build/start.o
 LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
 START GROUP
 LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a

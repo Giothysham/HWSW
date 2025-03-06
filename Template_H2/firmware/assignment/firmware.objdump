@@ -37,13 +37,16 @@ Disassembly of section .text:
   74:	00000f13          	addi	t5,zero,0
   78:	00000f93          	addi	t6,zero,0
   7c:	00001137          	lui	sp,0x1
-  80:	00c000ef          	jal	ra,8c <main>
-  84:	0100006f          	jal	zero,94 <end>
+  80:	010000ef          	jal	ra,90 <main>
+  84:	0080006f          	jal	zero,8c <end>
   88:	00100073          	ebreak
 
-0000008c <main>:
-  8c:	00100293          	addi	t0,zero,1
-  90:	00008067          	jalr	zero,0(ra)
+0000008c <end>:
+  8c:	0000006f          	jal	zero,8c <end>
 
-00000094 <end>:
-  94:	0000006f          	jal	zero,94 <end>
+00000090 <main>:
+  90:	800007b7          	lui	a5,0x80000
+  94:	00300713          	addi	a4,zero,3
+  98:	00e7a023          	sw	a4,0(a5) # 80000000 <main+0x7fffff70>
+  9c:	00000513          	addi	a0,zero,0
+  a0:	00008067          	jalr	zero,0(ra)
