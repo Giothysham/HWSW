@@ -4,10 +4,16 @@
 int main(void) {
 	int i = 0;
 	for (;;) {
-		for(int j = 0 ; j <= 40000000; j++){
-			if(j == 40000000){
-				i = i + 1;
+		for(int j = 0 ; j <= 40000; j++){
+			
+			if(j == 40000){
+				if(i == 7){
+					i = 0;
+					*((volatile unsigned int *)OUTPORT) = i;
+				} else {
+					i = i + 1;
 				*((volatile unsigned int *)OUTPORT) = i;
+				}
 			}
 		}
 		
