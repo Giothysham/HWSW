@@ -48,18 +48,18 @@ Disassembly of section .text:
   90:	003d16b7          	lui	a3,0x3d1
   94:	003d1637          	lui	a2,0x3d1
   98:	00000713          	addi	a4,zero,0
-  9c:	90168693          	addi	a3,a3,-1791 # 3d0901 <main+0x3d0871>
-  a0:	90060613          	addi	a2,a2,-1792 # 3d0900 <main+0x3d0870>
-  a4:	00700593          	addi	a1,zero,7
-  a8:	80000537          	lui	a0,0x80000
+  9c:	90068693          	addi	a3,a3,-1792 # 3d0900 <main+0x3d0870>
+  a0:	00700593          	addi	a1,zero,7
+  a4:	80000537          	lui	a0,0x80000
+  a8:	90160613          	addi	a2,a2,-1791 # 3d0901 <main+0x3d0871>
   ac:	00000793          	addi	a5,zero,0
-  b0:	00178793          	addi	a5,a5,1
-  b4:	fed78ce3          	beq	a5,a3,ac <main+0x1c>
-  b8:	fec79ce3          	bne	a5,a2,b0 <main+0x20>
-  bc:	00b71863          	bne	a4,a1,cc <main+0x3c>
-  c0:	00052023          	sw	zero,0(a0) # 80000000 <main+0x7fffff70>
-  c4:	00000713          	addi	a4,zero,0
-  c8:	fe9ff06f          	jal	zero,b0 <main+0x20>
-  cc:	00b52023          	sw	a1,0(a0)
-  d0:	00700713          	addi	a4,zero,7
-  d4:	fddff06f          	jal	zero,b0 <main+0x20>
+  b0:	00d79e63          	bne	a5,a3,cc <main+0x3c>
+  b4:	00b71a63          	bne	a4,a1,c8 <main+0x38>
+  b8:	00052023          	sw	zero,0(a0) # 80000000 <main+0x7fffff70>
+  bc:	00b52023          	sw	a1,0(a0)
+  c0:	00700713          	addi	a4,zero,7
+  c4:	0080006f          	jal	zero,cc <main+0x3c>
+  c8:	fe070ae3          	beq	a4,zero,bc <main+0x2c>
+  cc:	00178793          	addi	a5,a5,1
+  d0:	fec790e3          	bne	a5,a2,b0 <main+0x20>
+  d4:	fd9ff06f          	jal	zero,ac <main+0x1c>
