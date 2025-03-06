@@ -4,13 +4,11 @@
 int main(void) {
 	int i = 0;
 	for (;;) {
-		if(i = 0x00000000) {
-			*((volatile unsigned int *)OUTPORT) = 0;
-			i = 1;
-		}
-		else {
-			*((volatile unsigned int *)OUTPORT) = 3;
-			i = 0;
+		for(int j = 0 ; j <= 100; j++){
+			if(j == 100){
+				i = i + 1;
+				*((volatile unsigned int *)OUTPORT) = i;
+			}
 		}
 		
 	}
