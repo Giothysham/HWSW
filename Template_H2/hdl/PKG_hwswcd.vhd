@@ -47,12 +47,52 @@ package PKG_hwswcd is
     -------------------------------------------------------------------------------
     -- DECLARATIONS
     -------------------------------------------------------------------------------
+    component two_k_bram_imem is
+    port(
+        clock : in STD_LOGIC;
+
+        init_data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        init_write_enable : in STD_LOGIC;
+        init_address : in STD_LOGIC_VECTOR(10 downto 0);
+
+        data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        write_enable : in STD_LOGIC;
+        address : in STD_LOGIC_VECTOR(10 downto 0);
+        data_out : out STD_LOGIC_VECTOR(31 downto 0)
+    );
+    end component two_k_bram_imem;
+    
+    component two_k_bram_dmem is
+    port(
+        clock : in STD_LOGIC;
+
+        init_data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        init_write_enable : in STD_LOGIC;
+        init_address : in STD_LOGIC_VECTOR(10 downto 0);
+
+        data_in : in STD_LOGIC_VECTOR(31 downto 0);
+        write_enable : in STD_LOGIC;
+        address : in STD_LOGIC_VECTOR(10 downto 0);
+        data_out : out STD_LOGIC_VECTOR(31 downto 0)
+    );
+    end component two_k_bram_dmem;
+    
+    component clock_and_reset_pynq is
+        port(
+            sysclock : IN STD_LOGIC;
+            sysreset : IN STD_LOGIC;
+            sreset : out STD_LOGIC;
+            clock : out STD_LOGIC;
+            heartbeat : out STD_LOGIC
+        );
+    end component clock_and_reset_pynq;
+    
     component reg_file is
         port(
             clock : IN STD_LOGIC;
             reset : IN STD_LOGIC;
-            ce : in std_logic;
             we : in std_logic;
+            chip_enable : in std_logic;
             src1 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             src2 : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
             dest : in std_logic_vector(C_REGCOUNT_LOG2-1 downto 0);
@@ -107,7 +147,6 @@ package PKG_hwswcd is
         port(
             clock : IN STD_LOGIC;
             reset : IN STD_LOGIC;
-            ce: IN STD_LOGIC;
             dmem_do : in STD_LOGIC_VECTOR(31 downto 0);
             dmem_we : out STD_LOGIC;
             dmem_a : out STD_LOGIC_VECTOR(31 downto 0);
@@ -119,10 +158,9 @@ package PKG_hwswcd is
 
     component riscv_microcontroller is
         port(
-            sys_clock_p : in STD_LOGIC;
-            sys_clock_n : in STD_LOGIC;
+            sys_clock : in STD_LOGIC;
             sys_reset : in STD_LOGIC;
-            gpio_leds : out STD_LOGIC_VECTOR(7 downto 0)
+            gpio_leds : out STD_LOGIC_VECTOR(3 downto 0)
         );
     end component riscv_microcontroller;
 
