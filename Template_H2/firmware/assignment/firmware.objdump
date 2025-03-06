@@ -45,16 +45,21 @@ Disassembly of section .text:
   8c:	0000006f          	jal	zero,8c <end>
 
 00000090 <main>:
-  90:	026266b7          	lui	a3,0x2626
-  94:	02626637          	lui	a2,0x2626
-  98:	00000713          	addi	a4,zero,0
-  9c:	a0168693          	addi	a3,a3,-1535 # 2625a01 <main+0x2625971>
-  a0:	a0060613          	addi	a2,a2,-1536 # 2625a00 <main+0x2625970>
-  a4:	800005b7          	lui	a1,0x80000
-  a8:	00000793          	addi	a5,zero,0
-  ac:	00178793          	addi	a5,a5,1
-  b0:	fed78ce3          	beq	a5,a3,a8 <main+0x18>
-  b4:	fec79ce3          	bne	a5,a2,ac <main+0x1c>
-  b8:	00170713          	addi	a4,a4,1
-  bc:	00e5a023          	sw	a4,0(a1) # 80000000 <main+0x7fffff70>
-  c0:	fedff06f          	jal	zero,ac <main+0x1c>
+  90:	0000a6b7          	lui	a3,0xa
+  94:	0000a637          	lui	a2,0xa
+  98:	00000793          	addi	a5,zero,0
+  9c:	c4168693          	addi	a3,a3,-959 # 9c41 <main+0x9bb1>
+  a0:	c4060613          	addi	a2,a2,-960 # 9c40 <main+0x9bb0>
+  a4:	00700513          	addi	a0,zero,7
+  a8:	800005b7          	lui	a1,0x80000
+  ac:	00000713          	addi	a4,zero,0
+  b0:	00170713          	addi	a4,a4,1
+  b4:	fed70ce3          	beq	a4,a3,ac <main+0x1c>
+  b8:	fec71ce3          	bne	a4,a2,b0 <main+0x20>
+  bc:	00a79863          	bne	a5,a0,cc <main+0x3c>
+  c0:	0005a023          	sw	zero,0(a1) # 80000000 <main+0x7fffff70>
+  c4:	00000793          	addi	a5,zero,0
+  c8:	fe9ff06f          	jal	zero,b0 <main+0x20>
+  cc:	00178793          	addi	a5,a5,1
+  d0:	00f5a023          	sw	a5,0(a1)
+  d4:	fddff06f          	jal	zero,b0 <main+0x20>
