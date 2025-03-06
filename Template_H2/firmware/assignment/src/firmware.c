@@ -9,7 +9,7 @@ int main(void) {
 				if(i == 7 && j == 4000000){
 					i = 0;
 					*((volatile unsigned int *)OUTPORT) = i;
-				} if(i == 0 && j == 4000000) {
+				} else if(i == 0 && j == 4000000) {
 					i = 7;
 					*((volatile unsigned int *)OUTPORT) = i;
 				}
