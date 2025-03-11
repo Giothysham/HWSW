@@ -97,10 +97,10 @@ begin
         heartbeat => filler
     );
     
-    PREG_LEDS: process(sys_clock)
+    PREG_LEDS: process(clock_i_riscv)
     begin
-        if rising_edge(sys_clock) then 
-            if sys_reset = '1' then 
+        if rising_edge(clock_i_riscv) then 
+            if reset_i_riscv = '1' then 
                 leds <= "0000000";
             else
                 if dmem_we_o = '1' and dmem_a_o = x"80000000" then 
