@@ -1,6 +1,9 @@
 #include "tcnt.h"
+#include "print.h"
 
 #define OUTPORT 0x80000000
+
+int tcnt = 0;
 
 int main(void) {
 	int i = 0;
@@ -17,7 +20,8 @@ int main(void) {
 				}
 			}
 			TCNT_stop();
-			*((volatile unsigned int *)OUTPORT) = TCNT_VAL;
+			tcnt = TCNT_VAL;
+			print_dec(tcnt);
 		}
 	}
 	return 0;
