@@ -29,10 +29,15 @@ architecture Behavioural of riscv_microcontroller is
     -- (DE-)LOCALISING IN/OUTPUTS
     signal clock_i : STD_LOGIC;
     signal reset_i : STD_LOGIC;
-    signal dmem_do_i : STD_LOGIC_VECTOR(31 downto 0);
-    signal dmem_we_o : STD_LOGIC;
-    signal dmem_a_o : STD_LOGIC_VECTOR(31 downto 0);
-    signal dmem_di_o : STD_LOGIC_VECTOR(31 downto 0);
+    signal dmem_do_i_riscv : STD_LOGIC_VECTOR(31 downto 0);
+    signal dmem_we_o_riscv : STD_LOGIC;
+    signal dmem_a_o_riscv : STD_LOGIC_VECTOR(31 downto 0);
+    signal dmem_di_o_riscv : STD_LOGIC_VECTOR(31 downto 0);
+    
+    signal dmem_do_i_mem : STD_LOGIC_VECTOR(31 downto 0);
+    
+    signal timer_do_i : STD_LOGIC_VECTOR(31 downto 0);
+    
     signal instruction_i : STD_LOGIC_VECTOR(31 downto 0);
     signal PC_o : STD_LOGIC_VECTOR(31 downto 0);
     signal gpio_leds_o : STD_LOGIC_VECTOR(3 downto 0);
@@ -51,6 +56,8 @@ begin
     reset_i <= sys_reset;
     gpio_leds <= gpio_leds_o;
     
+    
+    
     gpio_leds_o <= leds(3 downto 0);
 
     -------------------------------------------------------------------------------
@@ -59,10 +66,10 @@ begin
     riscv_inst00: component riscv port map(
         clock => clock_i_riscv,
         reset => reset_i_riscv,
-        dmem_do => dmem_do_i,
-        dmem_we => dmem_we_o,
-        dmem_a => dmem_a_o,
-        dmem_di => dmem_di_o,
+        dmem_do => dmem_do_i_riscv,
+        dmem_we => dmem_we_o_riscv,
+        dmem_a => dmem_a_o_riscv,
+        dmem_di => dmem_di_o_riscv,
         instruction => instruction_i,
         PC => PC_o
     );
@@ -83,10 +90,10 @@ begin
         init_data_in => C_GND,
         init_write_enable => C_GND(0),
         init_address => C_GND(10 downto 0),
-        data_in => dmem_di_o,
-        write_enable => dmem_we_o,
-        address => dmem_a_o(10 downto 0),
-        data_out  => dmem_do_i
+        data_in => dmem_di_o_riscv,
+        write_enable => dmem_we_o_riscv,
+        address => dmem_a_o_riscv(10 downto 0),
+        data_out  => dmem_do_i_mem
     );
         
    clock_manager: component clock_and_reset_pynq port map(
@@ -97,14 +104,33 @@ begin
         heartbeat => filler
     );
     
+    wrapper_timer_inst00: wrapped_timer port map(
+        clock => clock_i_riscv,
+        reset => reset_i_riscv, 
+        iface_di => dmem_di_o_riscv,
+        iface_a => dmem_a_o_riscv,
+        iface_we => dmem_we_o_riscv,
+        iface_do => timer_do_i
+    );
+    
+    
+    MUX_MEM_TIMER: process(timer_do_i, dmem_do_i_mem, dmem_a_o_riscv)
+    begin
+        if "10000001000000000000000000000000" <= dmem_a_o_riscv and dmem_a_o_riscv <= "10000001000000000000000011111111" then
+            dmem_do_i_riscv <= timer_do_i;
+        else
+            dmem_do_i_riscv <= dmem_do_i_mem;
+        end if;
+    end process;
+    
     PREG_LEDS: process(clock_i_riscv)
     begin
         if rising_edge(clock_i_riscv) then 
             if reset_i_riscv = '1' then 
                 leds <= "0000000";
             else
-                if dmem_we_o = '1' and dmem_a_o = x"80000000" then 
-                    leds <= dmem_di_o(6 downto 0);
+                if dmem_we_o_riscv = '1' and dmem_a_o_riscv = x"80000000" then 
+                    leds <= dmem_di_o_riscv(6 downto 0);
                 end if;
             end if;
         end if;

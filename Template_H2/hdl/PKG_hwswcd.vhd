@@ -209,6 +209,10 @@ package PKG_hwswcd is
             writing_out_flag : OUT STD_LOGIC
         );
     end component basicIO_model;
+    
+-------------------------------------------------------------------------------
+-- Timer
+-------------------------------------------------------------------------------
 
     component wrapped_timer is
         generic(
@@ -223,6 +227,26 @@ package PKG_hwswcd is
             iface_do : out STD_LOGIC_VECTOR(C_WIDTH-1 downto 0)
         );
     end component wrapped_timer;
+    
+    component timer is
+    generic(
+        G_WIDTH : natural := 8
+    );
+    port(
+        clock : in STD_LOGIC;
+        reset : in STD_LOGIC;
+
+        CS : in STD_LOGIC_VECTOR(1 downto 0);               -- clock select
+        WGM : in STD_LOGIC_VECTOR(1 downto 0);              -- waveform generation mode
+        
+        CMP : in STD_LOGIC_VECTOR(G_WIDTH-1 downto 0);
+
+        OFl : out std_LOGIC;
+        PWM : out std_LOGIC;
+        CEQ : out std_LOGIC;
+        TCNT : out STD_LOGIC_VECTOR(G_WIDTH-1 downto 0)
+    );
+end component timer;
 
 end package;
 

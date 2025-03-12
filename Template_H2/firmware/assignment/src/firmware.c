@@ -4,8 +4,8 @@
 int main(void) {
 	int i = 0;
 	for (;;) {
-		for(int j = 0 ; j <= 4000000; j++){
-			if(j == 4000000){
+		for(int j = 0 ; j <= 40; j++){
+			if(j == 40){
 				if(i <= 15){
 					i = i + 1;
 					*((volatile unsigned int *)OUTPORT) = i;
