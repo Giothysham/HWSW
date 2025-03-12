@@ -37,27 +37,80 @@ Disassembly of section .text:
   74:	00000f13          	addi	t5,zero,0
   78:	00000f93          	addi	t6,zero,0
   7c:	00001137          	lui	sp,0x1
-  80:	010000ef          	jal	ra,90 <main>
+  80:	088000ef          	jal	ra,108 <main>
   84:	0080006f          	jal	zero,8c <end>
   88:	00100073          	ebreak
 
 0000008c <end>:
   8c:	0000006f          	jal	zero,8c <end>
 
-00000090 <main>:
-  90:	00000793          	addi	a5,zero,0
-  94:	02900613          	addi	a2,zero,41
-  98:	02800593          	addi	a1,zero,40
-  9c:	00f00513          	addi	a0,zero,15
-  a0:	800006b7          	lui	a3,0x80000
-  a4:	00000713          	addi	a4,zero,0
-  a8:	00170713          	addi	a4,a4,1
-  ac:	fec70ce3          	beq	a4,a2,a4 <main+0x14>
-  b0:	feb71ce3          	bne	a4,a1,a8 <main+0x18>
-  b4:	00f54863          	blt	a0,a5,c4 <main+0x34>
-  b8:	00178793          	addi	a5,a5,1
-  bc:	00f6a023          	sw	a5,0(a3) # 80000000 <main+0x7fffff70>
-  c0:	fe9ff06f          	jal	zero,a8 <main+0x18>
-  c4:	0006a023          	sw	zero,0(a3)
-  c8:	00000793          	addi	a5,zero,0
-  cc:	fddff06f          	jal	zero,a8 <main+0x18>
+00000090 <TCNT_start>:
+  90:	81000737          	lui	a4,0x81000
+  94:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffef8>
+  98:	0037e793          	ori	a5,a5,3
+  9c:	00f72023          	sw	a5,0(a4)
+  a0:	00008067          	jalr	zero,0(ra)
+
+000000a4 <TCNT_stop>:
+  a4:	81000737          	lui	a4,0x81000
+  a8:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffef8>
+  ac:	ffc7f793          	andi	a5,a5,-4
+  b0:	00f72023          	sw	a5,0(a4)
+  b4:	00008067          	jalr	zero,0(ra)
+
+000000b8 <TCNT_start_div8>:
+  b8:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xee8>
+  bc:	00112623          	sw	ra,12(sp)
+  c0:	fe5ff0ef          	jal	ra,a4 <TCNT_stop>
+  c4:	81000737          	lui	a4,0x81000
+  c8:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffef8>
+  cc:	00c12083          	lw	ra,12(sp)
+  d0:	0017e793          	ori	a5,a5,1
+  d4:	00f72023          	sw	a5,0(a4)
+  d8:	01010113          	addi	sp,sp,16
+  dc:	00008067          	jalr	zero,0(ra)
+
+000000e0 <TCNT_start_div16>:
+  e0:	ff010113          	addi	sp,sp,-16
+  e4:	00112623          	sw	ra,12(sp)
+  e8:	fbdff0ef          	jal	ra,a4 <TCNT_stop>
+  ec:	81000737          	lui	a4,0x81000
+  f0:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffef8>
+  f4:	00c12083          	lw	ra,12(sp)
+  f8:	0027e793          	ori	a5,a5,2
+  fc:	00f72023          	sw	a5,0(a4)
+ 100:	01010113          	addi	sp,sp,16
+ 104:	00008067          	jalr	zero,0(ra)
+
+00000108 <main>:
+ 108:	fe010113          	addi	sp,sp,-32
+ 10c:	01212823          	sw	s2,16(sp)
+ 110:	81000937          	lui	s2,0x81000
+ 114:	00812c23          	sw	s0,24(sp)
+ 118:	01312623          	sw	s3,12(sp)
+ 11c:	01412423          	sw	s4,8(sp)
+ 120:	01512223          	sw	s5,4(sp)
+ 124:	01612023          	sw	s6,0(sp)
+ 128:	00112e23          	sw	ra,28(sp)
+ 12c:	00912a23          	sw	s1,20(sp)
+ 130:	00000413          	addi	s0,zero,0
+ 134:	02800a13          	addi	s4,zero,40
+ 138:	00f00b13          	addi	s6,zero,15
+ 13c:	800009b7          	lui	s3,0x80000
+ 140:	00c90913          	addi	s2,s2,12 # 8100000c <main+0x80ffff04>
+ 144:	02900a93          	addi	s5,zero,41
+ 148:	00000493          	addi	s1,zero,0
+ 14c:	f45ff0ef          	jal	ra,90 <TCNT_start>
+ 150:	01449863          	bne	s1,s4,160 <main+0x58>
+ 154:	028b4263          	blt	s6,s0,178 <main+0x70>
+ 158:	00140413          	addi	s0,s0,1
+ 15c:	0089a023          	sw	s0,0(s3) # 80000000 <main+0x7ffffef8>
+ 160:	f45ff0ef          	jal	ra,a4 <TCNT_stop>
+ 164:	00092783          	lw	a5,0(s2)
+ 168:	00148493          	addi	s1,s1,1
+ 16c:	00f9a023          	sw	a5,0(s3)
+ 170:	fd549ee3          	bne	s1,s5,14c <main+0x44>
+ 174:	fd5ff06f          	jal	zero,148 <main+0x40>
+ 178:	0009a023          	sw	zero,0(s3)
+ 17c:	00000413          	addi	s0,zero,0
+ 180:	fe1ff06f          	jal	zero,160 <main+0x58>
