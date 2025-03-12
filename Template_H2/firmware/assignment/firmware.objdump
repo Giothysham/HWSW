@@ -200,40 +200,40 @@ Disassembly of section .text:
  2a8:	00008067          	jalr	zero,0(ra)
 
 000002ac <main>:
- 2ac:	fd010113          	addi	sp,sp,-48
- 2b0:	03212023          	sw	s2,32(sp)
- 2b4:	81000937          	lui	s2,0x81000
- 2b8:	02812423          	sw	s0,40(sp)
- 2bc:	01312e23          	sw	s3,28(sp)
- 2c0:	01412c23          	sw	s4,24(sp)
- 2c4:	01512a23          	sw	s5,20(sp)
- 2c8:	01612823          	sw	s6,16(sp)
- 2cc:	01712623          	sw	s7,12(sp)
- 2d0:	02112623          	sw	ra,44(sp)
- 2d4:	02912223          	sw	s1,36(sp)
- 2d8:	00000413          	addi	s0,zero,0
- 2dc:	02800a13          	addi	s4,zero,40
- 2e0:	00f00b93          	addi	s7,zero,15
- 2e4:	800009b7          	lui	s3,0x80000
- 2e8:	00c90913          	addi	s2,s2,12 # 8100000c <tcnt+0x80fff80c>
- 2ec:	00001ab7          	lui	s5,0x1
- 2f0:	02900b13          	addi	s6,zero,41
- 2f4:	00000493          	addi	s1,zero,0
- 2f8:	f3dff0ef          	jal	ra,234 <TCNT_start>
- 2fc:	01449863          	bne	s1,s4,30c <main+0x60>
- 300:	028bc463          	blt	s7,s0,328 <main+0x7c>
- 304:	00140413          	addi	s0,s0,1
- 308:	0089a023          	sw	s0,0(s3) # 80000000 <tcnt+0x7ffff800>
- 30c:	f3dff0ef          	jal	ra,248 <TCNT_stop>
- 310:	00092503          	lw	a0,0(s2)
- 314:	00148493          	addi	s1,s1,1
- 318:	80aaa023          	sw	a0,-2048(s5) # 800 <tcnt>
- 31c:	e1dff0ef          	jal	ra,138 <print_dec>
- 320:	fd649ce3          	bne	s1,s6,2f8 <main+0x4c>
- 324:	fd1ff06f          	jal	zero,2f4 <main+0x48>
- 328:	0009a023          	sw	zero,0(s3)
+ 2ac:	fe010113          	addi	sp,sp,-32
+ 2b0:	00912a23          	sw	s1,20(sp)
+ 2b4:	810004b7          	lui	s1,0x81000
+ 2b8:	00812c23          	sw	s0,24(sp)
+ 2bc:	01212823          	sw	s2,16(sp)
+ 2c0:	01312623          	sw	s3,12(sp)
+ 2c4:	01412423          	sw	s4,8(sp)
+ 2c8:	01512223          	sw	s5,4(sp)
+ 2cc:	01612023          	sw	s6,0(sp)
+ 2d0:	00112e23          	sw	ra,28(sp)
+ 2d4:	00000413          	addi	s0,zero,0
+ 2d8:	00500a13          	addi	s4,zero,5
+ 2dc:	00400a93          	addi	s5,zero,4
+ 2e0:	00f00b13          	addi	s6,zero,15
+ 2e4:	80000937          	lui	s2,0x80000
+ 2e8:	00c48493          	addi	s1,s1,12 # 8100000c <tcnt+0x80fff80c>
+ 2ec:	000019b7          	lui	s3,0x1
+ 2f0:	f45ff0ef          	jal	ra,234 <TCNT_start>
+ 2f4:	00000793          	addi	a5,zero,0
+ 2f8:	00178793          	addi	a5,a5,1
+ 2fc:	01479c63          	bne	a5,s4,314 <main+0x68>
+ 300:	f49ff0ef          	jal	ra,248 <TCNT_stop>
+ 304:	0004a503          	lw	a0,0(s1)
+ 308:	80a9a023          	sw	a0,-2048(s3) # 800 <tcnt>
+ 30c:	e2dff0ef          	jal	ra,138 <print_dec>
+ 310:	fe1ff06f          	jal	zero,2f0 <main+0x44>
+ 314:	ff5792e3          	bne	a5,s5,2f8 <main+0x4c>
+ 318:	008b4863          	blt	s6,s0,328 <main+0x7c>
+ 31c:	00140413          	addi	s0,s0,1
+ 320:	00892023          	sw	s0,0(s2) # 80000000 <tcnt+0x7ffff800>
+ 324:	fd5ff06f          	jal	zero,2f8 <main+0x4c>
+ 328:	00092023          	sw	zero,0(s2)
  32c:	00000413          	addi	s0,zero,0
- 330:	fddff06f          	jal	zero,30c <main+0x60>
+ 330:	fc9ff06f          	jal	zero,2f8 <main+0x4c>
 
 Disassembly of section .rodata.str1.4:
 
