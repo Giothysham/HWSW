@@ -1,4 +1,4 @@
-#include "TCNT.h"
+#include "tcnt.h"
 
 #define OUTPORT 0x80000000
 
