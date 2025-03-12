@@ -8,9 +8,9 @@ int tcnt = 0;
 int main(void) {
 	int i = 0;
 	for (;;) {
-		for(int j = 0 ; j <= 40; j++){
-			TCNT_start();
-			if(j == 40){
+		TCNT_start();
+		for(int j = 0 ; j <= 4; j++){
+			if(j == 4){
 				if(i <= 15){
 					i = i + 1;
 					*((volatile unsigned int *)OUTPORT) = i;
@@ -19,10 +19,10 @@ int main(void) {
 					*((volatile unsigned int *)OUTPORT) = i;
 				}
 			}
-			TCNT_stop();
+		}
+		TCNT_stop();
 			tcnt = TCNT_VAL;
 			print_dec(tcnt);
-		}
 	}
 	return 0;
 }
