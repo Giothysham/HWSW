@@ -23,7 +23,7 @@ RAM              0x00000800         0x00000800         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x440
+.text           0x00000000      0x5b0
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000       0xc0 build/start.o
@@ -42,11 +42,11 @@ Linker script and memory map
                 0x00000278                TCNT_stop
                 0x0000028c                TCNT_start_div8
                 0x000002b4                TCNT_start_div16
- .text          0x000002dc       0xd0 build/firmware.o
+ .text          0x000002dc      0x214 build/firmware.o
                 0x000002dc                matrix_mult
- .text.startup  0x000003ac       0x94 build/firmware.o
-                0x000003ac                main
- .text          0x00000440        0x0 build/start.o
+ .text.startup  0x000004f0       0xc0 build/firmware.o
+                0x000004f0                main
+ .text          0x000005b0        0x0 build/start.o
 
 .data           0x00000800        0x0
                 0x00000000                        . = 0x0
@@ -56,25 +56,25 @@ Linker script and memory map
  .data          0x00000800        0x0 build/firmware.o
  .data          0x00000800        0x0 build/start.o
 
-.bss            0x00000800       0x30
+.bss            0x00000800       0x6c
  .bss           0x00000800        0x0 build/print.o
  .bss           0x00000800        0x0 build/tcnt.o
- .bss           0x00000800       0x30 build/firmware.o
+ .bss           0x00000800       0x6c build/firmware.o
                 0x00000800                m
-                0x00000810                n
-                0x00000820                o
- .bss           0x00000830        0x0 build/start.o
+                0x00000824                n
+                0x00000848                o
+ .bss           0x0000086c        0x0 build/start.o
 
-.rodata         0x00000830      0x400
+.rodata         0x0000086c      0x400
                 0x00000400                        . = 0x400
- *fill*         0x00000830      0x400 
+ *fill*         0x0000086c      0x400 
  *(.rodata)
-                0x00000c30                        . = ALIGN (0x4)
+                0x00000c6c                        . = ALIGN (0x4)
  FILL mask 0xff
 
-.rodata.str1.4  0x00000c30       0x25
+.rodata.str1.4  0x00000c6c       0x25
  .rodata.str1.4
-                0x00000c30       0x25 build/print.o
+                0x00000c6c       0x25 build/print.o
                                  0x21 (size before relaxing)
 
 /DISCARD/
