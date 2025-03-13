@@ -15,15 +15,15 @@ struct matrix_t m, n, o;
 void matrix_mult(struct matrix_t * z, struct matrix_t * x, struct matrix_t * y) {
 	z->a00 = sw_mult(x->a00, y->a00) + sw_mult(x->a01, y->a10) + sw_mult(x->a02, y->a20);
 	z->a01 = sw_mult(x->a00, y->a01) + sw_mult(x->a01, y->a11) + sw_mult(x->a02, y->a21);
-	z->a02 = sw_mult(x->a00, y->a02) + sw_mult(x->a01, y->a12) + sw_mult(x->a02, y->a22);
+	// z->a02 = sw_mult(x->a00, y->a02) + sw_mult(x->a01, y->a12) + sw_mult(x->a02, y->a22);
 
 	z->a10 = sw_mult(x->a10, y->a00) + sw_mult(x->a11, y->a10) + sw_mult(x->a12, y->a20);
 	z->a11 = sw_mult(x->a10, y->a01) + sw_mult(x->a11, y->a11) + sw_mult(x->a12, y->a21);
-	z->a12 = sw_mult(x->a10, y->a02) + sw_mult(x->a11, y->a12) + sw_mult(x->a12, y->a22);
+	// z->a12 = sw_mult(x->a10, y->a02) + sw_mult(x->a11, y->a12) + sw_mult(x->a12, y->a22);
 
 	z->a20 = sw_mult(x->a20, y->a00) + sw_mult(x->a21, y->a10) + sw_mult(x->a22, y->a20);
 	z->a21 = sw_mult(x->a20, y->a01) + sw_mult(x->a21, y->a11) + sw_mult(x->a22, y->a21);
-	z->a22 = sw_mult(x->a20, y->a02) + sw_mult(x->a21, y->a12) + sw_mult(x->a22, y->a22);
+	// z->a22 = sw_mult(x->a20, y->a02) + sw_mult(x->a21, y->a12) + sw_mult(x->a22, y->a22);
 }
 
 int main(void) {
