@@ -28,10 +28,10 @@ package PKG_hwswcd is
     -- constant C_PERIPHERAL_MASK_PADDING : STD_LOGIC_VECTOR()
 
     -- Peripherals are all assigned a BASE ADDRESS.
-    -- From this address 256 positions are reserved.
-    -- This comes down to 64 32-bit words.
-    -- A peripheral can hence have 64 memory-mapped registers
-    constant C_TIMER_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto 8) := x"800001";
+    -- From this address 2^12 positions are reserved.
+    -- This comes down to 4096 32-bit words.
+    -- A peripheral can hence have 1024 memory-mapped registers
+    constant C_TIMER_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto 12) := x"81000";
 
     constant C_MRO_xF11_MVENDORID : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0) := x"01234568";
     constant C_MRO_xF14_MHARTID : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0) := x"CAFEBABE";
