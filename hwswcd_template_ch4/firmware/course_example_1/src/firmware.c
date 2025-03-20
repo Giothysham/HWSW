@@ -12,11 +12,7 @@
 void irq_handler(unsigned int cause) {
 
     if (cause & 4) {
-        if (LED == 0xFFFFFFFF){
-            LED = 0;
-        } else {
-            LED = 0xFFFFFFFF;
-        }
+        LED == 0xFFFFFFFF
     }
     TCNT_CR = 0x17;
 
