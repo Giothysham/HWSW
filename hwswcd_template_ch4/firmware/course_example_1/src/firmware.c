@@ -11,7 +11,7 @@
 
 void irq_handler(unsigned int cause) {
 
-    LED == 0xFFFFFFFF;
+    LED = 0xFFFFFFFF;
 
     TCNT_CR = 0x17;
     TCNT_CR = 0x7;
@@ -28,7 +28,7 @@ void main(void) {
     
 
     while(1) {
-        for(i=0;i<8;i++) {
+        for(i=1;i<8;i++) {
             LED = i;
         }
     }
