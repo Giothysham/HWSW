@@ -18,7 +18,7 @@ void irq_handler(unsigned int cause) {
             LED = 0xFFFFFFFF;
         }
     }
-    TCNT_CR = 0xf;
+    TCNT_CR = 0x17;
 
 }
 
