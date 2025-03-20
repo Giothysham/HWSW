@@ -34,9 +34,12 @@ void main(void) {
     
 
     while(1) {
-        for(int j=0; j<0xC65D40; j++);
-        if(i == 0) {
-            LED = i | 0b1000;
+        for(int j=0; j<0xff; j++);
+        if(i < 0b1000) {
+            i = i | 0b1000;
+            LED = i;
+        } else {
+            LED = i;
         }
         
         
