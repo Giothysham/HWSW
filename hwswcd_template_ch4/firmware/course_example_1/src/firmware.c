@@ -11,7 +11,11 @@ unsigned int i=1, j;
 
 void irq_handler(unsigned int cause) {
 
-    for(i=0;i<8;i++) {
+    if (0<=i<8) {
+        i = i + 1;
+        LED = i;
+    } else {
+        i = 0;
         LED = i;
     }
 
