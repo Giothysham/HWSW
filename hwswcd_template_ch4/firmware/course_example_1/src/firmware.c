@@ -23,7 +23,7 @@ void main(void) {
     
     unsigned int i=1, j;
 
-    TCNT_CMP = 0xf;
+    TCNT_CMP = 0xff;
     TCNT_start();
     
 
