@@ -27,12 +27,12 @@ void main(void) {
 
     while(1) {
         if(bool == 1){
-            if (i < 15) {
+            if (i < 16) {
                 i = i + 1;
-                LED = 1 << i;
+                LED = i;
             } else {
                 i = 0;
-                LED = 0;
+                LED = i;
             }
             bool = 0;
         }
