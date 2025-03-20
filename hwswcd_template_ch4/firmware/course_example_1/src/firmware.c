@@ -24,8 +24,8 @@ void main(void) {
     
     unsigned int i=1, j;
 
-    // TCNT_CMP = 0xf;
-    // TCNT_start();
+    TCNT_CMP = 0xf;
+    TCNT_start();
     
 
 
