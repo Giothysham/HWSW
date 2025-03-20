@@ -209,7 +209,7 @@ Disassembly of section .text:
  2bc:	00e69c63          	bne	a3,a4,2d4 <irq_handler+0x2c>
  2c0:	0007a023          	sw	zero,0(a5)
  2c4:	810007b7          	lui	a5,0x81000
- 2c8:	00f00713          	addi	a4,zero,15
+ 2c8:	01700713          	addi	a4,zero,23
  2cc:	00e7a023          	sw	a4,0(a5) # 81000000 <main+0x80fffd24>
  2d0:	00008067          	jalr	zero,0(ra)
  2d4:	00e7a023          	sw	a4,0(a5)
