@@ -1,4 +1,4 @@
-#include "tcnt.c"
+#include "tcnt.h"
 
 #define LED_BASEAxDDRESS 0x80000000
 
