@@ -32,10 +32,10 @@ Linker script and memory map
                 0x00000244                TCNT_stop
                 0x00000258                TCNT_start_div8
                 0x00000280                TCNT_start_div16
- .text          0x000002a8       0x50 build/firmware.o
+ .text          0x000002a8       0x24 build/firmware.o
                 0x000002a8                irq_handler
- .text.startup  0x000002f8       0x3c build/firmware.o
-                0x000002f8                main
+ .text.startup  0x000002cc       0x68 build/firmware.o
+                0x000002cc                main
  .text          0x00000334        0x0 build/start.o
 
 .data           0x00002000        0x0
@@ -54,15 +54,16 @@ Linker script and memory map
  .bss           0x00002004        0x0 build/firmware.o
  .bss           0x00002004        0x0 build/start.o
 
-.sbss           0x00002004        0x4
- .sbss          0x00002004        0x4 build/firmware.o
-                0x00002004                j
+.sbss           0x00002004        0x8
+ .sbss          0x00002004        0x8 build/firmware.o
+                0x00002004                bool
+                0x00002008                j
 
-.rodata         0x00002008     0x1000
+.rodata         0x0000200c     0x1000
                 0x00001000                        . = 0x1000
- *fill*         0x00002008     0x1000 
+ *fill*         0x0000200c     0x1000 
  *(.rodata)
-                0x00003008                        . = ALIGN (0x4)
+                0x0000300c                        . = ALIGN (0x4)
  FILL mask 0xff
 
 /DISCARD/
