@@ -11,7 +11,7 @@ unsigned int i=1, j;
 
 void irq_handler(unsigned int cause) {
 
-    if (i < 4) {
+    if (i < 15) {
         i = i + 1;
         LED = 1 << i;
     } else {
@@ -27,8 +27,6 @@ void irq_handler(unsigned int cause) {
 
 void main(void) {
     
-    
-
     TCNT_CMP = 0xff;
     TCNT_start();
     
