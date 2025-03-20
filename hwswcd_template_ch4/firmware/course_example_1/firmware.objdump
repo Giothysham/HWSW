@@ -203,7 +203,7 @@ Disassembly of section .text:
 000002a8 <irq_handler>:
  2a8:	00002737          	lui	a4,0x2
  2ac:	00072783          	lw	a5,0(a4) # 2000 <i>
- 2b0:	00300693          	addi	a3,zero,3
+ 2b0:	00e00693          	addi	a3,zero,14
  2b4:	02f6ea63          	bltu	a3,a5,2e8 <irq_handler+0x40>
  2b8:	00178793          	addi	a5,a5,1
  2bc:	00f72023          	sw	a5,0(a4)
