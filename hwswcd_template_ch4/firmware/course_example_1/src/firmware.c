@@ -10,13 +10,12 @@
 
 
 void irq_handler(unsigned int cause) {
-    TCNT_stop();
+    TCNT_REG3_ADDRESS = 0;
 
     if (cause & 4) {
         LED = 0xFFFFFFFF;
     }
 
-    TCNT_start();
 }
 
 
