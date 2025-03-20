@@ -27,14 +27,14 @@ void main(void) {
 
     while(1) {
         if(bool == 1){
-            if (i < 16) {
-                i = i + 1;
-                LED = i;
-            } else {
+            i = i + 1;
+            if(i > 16){
                 i = 0;
-                LED = i;
             }
             bool = 0;
         }
+
+            LED = i;
+        
     }
 }
