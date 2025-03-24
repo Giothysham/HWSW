@@ -21,7 +21,7 @@ void irq_handler(unsigned int cause) {
 
 void main(void) {
     
-    TCNT_CMP = 0xC65D40;
+    TCNT_CMP = 0xfff;
     TCNT_start();
     
 
