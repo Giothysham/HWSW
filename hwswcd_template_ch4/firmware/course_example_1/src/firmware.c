@@ -1,5 +1,6 @@
 
 #include "tcnt.h"
+// #include <stdio.h>
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
@@ -16,6 +17,15 @@ struct qoi_header {
     unsigned char  channels;   // 3 = RGB, 4 = RGBA
     unsigned char  colorspace; // 0 = sRGB with linear alpha
                                // 1 = all channels linear
+};
+
+/* Header */
+struct qoi_header header = {
+    .magic = {'q', 'o', 'i', 'f'},
+    .width = C_WIDTH,
+    .height = C_HEIGHT,
+    .channels = 3,
+    .colorspace = 0
 };
 
 unsigned char position = 0;
@@ -119,7 +129,7 @@ int main(void) {
     unsigned char rv; //temporary storage
     unsigned char index; //index for running array
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
-    unsigned int value_prev; //value of previous pixel (8*3bit RGB + 8bit A)
+    unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
 
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
@@ -134,22 +144,6 @@ int main(void) {
     for(unsigned char i=0;i<64;i++) {
         running_array[i] = 0;
     }
-    value_prev = 0;
-    r_prev = 0;
-    g_prev = 0;
-    b_prev = 0;
-    a_prev = 255;
-    rle = -1;
-    
-
-    /* Header */
-    struct qoi_header header = {
-        .magic = {'q', 'o', 'i', 'f'},
-        .width = C_WIDTH,
-        .height = C_HEIGHT,
-        .channels = 3,
-        .colorspace = 0
-    };
     
     for(unsigned char i=0;i<4;i++) {
         //printf("%02X ", header.magic[i]);
