@@ -43,7 +43,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xa3a
+.text           0x00000000      0xa32
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
@@ -63,14 +63,14 @@ Linker script and memory map
                 0x00000420                save_compression
                 0x000004b4                HashFunction
                 0x00000534                closest_difference
- .text.startup  0x00000540      0x38c build/firmware.o
+ .text.startup  0x00000540      0x384 build/firmware.o
                 0x00000540                main
- .text          0x000008cc        0x0 build/start.o
- .text          0x000008cc       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
-                0x000008cc                __lshrdi3
- .text          0x000008f4        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
- .text.memcpy   0x000008f4      0x146 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
-                0x000008f4                memcpy
+ .text          0x000008c4        0x0 build/start.o
+ .text          0x000008c4       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+                0x000008c4                __lshrdi3
+ .text          0x000008ec        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
+ .text.memcpy   0x000008ec      0x146 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
+                0x000008ec                memcpy
 
 .data           0x00002000        0x0
                 0x00000000                        . = 0x0
