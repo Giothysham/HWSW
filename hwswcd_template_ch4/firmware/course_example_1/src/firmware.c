@@ -84,14 +84,14 @@ int get_needed_bytes(long int number) {
     return count;
 }
 
-void save_compression(unsigned long long int* val, int digits) {
+void save_compression(unsigned long long int val, int digits) {
 	unsigned int index, max;
 	int i; /* !! must be signed, because of the check 'i>=0' */
 
 	max = digits << 3;
 
 	for (i = max-8; i >= 0; i -= 8) {
-        index = (*val) >> i;
+        index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
 		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index;
@@ -150,10 +150,10 @@ int main(void) {
         position++;
     }
 
-    save_compression((unsigned long long int*)&header.width, 4);
-    save_compression((unsigned long long int*)&header.height, 4);
-    save_compression((unsigned long long int*)&header.channels, 1);
-    save_compression((unsigned long long int*)&header.colorspace, 1);
+    save_compression(header.width, 4);
+    save_compression(header.height, 4);
+    save_compression(header.channels, 1);
+    save_compression(header.colorspace, 1);
 
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
@@ -172,7 +172,7 @@ int main(void) {
 
                 if(rle > -1 || rle == 62) {
                     unsigned long long int result = 0b11000000 + rle;
-                    save_compression(&result, get_needed_bytes(result));
+                    save_compression(result, get_needed_bytes(result));
                     rle = -1;
                 }
             
@@ -180,7 +180,7 @@ int main(void) {
 
                 if(running_array[index] == value) {
                     unsigned long long int result = 0b00000000 + index;
-                    save_compression(&result, get_needed_bytes(result));
+                    save_compression(result, get_needed_bytes(result));
                 } else {
                     running_array[index] = value;
                     dr = closest_difference(r[h][w], r_prev);
@@ -192,21 +192,21 @@ int main(void) {
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
-                        save_compression(&result, get_needed_bytes(result));
+                        save_compression(result, get_needed_bytes(result));
                     } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -4 && (db - dg) <= 4 && a[h][w] == a_prev) {
                         unsigned long long int result = 0b1000000000000000
                                         | ((dg + 32) << 8)
                                         | ((dr - dg + 8) << 4)
                                         | (db - dg + 8);
-                        save_compression(&result, get_needed_bytes(result));
+                        save_compression(result, get_needed_bytes(result));
                     } else {
                         if(header.channels == 4){
                             unsigned long long int result = 0xFF00000000 | value;
-                            save_compression(&result, 5);
+                            save_compression(result, 5);
                         }
                         else{
                             unsigned long long int result = 0xFE00000000 | value;
-                            save_compression(&result, 4);
+                            save_compression(result, 4);
                         }
                         
                     }
@@ -224,12 +224,12 @@ int main(void) {
 
     if(rle > -1 || rle == 62) {
         unsigned long long int result = 0b11000000 + rle;
-        save_compression(&result, get_needed_bytes(result));
+        save_compression(result, get_needed_bytes(result));
         rle = -1;
     }
 
     unsigned long long int ending = 1;
-    save_compression(&ending, 8);
+    save_compression(ending, 8);
 
     return 0;
 }
