@@ -8,7 +8,7 @@ start:
 reset_vector:
     j do_reset
 
-/* TRAP VECTOR (start at 0x10) */
+ TRAP VECTOR (start at 0x10) 
 .balign 16
 trap_vector:
     csrrw sp, mscratch, sp
