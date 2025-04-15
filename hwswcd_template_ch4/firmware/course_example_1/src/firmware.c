@@ -11,13 +11,24 @@
 //unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
-    char     magic[4];   // magic bytes "qoif"
+    char magic[4];           // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
-    unsigned char  channels;   // 3 = RGB, 4 = RGBA
-    unsigned char  colorspace; // 0 = sRGB with linear alpha
-                               // 1 = all channels linear
+    unsigned char channels;  // 3 = RGB, 4 = RGBA
+    unsigned char colorspace;// 0 = sRGB with linear alpha
+                             // 1 = all channels linear
 };
+
+
+/* Header */
+struct qoi_header header = {
+    .magic = {'q', 'o', 'i', 'f'},
+    .width = C_WIDTH,
+    .height = C_HEIGHT,
+    .channels = 3,
+    .colorspace = 0
+};
+    
 
 unsigned char position = 0;
 
@@ -85,7 +96,8 @@ void save_compression(unsigned long long int* val, int digits) {
 	for (i = max-8; i >= 0; i -= 8) {
         index = (*val) >> i;
         index = index & 0xFF;
-        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index;
+        printf("%02X ", index);
+		//*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index;
 		position++;
 	}
 }
@@ -119,7 +131,7 @@ int main(void) {
     unsigned char rv; //temporary storage
     unsigned char index; //index for running array
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
-    unsigned int value_prev; //value of previous pixel (8*3bit RGB + 8bit A)
+    unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
 
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
@@ -134,25 +146,11 @@ int main(void) {
     for(unsigned char i=0;i<64;i++) {
         running_array[i] = 0;
     }
-    value_prev = 0;
-    r_prev = 0;
-    g_prev = 0;
-    b_prev = 0;
-    a_prev = 255;
-    rle = -1;
     
 
-    /* Header */
-    struct qoi_header header = {
-        .magic = {'q', 'o', 'i', 'f'},
-        .width = C_WIDTH,
-        .height = C_HEIGHT,
-        .channels = 3,
-        .colorspace = 0
-    };
-    
     for(unsigned char i=0;i<4;i++) {
-        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
+        printf("%02X ", header.magic[i]);
+        //*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
         position++;
     }
 
