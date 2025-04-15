@@ -1,8 +1,8 @@
 #include "tcnt.h"
 //#include <stdio.h>
 
-#define C_WIDTH 2
-#define C_HEIGHT 2
+#define C_WIDTH 8
+#define C_HEIGHT 8
 
 #define COMPRESSED_IMAGE_DEST_ADDR 0x80000000
 #define COMPRESSED_IMAGE_SIZE 1024
