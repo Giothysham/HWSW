@@ -11,12 +11,12 @@
 //unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
-    char magic[4];           // magic bytes "qoif"
+    char     magic[4];   // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
-    unsigned char channels;  // 3 = RGB, 4 = RGBA
-    unsigned char colorspace;// 0 = sRGB with linear alpha
-                             // 1 = all channels linear
+    unsigned char  channels;   // 3 = RGB, 4 = RGBA
+    unsigned char  colorspace; // 0 = sRGB with linear alpha
+                               // 1 = all channels linear
 };
 
 unsigned char position = 0;
@@ -120,16 +120,7 @@ int main(void) {
     unsigned char rv; //temporary storage
     unsigned char index; //index for running array
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
-    unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
-
-    /* Header */
-    struct qoi_header header = {
-        .magic = {'q', 'o', 'i', 'f'},
-        .width = C_WIDTH,
-        .height = C_HEIGHT,
-        .channels = 3,
-        .colorspace = 0
-    };
+    unsigned int value_prev; //value of previous pixel (8*3bit RGB + 8bit A)
 
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
@@ -146,6 +137,15 @@ int main(void) {
     }
     
 
+    /* Header */
+    struct qoi_header header = {
+        .magic = {'q', 'o', 'i', 'f'},
+        .width = C_WIDTH,
+        .height = C_HEIGHT,
+        .channels = 3,
+        .colorspace = 0
+    };
+    
     for(unsigned char i=0;i<4;i++) {
         printf("%02X ", header.magic[i]);
         //*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
@@ -216,7 +216,7 @@ int main(void) {
                 
             } 
 
-            value_prev = value;
+                value_prev = value;
             r_prev = r[h][w];
             g_prev = g[h][w];
             b_prev = b[h][w];
@@ -235,3 +235,5 @@ int main(void) {
 
     return 0;
 }
+
+    
