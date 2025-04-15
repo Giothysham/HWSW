@@ -20,6 +20,7 @@ CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 \
 SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 \
 		  -fno-inline -fno-aggressive-loop-optimizations -fno-tree-vectorize \
 		  -fno-schedule-insns -fno-schedule-insns2
+		  
 LDFLAGS = -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march=$(ARCHITECTURE) -mabi=$(ABI) -nostartfiles
 
 LIBS =
