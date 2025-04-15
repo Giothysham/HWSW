@@ -4,6 +4,7 @@
 .section .init, "ax"
 
 start:
+/*
 reset_vector:
     j do_reset
 
@@ -79,6 +80,7 @@ trap_vector:
 
     csrrw sp, mscratch, sp
     mret
+*/
 
 do_reset:
     /* clear registers */

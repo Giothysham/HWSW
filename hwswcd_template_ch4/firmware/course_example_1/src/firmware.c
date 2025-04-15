@@ -1,6 +1,3 @@
-
-#include "tcnt.h"
-
 #define C_WIDTH 8
 #define C_HEIGHT 8
 
@@ -19,17 +16,6 @@ struct qoi_header {
 };
 
 unsigned char position = 0;
-
-int bool = 0;
-
-void irq_handler(unsigned int cause) {
-
-    bool = 1;
-
-    TCNT_CR = 0x17;
-    TCNT_CR = 0x7;
-
-}
 
 void initialise(unsigned char r[C_WIDTH][C_HEIGHT], unsigned char g[C_WIDTH][C_HEIGHT], unsigned char b[C_WIDTH][C_HEIGHT], unsigned char a[C_WIDTH][C_HEIGHT]) {
     unsigned char w, h;
@@ -100,7 +86,7 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
 
 void send_to_address() {;
     for (int i = 0; i < COMPRESSED_IMAGE_SIZE; ++i) {
-        *((volatile unsigned int*)COMPRESSED_IMAGE_DEST_ADDR + i) = compressed_image[i];
+        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + i)) = compressed_image[i];
     }
 }
 
