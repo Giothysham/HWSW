@@ -28,7 +28,6 @@ struct qoi_header header = {
     .channels = 3,
     .colorspace = 0
 };
-    
 
 unsigned char position = 0;
 
