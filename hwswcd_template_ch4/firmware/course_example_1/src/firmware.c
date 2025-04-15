@@ -1,5 +1,5 @@
 
-#include <stdio.h>
+#include "tcnt.h"
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
@@ -20,6 +20,16 @@ struct qoi_header {
 
 unsigned char position = 0;
 
+bool = 0;
+
+void irq_handler(unsigned int cause) {
+
+    bool = 1;
+
+    TCNT_CR = 0x17;
+    TCNT_CR = 0x7;
+
+}
 
 void initialise(unsigned char r[C_WIDTH][C_HEIGHT], unsigned char g[C_WIDTH][C_HEIGHT], unsigned char b[C_WIDTH][C_HEIGHT], unsigned char a[C_WIDTH][C_HEIGHT]) {
     unsigned char w, h;
