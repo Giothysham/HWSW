@@ -13,10 +13,8 @@ MKDIR = mkdir
 ARCHITECTURE = rv32i_zicsr
 ABI = ilp32
 
-CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 -fno-inline -fno-aggressive-loop-optimizations -fno-tree-vectorize -fno-schedule-insns -fno-schedule-insns2
-
-SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 -fno-inline -fno-aggressive-loop-optimizations -fno-tree-vectorize -fno-schedule-insns -fno-schedule-insns2
-		  
+CFLAGS = -c -O0 -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99 \
+SFLAGS = -c -O0 -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99
 LDFLAGS = -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march=$(ARCHITECTURE) -mabi=$(ABI) -nostartfiles
 
 LIBS =
