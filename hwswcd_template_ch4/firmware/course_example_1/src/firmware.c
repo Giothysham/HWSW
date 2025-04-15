@@ -152,7 +152,7 @@ int main(void) {
     };
     
     for(unsigned char i=0;i<4;i++) {
-        compressed_image[position] = header.magic[i];
+        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
         position++;
     }
 
