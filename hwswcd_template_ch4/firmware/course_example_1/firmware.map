@@ -1,3 +1,7 @@
+Archive member included to satisfy reference by file (symbol)
+
+/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+                              build/firmware.o (__lshrdi3)
 
 Discarded input sections
 
@@ -9,6 +13,20 @@ Discarded input sections
                 0x00000000       0x25 build/firmware.o
  .riscv.attributes
                 0x00000000       0x27 build/start.o
+ .debug_info    0x00000000      0x1af /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_abbrev  0x00000000      0x10c /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_loclists
+                0x00000000       0x6b /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_line    0x00000000      0x107 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_str     0x00000000      0x204 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_line_str
+                0x00000000      0x114 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .comment       0x00000000       0x1c /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .debug_frame   0x00000000       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .riscv.attributes
+                0x00000000       0x53 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 Memory Configuration
 
@@ -20,7 +38,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x834
+.text           0x00000000      0x910
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
@@ -32,17 +50,19 @@ Linker script and memory map
                 0x00000244                TCNT_stop
                 0x00000258                TCNT_start_div8
                 0x00000280                TCNT_start_div16
- .text          0x000002a8      0x27c build/firmware.o
-                0x000002e4                irq_handler
-                0x00000308                initialise
-                0x0000041c                Multiply
-                0x00000444                get_needed_bytes
-                0x0000045c                save_compression
-                0x00000498                HashFunction
-                0x00000518                closest_difference
- .text.startup  0x00000524      0x310 build/firmware.o
-                0x00000524                main
- .text          0x00000834        0x0 build/start.o
+ .text          0x000002a8      0x28c build/firmware.o
+                0x000002a8                irq_handler
+                0x000002cc                initialise
+                0x000003e0                Multiply
+                0x00000408                get_needed_bytes
+                0x00000420                save_compression
+                0x000004a8                HashFunction
+                0x00000528                closest_difference
+ .text.startup  0x00000534      0x3b4 build/firmware.o
+                0x00000534                main
+ .text          0x000008e8        0x0 build/start.o
+ .text          0x000008e8       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+                0x000008e8                __lshrdi3
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
@@ -51,11 +71,13 @@ Linker script and memory map
  .data          0x00002000       0x10 build/firmware.o
                 0x00002000                header
  .data          0x00002010        0x0 build/start.o
+ .data          0x00002010        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 .bss            0x00002010        0x0
  .bss           0x00002010        0x0 build/tcnt.o
  .bss           0x00002010        0x0 build/firmware.o
  .bss           0x00002010        0x0 build/start.o
+ .bss           0x00002010        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 .sbss           0x00002010        0x5
  .sbss          0x00002010        0x5 build/firmware.o
