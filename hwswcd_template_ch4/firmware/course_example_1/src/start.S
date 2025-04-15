@@ -158,9 +158,9 @@ header:
     .insn	2, 0x6f71
     .insn	2, 0x6669
     .insn	2, 0x0008
-    .insn	2, 0x
+    .insn	2, 0x0
     .insn	2, 0x0008
-    .insn	2, 0x
+    .insn	2, 0x0
     lb	zero,0(zero) # 0 <start>
 
 sw_mult: 
