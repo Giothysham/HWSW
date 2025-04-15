@@ -19,16 +19,6 @@ struct qoi_header {
                              // 1 = all channels linear
 };
 
-
-/* Header */
-struct qoi_header header = {
-    .magic = {'q', 'o', 'i', 'f'},
-    .width = C_WIDTH,
-    .height = C_HEIGHT,
-    .channels = 3,
-    .colorspace = 0
-};
-
 unsigned char position = 0;
 
 int bool = 0;
@@ -132,6 +122,15 @@ int main(void) {
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
     unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
 
+    /* Header */
+    struct qoi_header header = {
+        .magic = {'q', 'o', 'i', 'f'},
+        .width = C_WIDTH,
+        .height = C_HEIGHT,
+        .channels = 3,
+        .colorspace = 0
+    };
+
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
         while(1) {
@@ -217,7 +216,7 @@ int main(void) {
                 
             } 
 
-                value_prev = value;
+            value_prev = value;
             r_prev = r[h][w];
             g_prev = g[h][w];
             b_prev = b[h][w];
@@ -236,5 +235,3 @@ int main(void) {
 
     return 0;
 }
-
-    
