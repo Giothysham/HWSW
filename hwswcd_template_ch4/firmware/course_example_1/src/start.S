@@ -4,11 +4,10 @@
 .section .init, "ax"
 
 start:
-/*
 reset_vector:
     j do_reset
 
- TRAP VECTOR (start at 0x10) 
+/* TRAP VECTOR (start at 0x10) */
 .balign 16
 trap_vector:
     csrrw sp, mscratch, sp
@@ -80,7 +79,6 @@ trap_vector:
 
     csrrw sp, mscratch, sp
     mret
-*/
 
 do_reset:
     /* clear registers */
@@ -131,8 +129,8 @@ do_reset:
     csrrw x0, mscratch, x2
 
     /* write mtvec */
-    /*la x2, trap_vector*/
-    /*csrrw x0, mtvec, x2*/
+    la x2, trap_vector
+    csrrw x0, mtvec, x2
 
     /* enable general interrupt */
     csrrwi x0, mstatus, 8
