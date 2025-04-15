@@ -9,7 +9,7 @@
 
 //unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
-struct qoi_header {
+volatile struct qoi_header {
     char     magic[4];   // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
