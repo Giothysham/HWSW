@@ -85,7 +85,8 @@ void save_compression(unsigned long long int* val, int digits) {
 	for (i = max-8; i >= 0; i -= 8) {
         index = (*val) >> i;
         index = index & 0xFF;
-		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index;
+        printf("%02X ", index);
+		//*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index;
 		position++;
 	}
 }
@@ -152,14 +153,15 @@ int main(void) {
     };
     
     for(unsigned char i=0;i<4;i++) {
-        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
+        printf("%02X ", header.magic[i]);
+        //*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[i];
         position++;
     }
 
-    save_compression(header.width, 4);
-    save_compression(header.height, 4);
-    save_compression(header.channels, 1);
-    save_compression(header.colorspace, 1);
+    save_compression((unsigned long long int*)&header.width, 4);
+    save_compression((unsigned long long int*)&header.height, 4);
+    save_compression((unsigned long long int*)&header.channels, 1);
+    save_compression((unsigned long long int*)&header.colorspace, 1);
 
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
@@ -177,7 +179,7 @@ int main(void) {
             } else {
 
                 if(rle > -1 || rle == 62) {
-                    unsigned short int result = 0b11000000 + rle;
+                    unsigned long long int result = 0b11000000 + rle;
                     save_compression(&result, get_needed_bytes(result));
                     rle = -1;
                 }
@@ -185,7 +187,7 @@ int main(void) {
                 index = HashFunction(r[h][w], g[h][w], b[h][w], a[h][w]);
 
                 if(running_array[index] == value) {
-                    unsigned short int result = 0b00000000 + index;
+                    unsigned long long int result = 0b00000000 + index;
                     save_compression(&result, get_needed_bytes(result));
                 } else {
                     running_array[index] = value;
@@ -194,13 +196,13 @@ int main(void) {
                     db = closest_difference(b[h][w], b_prev);
 
                     if(dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a[h][w] == a_prev) {
-                        unsigned char result = 0b01000000
+                        unsigned long long int result = 0b01000000
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
                         save_compression(&result, get_needed_bytes(result));
                     } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -4 && (db - dg) <= 4 && a[h][w] == a_prev) {
-                        unsigned short int result = 0b1000000000000000
+                        unsigned long long int result = 0b1000000000000000
                                         | ((dg + 32) << 8)
                                         | ((dr - dg + 8) << 4)
                                         | (db - dg + 8);
@@ -212,7 +214,7 @@ int main(void) {
                         }
                         else{
                             unsigned long long int result = 0xFE00000000 | value;
-                            save_compression(result, 4);
+                            save_compression(&result, 4);
                         }
                         
                     }
@@ -229,12 +231,12 @@ int main(void) {
     }
 
     if(rle > -1 || rle == 62) {
-        unsigned short int result = 0b11000000 + rle;
+        unsigned long long int result = 0b11000000 + rle;
         save_compression(&result, get_needed_bytes(result));
         rle = -1;
     }
 
-    unsigned short int ending = 1;
+    unsigned long long int ending = 1;
     save_compression(&ending, 8);
 
     return 0;
