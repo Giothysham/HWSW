@@ -130,6 +130,8 @@ int main(void) {
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
     unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
 
+    volatile unsigned int dummy = header.width;
+
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
         while(1) {
