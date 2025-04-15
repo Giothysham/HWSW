@@ -9,7 +9,7 @@
 
 //unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
-volatile struct qoi_header {
+struct qoi_header {
     char     magic[4];   // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
@@ -130,8 +130,6 @@ int main(void) {
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
     unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
 
-    volatile unsigned int dummy = header.width;
-
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
         while(1) {
@@ -152,10 +150,10 @@ int main(void) {
         position++;
     }
 
-    save_compression(*((unsigned int*)(&header.width)), 4);
-    save_compression(*((unsigned int*)(&header.height)), 4);
-    save_compression(*((unsigned int*)(&header.channels)), 1);
-    save_compression(*((unsigned int*)(&header.colorspace)), 1);
+    save_compression(header.width, 4);
+    save_compression(header.height, 4);
+    save_compression(header.channels, 1);
+    save_compression(header.colorspace, 1);
 
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
