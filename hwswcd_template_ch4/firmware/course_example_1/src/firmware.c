@@ -41,7 +41,7 @@ void irq_handler(unsigned int cause) {
 }
 
 void initialise(unsigned char r[C_WIDTH][C_HEIGHT], unsigned char g[C_WIDTH][C_HEIGHT], unsigned char b[C_WIDTH][C_HEIGHT], unsigned char a[C_WIDTH][C_HEIGHT]) {
-    int w, h;
+    unsigned char w, h;
 
     for(h=0;h<C_HEIGHT/2;h++) {
         for(w=0;w<C_WIDTH/2;w++) {
