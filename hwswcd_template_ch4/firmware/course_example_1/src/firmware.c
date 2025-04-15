@@ -151,10 +151,10 @@ int main(void) {
         position++;
     }
 
-    save_compression((unsigned long long int*)&header.width, 4);
-    save_compression((unsigned long long int*)&header.height, 4);
-    save_compression((unsigned long long int*)&header.channels, 1);
-    save_compression((unsigned long long int*)&header.colorspace, 1);
+    // save_compression((unsigned long long int*)&header.width, 4);
+    // save_compression((unsigned long long int*)&header.height, 4);
+    // save_compression((unsigned long long int*)&header.channels, 1);
+    // save_compression((unsigned long long int*)&header.colorspace, 1);
 
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
