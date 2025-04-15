@@ -8,7 +8,7 @@
 #define COMPRESSED_IMAGE_DEST_ADDR 0x80000000
 #define COMPRESSED_IMAGE_SIZE 1024
 
-unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
+//unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
     char     magic[4];   // magic bytes "qoif"
@@ -16,7 +16,7 @@ struct qoi_header {
     unsigned int height;     // image height in pixels (BE)
     unsigned char  channels;   // 3 = RGB, 4 = RGBA
     unsigned char  colorspace; // 0 = sRGB with linear alpha
-                         // 1 = all channels linear
+                               // 1 = all channels linear
 };
 
 unsigned char position = 0;
