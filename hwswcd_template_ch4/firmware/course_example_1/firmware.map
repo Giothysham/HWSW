@@ -89,18 +89,17 @@ Linker script and memory map
                 0x00003010                        . = ALIGN (0x4)
  FILL mask 0xff
 
-.bss            0x00003010      0x400
+.bss            0x00003010        0x0
  .bss           0x00003010        0x0 build/tcnt.o
- .bss           0x00003010      0x400 build/firmware.o
-                0x00003010                compressed_image
- .bss           0x00003410        0x0 build/start.o
- .bss           0x00003410        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .bss           0x00003410        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
+ .bss           0x00003010        0x0 build/firmware.o
+ .bss           0x00003010        0x0 build/start.o
+ .bss           0x00003010        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+ .bss           0x00003010        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memcpy.o)
 
-.sbss           0x00003410        0x5
- .sbss          0x00003410        0x5 build/firmware.o
-                0x00003410                bool
-                0x00003414                position
+.sbss           0x00003010        0x5
+ .sbss          0x00003010        0x5 build/firmware.o
+                0x00003010                bool
+                0x00003014                position
 
 /DISCARD/
  *(.note*)

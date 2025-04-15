@@ -112,7 +112,7 @@ Disassembly of section .text:
  190:	00001137          	lui	sp,0x1
  194:	fe010113          	addi	sp,sp,-32 # fe0 <memcpy+0x6f4>
  198:	deadc1b7          	lui	gp,0xdeadc
- 19c:	eef18193          	addi	gp,gp,-273 # deadbeef <position+0xdead8adb>
+ 19c:	eef18193          	addi	gp,gp,-273 # deadbeef <position+0xdead8edb>
  1a0:	00018213          	addi	tp,gp,0
  1a4:	00001137          	lui	sp,0x1
  1a8:	00010113          	addi	sp,sp,0 # 1000 <memcpy+0x714>
@@ -164,14 +164,14 @@ Disassembly of section .text:
 
 00000230 <TCNT_start>:
  230:	81000737          	lui	a4,0x81000
- 234:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcbec>
+ 234:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcfec>
  238:	0077e793          	ori	a5,a5,7
  23c:	00f72023          	sw	a5,0(a4)
  240:	00008067          	jalr	zero,0(ra)
 
 00000244 <TCNT_stop>:
  244:	81000737          	lui	a4,0x81000
- 248:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcbec>
+ 248:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcfec>
  24c:	ff87f793          	andi	a5,a5,-8
  250:	00f72023          	sw	a5,0(a4)
  254:	00008067          	jalr	zero,0(ra)
@@ -181,7 +181,7 @@ Disassembly of section .text:
  25c:	00112623          	sw	ra,12(sp)
  260:	fe5ff0ef          	jal	ra,244 <TCNT_stop>
  264:	81000737          	lui	a4,0x81000
- 268:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcbec>
+ 268:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcfec>
  26c:	00c12083          	lw	ra,12(sp)
  270:	0017e793          	ori	a5,a5,1
  274:	00f72023          	sw	a5,0(a4)
@@ -193,7 +193,7 @@ Disassembly of section .text:
  284:	00112623          	sw	ra,12(sp)
  288:	fbdff0ef          	jal	ra,244 <TCNT_stop>
  28c:	81000737          	lui	a4,0x81000
- 290:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcbec>
+ 290:	00072783          	lw	a5,0(a4) # 81000000 <position+0x80ffcfec>
  294:	00c12083          	lw	ra,12(sp)
  298:	0027e793          	ori	a5,a5,2
  29c:	00f72023          	sw	a5,0(a4)
@@ -203,10 +203,10 @@ Disassembly of section .text:
 000002a8 <irq_handler>:
  2a8:	000037b7          	lui	a5,0x3
  2ac:	00100713          	addi	a4,zero,1
- 2b0:	40e7a823          	sw	a4,1040(a5) # 3410 <bool>
+ 2b0:	00e7a823          	sw	a4,16(a5) # 3010 <bool>
  2b4:	810007b7          	lui	a5,0x81000
  2b8:	01700713          	addi	a4,zero,23
- 2bc:	00e7a023          	sw	a4,0(a5) # 81000000 <position+0x80ffcbec>
+ 2bc:	00e7a023          	sw	a4,0(a5) # 81000000 <position+0x80ffcfec>
  2c0:	00700713          	addi	a4,zero,7
  2c4:	00e7a023          	sw	a4,0(a5)
  2c8:	00008067          	jalr	zero,0(ra)
@@ -327,7 +327,7 @@ Disassembly of section .text:
  474:	00412a83          	lw	s5,4(sp)
  478:	02010113          	addi	sp,sp,32
  47c:	00008067          	jalr	zero,0(ra)
- 480:	4144ca03          	lbu	s4,1044(s1) # 3414 <position>
+ 480:	0144ca03          	lbu	s4,20(s1) # 3014 <position>
  484:	00040613          	addi	a2,s0,0
  488:	00090513          	addi	a0,s2,0
  48c:	00098593          	addi	a1,s3,0
@@ -335,10 +335,10 @@ Disassembly of section .text:
  494:	015a0a33          	add	s4,s4,s5
  498:	0ff57513          	andi	a0,a0,255
  49c:	00aa0023          	sb	a0,0(s4)
- 4a0:	4144c783          	lbu	a5,1044(s1)
+ 4a0:	0144c783          	lbu	a5,20(s1)
  4a4:	ff840413          	addi	s0,s0,-8
  4a8:	00178793          	addi	a5,a5,1
- 4ac:	40f48a23          	sb	a5,1044(s1)
+ 4ac:	00f48a23          	sb	a5,20(s1)
  4b0:	fa9ff06f          	jal	zero,458 <save_compression+0x38>
 
 000004b4 <HashFunction>:
@@ -415,15 +415,15 @@ Disassembly of section .text:
  5bc:	80000537          	lui	a0,0x80000
  5c0:	00400613          	addi	a2,zero,4
  5c4:	01078593          	addi	a1,a5,16
- 5c8:	41474683          	lbu	a3,1044(a4) # 3414 <position>
+ 5c8:	01474683          	lbu	a3,20(a4) # 3014 <position>
  5cc:	002585b3          	add	a1,a1,sp
  5d0:	0005c583          	lbu	a1,0(a1)
  5d4:	00a686b3          	add	a3,a3,a0
  5d8:	00178793          	addi	a5,a5,1
  5dc:	00b68023          	sb	a1,0(a3)
- 5e0:	41474683          	lbu	a3,1044(a4)
+ 5e0:	01474683          	lbu	a3,20(a4)
  5e4:	00168693          	addi	a3,a3,1
- 5e8:	40d70a23          	sb	a3,1044(a4)
+ 5e8:	00d70a23          	sb	a3,20(a4)
  5ec:	fcc79ce3          	bne	a5,a2,5c4 <main+0x84>
  5f0:	00400613          	addi	a2,zero,4
  5f4:	00800513          	addi	a0,zero,8
@@ -448,7 +448,7 @@ Disassembly of section .text:
  640:	00000c13          	addi	s8,zero,0
  644:	00000b93          	addi	s7,zero,0
  648:	00000b13          	addi	s6,zero,0
- 64c:	ff8a8a13          	addi	s4,s5,-8 # 7ffffff8 <position+0x7fffcbe4>
+ 64c:	ff8a8a13          	addi	s4,s5,-8 # 7ffffff8 <position+0x7fffcfe4>
  650:	02010793          	addi	a5,sp,32
  654:	014787b3          	add	a5,a5,s4
  658:	000b0913          	addi	s2,s6,0
@@ -483,7 +483,7 @@ Disassembly of section .text:
  6cc:	0c048493          	addi	s1,s1,192
  6d0:	00048513          	addi	a0,s1,0
  6d4:	d35ff0ef          	jal	ra,408 <get_needed_bytes>
- 6d8:	00050613          	addi	a2,a0,0 # 80000000 <position+0x7fffcbec>
+ 6d8:	00050613          	addi	a2,a0,0 # 80000000 <position+0x7fffcfec>
  6dc:	41f4d593          	srai	a1,s1,0x1f
  6e0:	00048513          	addi	a0,s1,0
  6e4:	d3dff0ef          	jal	ra,420 <save_compression>
@@ -641,7 +641,7 @@ Disassembly of section .text:
  918:	87ba                	c.mv	a5,a4
  91a:	02c77163          	bgeu	a4,a2,93c <memcpy+0x50>
  91e:	0006a803          	lw	a6,0(a3)
- 922:	0791                	c.addi	a5,4 # fe000004 <position+0xfdffcbf0>
+ 922:	0791                	c.addi	a5,4 # fe000004 <position+0xfdffcff0>
  924:	0691                	c.addi	a3,4
  926:	ff07ae23          	sw	a6,-4(a5)
  92a:	fec7eae3          	bltu	a5,a2,91e <memcpy+0x32>
