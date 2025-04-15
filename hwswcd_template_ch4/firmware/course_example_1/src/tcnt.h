@@ -22,6 +22,6 @@
 void TCNT_start(void);
 void TCNT_start_div8(void);
 void TCNT_start_div16(void);
-void TCNT_stop(void);
+void TCNT_stop(void);   
 
 #endif
