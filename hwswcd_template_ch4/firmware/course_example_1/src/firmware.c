@@ -18,7 +18,14 @@ struct qoi_header {
                                // 1 = all channels linear
 };
 
-extern const struct qoi_header header;
+/* Header */
+struct qoi_header header = {
+    .magic = {'q', 'o', 'i', 'f'},
+    .width = C_WIDTH,
+    .height = C_HEIGHT,
+    .channels = 3,
+    .colorspace = 0
+};
 
 unsigned char position = 0;
 
