@@ -131,8 +131,8 @@ do_reset:
     csrrw x0, mscratch, x2
 
     /* write mtvec */
-    la x2, trap_vector
-    csrrw x0, mtvec, x2
+    /*la x2, trap_vector*/
+    /*csrrw x0, mtvec, x2*/
 
     /* enable general interrupt */
     csrrwi x0, mstatus, 8
