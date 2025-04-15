@@ -135,6 +135,12 @@ int main(void) {
     for(unsigned char i=0;i<64;i++) {
         running_array[i] = 0;
     }
+    value_prev = 0;
+    r_prev = 0;
+    g_prev = 0;
+    b_prev = 0;
+    a_prev = 255;
+    rle = -1;
     
 
     /* Header */
