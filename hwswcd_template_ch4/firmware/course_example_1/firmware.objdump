@@ -175,176 +175,176 @@ Disassembly of section .text:
  23c:	fcb42c23          	sw	a1,-40(s0)
  240:	fcc42a23          	sw	a2,-44(s0)
  244:	fcd42823          	sw	a3,-48(s0)
- 248:	fe040723          	sb	zero,-18(s0)
+ 248:	fe042423          	sw	zero,-24(s0)
  24c:	1400006f          	jal	zero,38c <initialise+0x160>
- 250:	fe0407a3          	sb	zero,-17(s0)
+ 250:	fe042623          	sw	zero,-20(s0)
  254:	0880006f          	jal	zero,2dc <initialise+0xb0>
- 258:	fee44783          	lbu	a5,-18(s0)
+ 258:	fe842783          	lw	a5,-24(s0)
  25c:	00179793          	slli	a5,a5,0x1
  260:	fdc42703          	lw	a4,-36(s0)
  264:	00f70733          	add	a4,a4,a5
- 268:	fef44783          	lbu	a5,-17(s0)
+ 268:	fec42783          	lw	a5,-20(s0)
  26c:	00f707b3          	add	a5,a4,a5
  270:	fff00713          	addi	a4,zero,-1
  274:	00e78023          	sb	a4,0(a5)
- 278:	fee44783          	lbu	a5,-18(s0)
+ 278:	fe842783          	lw	a5,-24(s0)
  27c:	00179793          	slli	a5,a5,0x1
  280:	fd842703          	lw	a4,-40(s0)
  284:	00f70733          	add	a4,a4,a5
- 288:	fef44783          	lbu	a5,-17(s0)
+ 288:	fec42783          	lw	a5,-20(s0)
  28c:	00f707b3          	add	a5,a4,a5
  290:	00078023          	sb	zero,0(a5)
- 294:	fee44783          	lbu	a5,-18(s0)
+ 294:	fe842783          	lw	a5,-24(s0)
  298:	00179793          	slli	a5,a5,0x1
  29c:	fd442703          	lw	a4,-44(s0)
  2a0:	00f70733          	add	a4,a4,a5
- 2a4:	fef44783          	lbu	a5,-17(s0)
+ 2a4:	fec42783          	lw	a5,-20(s0)
  2a8:	00f707b3          	add	a5,a4,a5
  2ac:	00078023          	sb	zero,0(a5)
- 2b0:	fee44783          	lbu	a5,-18(s0)
+ 2b0:	fe842783          	lw	a5,-24(s0)
  2b4:	00179793          	slli	a5,a5,0x1
  2b8:	fd042703          	lw	a4,-48(s0)
  2bc:	00f70733          	add	a4,a4,a5
- 2c0:	fef44783          	lbu	a5,-17(s0)
+ 2c0:	fec42783          	lw	a5,-20(s0)
  2c4:	00f707b3          	add	a5,a4,a5
  2c8:	fff00713          	addi	a4,zero,-1
  2cc:	00e78023          	sb	a4,0(a5)
- 2d0:	fef44783          	lbu	a5,-17(s0)
+ 2d0:	fec42783          	lw	a5,-20(s0)
  2d4:	00178793          	addi	a5,a5,1
- 2d8:	fef407a3          	sb	a5,-17(s0)
- 2dc:	fef44783          	lbu	a5,-17(s0)
- 2e0:	f6078ce3          	beq	a5,zero,258 <initialise+0x2c>
+ 2d8:	fef42623          	sw	a5,-20(s0)
+ 2dc:	fec42783          	lw	a5,-20(s0)
+ 2e0:	f6f05ce3          	bge	zero,a5,258 <initialise+0x2c>
  2e4:	00100793          	addi	a5,zero,1
- 2e8:	fef407a3          	sb	a5,-17(s0)
+ 2e8:	fef42623          	sw	a5,-20(s0)
  2ec:	0880006f          	jal	zero,374 <initialise+0x148>
- 2f0:	fee44783          	lbu	a5,-18(s0)
+ 2f0:	fe842783          	lw	a5,-24(s0)
  2f4:	00179793          	slli	a5,a5,0x1
  2f8:	fdc42703          	lw	a4,-36(s0)
  2fc:	00f70733          	add	a4,a4,a5
- 300:	fef44783          	lbu	a5,-17(s0)
+ 300:	fec42783          	lw	a5,-20(s0)
  304:	00f707b3          	add	a5,a4,a5
  308:	00078023          	sb	zero,0(a5)
- 30c:	fee44783          	lbu	a5,-18(s0)
+ 30c:	fe842783          	lw	a5,-24(s0)
  310:	00179793          	slli	a5,a5,0x1
  314:	fd842703          	lw	a4,-40(s0)
  318:	00f70733          	add	a4,a4,a5
- 31c:	fef44783          	lbu	a5,-17(s0)
+ 31c:	fec42783          	lw	a5,-20(s0)
  320:	00f707b3          	add	a5,a4,a5
  324:	fff00713          	addi	a4,zero,-1
  328:	00e78023          	sb	a4,0(a5)
- 32c:	fee44783          	lbu	a5,-18(s0)
+ 32c:	fe842783          	lw	a5,-24(s0)
  330:	00179793          	slli	a5,a5,0x1
  334:	fd442703          	lw	a4,-44(s0)
  338:	00f70733          	add	a4,a4,a5
- 33c:	fef44783          	lbu	a5,-17(s0)
+ 33c:	fec42783          	lw	a5,-20(s0)
  340:	00f707b3          	add	a5,a4,a5
  344:	00078023          	sb	zero,0(a5)
- 348:	fee44783          	lbu	a5,-18(s0)
+ 348:	fe842783          	lw	a5,-24(s0)
  34c:	00179793          	slli	a5,a5,0x1
  350:	fd042703          	lw	a4,-48(s0)
  354:	00f70733          	add	a4,a4,a5
- 358:	fef44783          	lbu	a5,-17(s0)
+ 358:	fec42783          	lw	a5,-20(s0)
  35c:	00f707b3          	add	a5,a4,a5
  360:	fff00713          	addi	a4,zero,-1
  364:	00e78023          	sb	a4,0(a5)
- 368:	fef44783          	lbu	a5,-17(s0)
+ 368:	fec42783          	lw	a5,-20(s0)
  36c:	00178793          	addi	a5,a5,1
- 370:	fef407a3          	sb	a5,-17(s0)
- 374:	fef44703          	lbu	a4,-17(s0)
+ 370:	fef42623          	sw	a5,-20(s0)
+ 374:	fec42703          	lw	a4,-20(s0)
  378:	00100793          	addi	a5,zero,1
- 37c:	f6e7fae3          	bgeu	a5,a4,2f0 <initialise+0xc4>
- 380:	fee44783          	lbu	a5,-18(s0)
+ 37c:	f6e7dae3          	bge	a5,a4,2f0 <initialise+0xc4>
+ 380:	fe842783          	lw	a5,-24(s0)
  384:	00178793          	addi	a5,a5,1
- 388:	fef40723          	sb	a5,-18(s0)
- 38c:	fee44783          	lbu	a5,-18(s0)
- 390:	ec0780e3          	beq	a5,zero,250 <initialise+0x24>
+ 388:	fef42423          	sw	a5,-24(s0)
+ 38c:	fe842783          	lw	a5,-24(s0)
+ 390:	ecf050e3          	bge	zero,a5,250 <initialise+0x24>
  394:	00100793          	addi	a5,zero,1
- 398:	fef40723          	sb	a5,-18(s0)
+ 398:	fef42423          	sw	a5,-24(s0)
  39c:	1480006f          	jal	zero,4e4 <initialise+0x2b8>
- 3a0:	fe0407a3          	sb	zero,-17(s0)
+ 3a0:	fe042623          	sw	zero,-20(s0)
  3a4:	0880006f          	jal	zero,42c <initialise+0x200>
- 3a8:	fee44783          	lbu	a5,-18(s0)
+ 3a8:	fe842783          	lw	a5,-24(s0)
  3ac:	00179793          	slli	a5,a5,0x1
  3b0:	fdc42703          	lw	a4,-36(s0)
  3b4:	00f70733          	add	a4,a4,a5
- 3b8:	fef44783          	lbu	a5,-17(s0)
+ 3b8:	fec42783          	lw	a5,-20(s0)
  3bc:	00f707b3          	add	a5,a4,a5
  3c0:	00078023          	sb	zero,0(a5)
- 3c4:	fee44783          	lbu	a5,-18(s0)
+ 3c4:	fe842783          	lw	a5,-24(s0)
  3c8:	00179793          	slli	a5,a5,0x1
  3cc:	fd842703          	lw	a4,-40(s0)
  3d0:	00f70733          	add	a4,a4,a5
- 3d4:	fef44783          	lbu	a5,-17(s0)
+ 3d4:	fec42783          	lw	a5,-20(s0)
  3d8:	00f707b3          	add	a5,a4,a5
  3dc:	00078023          	sb	zero,0(a5)
- 3e0:	fee44783          	lbu	a5,-18(s0)
+ 3e0:	fe842783          	lw	a5,-24(s0)
  3e4:	00179793          	slli	a5,a5,0x1
  3e8:	fd442703          	lw	a4,-44(s0)
  3ec:	00f70733          	add	a4,a4,a5
- 3f0:	fef44783          	lbu	a5,-17(s0)
+ 3f0:	fec42783          	lw	a5,-20(s0)
  3f4:	00f707b3          	add	a5,a4,a5
  3f8:	fff00713          	addi	a4,zero,-1
  3fc:	00e78023          	sb	a4,0(a5)
- 400:	fee44783          	lbu	a5,-18(s0)
+ 400:	fe842783          	lw	a5,-24(s0)
  404:	00179793          	slli	a5,a5,0x1
  408:	fd042703          	lw	a4,-48(s0)
  40c:	00f70733          	add	a4,a4,a5
- 410:	fef44783          	lbu	a5,-17(s0)
+ 410:	fec42783          	lw	a5,-20(s0)
  414:	00f707b3          	add	a5,a4,a5
  418:	fff00713          	addi	a4,zero,-1
  41c:	00e78023          	sb	a4,0(a5)
- 420:	fef44783          	lbu	a5,-17(s0)
+ 420:	fec42783          	lw	a5,-20(s0)
  424:	00178793          	addi	a5,a5,1
- 428:	fef407a3          	sb	a5,-17(s0)
- 42c:	fef44783          	lbu	a5,-17(s0)
- 430:	f6078ce3          	beq	a5,zero,3a8 <initialise+0x17c>
+ 428:	fef42623          	sw	a5,-20(s0)
+ 42c:	fec42783          	lw	a5,-20(s0)
+ 430:	f6f05ce3          	bge	zero,a5,3a8 <initialise+0x17c>
  434:	00100793          	addi	a5,zero,1
- 438:	fef407a3          	sb	a5,-17(s0)
+ 438:	fef42623          	sw	a5,-20(s0)
  43c:	0900006f          	jal	zero,4cc <initialise+0x2a0>
- 440:	fee44783          	lbu	a5,-18(s0)
+ 440:	fe842783          	lw	a5,-24(s0)
  444:	00179793          	slli	a5,a5,0x1
  448:	fdc42703          	lw	a4,-36(s0)
  44c:	00f70733          	add	a4,a4,a5
- 450:	fef44783          	lbu	a5,-17(s0)
+ 450:	fec42783          	lw	a5,-20(s0)
  454:	00f707b3          	add	a5,a4,a5
  458:	07f00713          	addi	a4,zero,127
  45c:	00e78023          	sb	a4,0(a5)
- 460:	fee44783          	lbu	a5,-18(s0)
+ 460:	fe842783          	lw	a5,-24(s0)
  464:	00179793          	slli	a5,a5,0x1
  468:	fd842703          	lw	a4,-40(s0)
  46c:	00f70733          	add	a4,a4,a5
- 470:	fef44783          	lbu	a5,-17(s0)
+ 470:	fec42783          	lw	a5,-20(s0)
  474:	00f707b3          	add	a5,a4,a5
  478:	07f00713          	addi	a4,zero,127
  47c:	00e78023          	sb	a4,0(a5)
- 480:	fee44783          	lbu	a5,-18(s0)
+ 480:	fe842783          	lw	a5,-24(s0)
  484:	00179793          	slli	a5,a5,0x1
  488:	fd442703          	lw	a4,-44(s0)
  48c:	00f70733          	add	a4,a4,a5
- 490:	fef44783          	lbu	a5,-17(s0)
+ 490:	fec42783          	lw	a5,-20(s0)
  494:	00f707b3          	add	a5,a4,a5
  498:	07f00713          	addi	a4,zero,127
  49c:	00e78023          	sb	a4,0(a5)
- 4a0:	fee44783          	lbu	a5,-18(s0)
+ 4a0:	fe842783          	lw	a5,-24(s0)
  4a4:	00179793          	slli	a5,a5,0x1
  4a8:	fd042703          	lw	a4,-48(s0)
  4ac:	00f70733          	add	a4,a4,a5
- 4b0:	fef44783          	lbu	a5,-17(s0)
+ 4b0:	fec42783          	lw	a5,-20(s0)
  4b4:	00f707b3          	add	a5,a4,a5
  4b8:	fff00713          	addi	a4,zero,-1
  4bc:	00e78023          	sb	a4,0(a5)
- 4c0:	fef44783          	lbu	a5,-17(s0)
+ 4c0:	fec42783          	lw	a5,-20(s0)
  4c4:	00178793          	addi	a5,a5,1
- 4c8:	fef407a3          	sb	a5,-17(s0)
- 4cc:	fef44703          	lbu	a4,-17(s0)
+ 4c8:	fef42623          	sw	a5,-20(s0)
+ 4cc:	fec42703          	lw	a4,-20(s0)
  4d0:	00100793          	addi	a5,zero,1
- 4d4:	f6e7f6e3          	bgeu	a5,a4,440 <initialise+0x214>
- 4d8:	fee44783          	lbu	a5,-18(s0)
+ 4d4:	f6e7d6e3          	bge	a5,a4,440 <initialise+0x214>
+ 4d8:	fe842783          	lw	a5,-24(s0)
  4dc:	00178793          	addi	a5,a5,1
- 4e0:	fef40723          	sb	a5,-18(s0)
- 4e4:	fee44703          	lbu	a4,-18(s0)
+ 4e0:	fef42423          	sw	a5,-24(s0)
+ 4e4:	fe842703          	lw	a4,-24(s0)
  4e8:	00100793          	addi	a5,zero,1
- 4ec:	eae7fae3          	bgeu	a5,a4,3a0 <initialise+0x174>
+ 4ec:	eae7dae3          	bge	a5,a4,3a0 <initialise+0x174>
  4f0:	00000013          	addi	zero,zero,0
  4f4:	00000013          	addi	zero,zero,0
  4f8:	02c12403          	lw	s0,44(sp)
