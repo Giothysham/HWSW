@@ -38,7 +38,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x7f0
+.text           0x00000000      0x810
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x110 build/start.o
@@ -58,11 +58,11 @@ Linker script and memory map
                 0x00000300                save_compression
                 0x00000384                HashFunction
                 0x00000404                closest_difference
- .text.startup  0x00000410      0x3b8 build/firmware.o
+ .text.startup  0x00000410      0x3d8 build/firmware.o
                 0x00000410                main
- .text          0x000007c8        0x0 build/start.o
- .text          0x000007c8       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
-                0x000007c8                __lshrdi3
+ .text          0x000007e8        0x0 build/start.o
+ .text          0x000007e8       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
+                0x000007e8                __lshrdi3
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
