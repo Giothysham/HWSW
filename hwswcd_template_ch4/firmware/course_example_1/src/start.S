@@ -1,5 +1,6 @@
 .global start
 .global sw_mult
+.global header
 
 .section .init, "ax"
 
@@ -152,6 +153,16 @@ do_reset:
     j done
 
 # Software multiplication. It returns the product of a0 and a1
+
+header:
+    .insn	2, 0x6f71
+    .insn	2, 0x6669
+    .insn	2, 0x0008
+    .insn	2, 0x
+    .insn	2, 0x0008
+    .insn	2, 0x
+    lb	zero,0(zero) # 0 <start>
+
 sw_mult: 
     addi sp, sp, -(3*4)
     sw ra, 0(sp)
