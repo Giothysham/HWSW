@@ -20,7 +20,7 @@ struct qoi_header {
 
 unsigned char position = 0;
 
-bool = 0;
+int bool = 0;
 
 void irq_handler(unsigned int cause) {
 
@@ -128,7 +128,9 @@ int main(void) {
 
     /* Sanity check */
     if((C_WIDTH % 2) || (C_HEIGHT % 2)) {
-        printf("ERROR: W or H not even");
+        while(1) {
+            // Error: C_WIDTH and C_HEIGHT must be even numbers
+        }
         return 1;
     }
 
