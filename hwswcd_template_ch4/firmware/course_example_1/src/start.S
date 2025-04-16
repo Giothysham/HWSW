@@ -136,8 +136,8 @@ do_reset:
     /*csrrwi x0, mstatus, 8*/
 
     /* allow all external interrupts */
-    /*addi x2, zero, -1*/
-    /*csrrw x0, mie, x2*/
+    addi x2, zero, -1
+    csrrw x0, mie, x2
 
 
 

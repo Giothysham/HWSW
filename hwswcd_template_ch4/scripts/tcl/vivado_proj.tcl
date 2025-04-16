@@ -10,8 +10,8 @@
 ################################################################################
 
 set pname "hwswcd_chapter_4"
-set path "/home/jvliegen/Documents/courses/KULeuven/sem8_HWSWCD/vivado/"
-set srcpath "/home/jvliegen/Desktop/temp/ch4_template"
+set path "D:/School/MA/HWSW/VHDL/Last_Exercise"
+set srcpath "D:/School/MA/HWSW/Source_code/HWSW/hwswcd_template_ch4"
 
 set part "xc7z020clg400-1"
 set board "tul.com.tw:pynq-z2:part0:1.0"
