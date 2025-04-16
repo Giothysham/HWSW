@@ -1,6 +1,9 @@
 
 Discarded input sections
 
+ .comment       0x00000000       0x1c build/tcnt.o
+ .riscv.attributes
+                0x00000000       0x25 build/tcnt.o
  .comment       0x00000000       0x1c build/firmware.o
  .riscv.attributes
                 0x00000000       0x25 build/firmware.o
@@ -17,34 +20,41 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xb5c
+.text           0x00000000      0xbc8
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
                 0x00000000                start
-                0x000001cc                sw_mult
+                0x000001d4                sw_mult
  *(.text*)
- .text          0x00000230      0x2c8 build/firmware.o
-                0x00000230                irq_handler
-                0x00000248                initialise
-                0x00000364                Multiply
-                0x00000390                get_needed_bytes
-                0x000003bc                save_compression
-                0x00000430                HashFunction
-                0x000004bc                closest_difference
-                0x000004c8                print_compressed_image
- .text.startup  0x000004f8      0x664 build/firmware.o
-                0x000004f8                main
- .text          0x00000b5c        0x0 build/start.o
+ .text          0x00000230       0x68 build/tcnt.o
+                0x00000230                TCNT_start
+                0x00000244                TCNT_start_div8
+                0x00000264                TCNT_start_div16
+                0x00000284                TCNT_stop
+ .text          0x00000298      0x2c8 build/firmware.o
+                0x00000298                irq_handler
+                0x000002b0                initialise
+                0x000003cc                Multiply
+                0x000003f8                get_needed_bytes
+                0x00000424                save_compression
+                0x00000498                HashFunction
+                0x00000524                closest_difference
+                0x00000530                print_compressed_image
+ .text.startup  0x00000560      0x668 build/firmware.o
+                0x00000560                main
+ .text          0x00000bc8        0x0 build/start.o
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
  *(.data)
+ .data          0x00002000        0x0 build/tcnt.o
  .data          0x00002000       0x10 build/firmware.o
                 0x00002000                header
  .data          0x00002010        0x0 build/start.o
 
 .bss            0x00002010      0x400
+ .bss           0x00002010        0x0 build/tcnt.o
  .bss           0x00002010      0x400 build/firmware.o
                 0x00002010                compressed_image
  .bss           0x00002410        0x0 build/start.o
@@ -68,6 +78,7 @@ Linker script and memory map
  *(.rel*)
  *(.comment)
  *(.riscv.attributes)
+LOAD build/tcnt.o
 LOAD build/firmware.o
 LOAD build/start.o
 LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
