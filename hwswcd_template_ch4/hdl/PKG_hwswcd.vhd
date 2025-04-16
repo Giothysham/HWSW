@@ -35,7 +35,7 @@ package PKG_hwswcd is
     -- This comes down to 1024 32-bit words.
     -- A peripheral can hence have 1024 memory-mapped registers
     constant C_DMEM_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"0000";
-    constant C_LED_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"9000";
+    constant C_LED_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8000";
     constant C_TIMER_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8100";
 
     constant C_MRO_xF11_MVENDORID : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0) := x"01234568";
