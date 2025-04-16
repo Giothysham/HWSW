@@ -10,7 +10,7 @@ reset_vector:
 /* TRAP VECTOR (start at 0x10) */
 .balign 16
 trap_vector:
-    /*csrrw sp, mscratch, sp*/
+    csrrw sp, mscratch, sp
 
     sw x1,   0*4(sp)
     sw x3,   1*4(sp)
@@ -43,7 +43,7 @@ trap_vector:
     sw x30, 28*4(sp)
     sw x31, 29*4(sp)
 
-    /*csrrc a0, mcause, zero*/
+    csrrc a0, mcause, zero
     jal ra, irq_handler
 
     lw x1,   0*4(sp)
@@ -77,7 +77,7 @@ trap_vector:
     lw x30, 28*4(sp)
     lw x31, 29*4(sp)
 
-    /*csrrw sp, mscratch, sp*/
+    csrrw sp, mscratch, sp
     mret
 
 do_reset:
@@ -126,18 +126,18 @@ do_reset:
     /* This part is for/from Zicsr */
     lui x2, %hi(4*1024)
     addi x2, x2, %lo(4*1024)
-    /*csrrw x0, mscratch, x2*/
+    csrrw x0, mscratch, x2
 
     /* write mtvec */
     la x2, trap_vector
-    /*csrrw x0, mtvec, x2*/
+    csrrw x0, mtvec, x2
 
     /* enable general interrupt */
     /*csrrwi x0, mstatus, 8*/
 
     /* allow all external interrupts */
     addi x2, zero, -1
-    /*csrrw x0, mie, x2*/
+    csrrw x0, mie, x2
 
 
 
