@@ -242,7 +242,7 @@ int main(void) {
     unsigned long long int ending = 1;
     save_compression(ending, 8);
 
-    //print_compressed_image();
+    print_compressed_image();
 
     return 0;
 }
