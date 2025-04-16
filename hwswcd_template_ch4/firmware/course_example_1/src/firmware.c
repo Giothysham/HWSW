@@ -1,3 +1,5 @@
+#include "tcnt.h"
+
 #define LED_BASEAxDDRESS 0x80000000
 
 #define LED_REG0_ADDRESS (LED_BASEAxDDRESS + 0*4)
