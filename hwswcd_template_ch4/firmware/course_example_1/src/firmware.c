@@ -1,5 +1,5 @@
 #include "tcnt.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
@@ -110,8 +110,8 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
 
 void print_compressed_image() {
     for(int i=0;i<position;i++) {
-        //*((volatile unsigned int*)OUTPORT) = compressed_image[i]; // + position after ADDR
-        printf("%02X ", compressed_image[i]);
+        *((volatile unsigned int*)OUTPORT) = compressed_image[i]; // + position after ADDR
+        //printf("%02X ", compressed_image[i]);
     }
 }
 
