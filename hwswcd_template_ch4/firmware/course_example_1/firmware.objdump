@@ -323,14 +323,14 @@ Disassembly of section .text:
  464:	0ff77713          	andi	a4,a4,255
  468:	00159313          	slli	t1,a1,0x1
  46c:	01f00893          	addi	a7,zero,31
- 470:	80000837          	lui	a6,0x80000
+ 470:	90000837          	lui	a6,0x90000
  474:	0300006f          	jal	zero,4a4 <save_compression+0x58>
  478:	40c886b3          	sub	a3,a7,a2
  47c:	00d316b3          	sll	a3,t1,a3
  480:	00c557b3          	srl	a5,a0,a2
  484:	00f6e7b3          	or	a5,a3,a5
  488:	0ff7f793          	andi	a5,a5,255
- 48c:	00f82023          	sw	a5,0(a6) # 80000000 <position+0x7fffdfec>
+ 48c:	00f82023          	sw	a5,0(a6) # 90000000 <position+0x8fffdfec>
  490:	ff860613          	addi	a2,a2,-8
  494:	00070793          	addi	a5,a4,0
  498:	00170713          	addi	a4,a4,1
@@ -414,9 +414,9 @@ Disassembly of section .text:
  5b8:	00078513          	addi	a0,a5,0 # 2000 <header>
  5bc:	00450593          	addi	a1,a0,4
  5c0:	00078793          	addi	a5,a5,0
- 5c4:	80000637          	lui	a2,0x80000
+ 5c4:	90000637          	lui	a2,0x90000
  5c8:	0007c703          	lbu	a4,0(a5)
- 5cc:	00e62023          	sw	a4,0(a2) # 80000000 <position+0x7fffdfec>
+ 5cc:	00e62023          	sw	a4,0(a2) # 90000000 <position+0x8fffdfec>
  5d0:	00078713          	addi	a4,a5,0
  5d4:	00178793          	addi	a5,a5,1
  5d8:	feb798e3          	bne	a5,a1,5c8 <main+0x7c>
