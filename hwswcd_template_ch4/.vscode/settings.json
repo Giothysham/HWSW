@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "tcnt.h": "c",
-        "cstdint": "c"
-    }
-}

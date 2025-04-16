@@ -1,10 +1,12 @@
-#include "tcnt.h"
-//#include <stdio.h>
+#define LED_BASEAxDDRESS 0x80000000
+
+#define LED_REG0_ADDRESS (LED_BASEAxDDRESS + 0*4)
+
+#define LED (*(volatile unsigned int *) LED_REG0_ADDRESS)
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
 
-#define OUTPORT 0x80000000
 #define COMPRESSED_IMAGE_SIZE 1024
 
 unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
@@ -29,14 +31,11 @@ struct qoi_header header = {
 
 unsigned char position = 0;
 
-int bool = 0;
-
 void irq_handler(unsigned int cause) {
 
-    bool = 1;
-
-    TCNT_CR = 0x17;
-    TCNT_CR = 0x7;
+    if (cause & 4) {
+        LED = 0xFFFFFFFF;
+    }
 
 }
 
@@ -110,7 +109,7 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
 
 void print_compressed_image() {
     for(int i=0;i<position;i++) {
-        *((volatile unsigned int*)OUTPORT) = compressed_image[i]; // + position after ADDR
+        LED = compressed_image[i]; // + position after ADDR
         //printf("%02X ", compressed_image[i]);
     }
 }

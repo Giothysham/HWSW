@@ -53,7 +53,6 @@ architecture Behavioural of riscv_microcontroller is
     signal ce : STD_LOGIC_VECTOR(2 downto 0);
     signal dmem_do_tcnt : STD_LOGIC_VECTOR(31 downto 0);
     signal leds : STD_LOGIC_VECTOR(31 downto 0);
-    signal output: std_logic_vector (31 downto 0);
 
     -- INTERRUPTS
     signal linked_interrupts : STD_LOGIC_VECTOR(31 downto 0);
