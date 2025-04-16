@@ -1,7 +1,3 @@
-Archive member included to satisfy reference by file (symbol)
-
-/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
-                              build/firmware.o (__lshrdi3)
 
 Discarded input sections
 
@@ -10,20 +6,6 @@ Discarded input sections
                 0x00000000       0x25 build/firmware.o
  .riscv.attributes
                 0x00000000       0x27 build/start.o
- .debug_info    0x00000000      0x1af /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_abbrev  0x00000000      0x10c /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_loclists
-                0x00000000       0x6b /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_aranges
-                0x00000000       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_line    0x00000000      0x107 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_str     0x00000000      0x204 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_line_str
-                0x00000000      0x114 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .comment       0x00000000       0x1c /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .debug_frame   0x00000000       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
- .riscv.attributes
-                0x00000000       0x53 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 Memory Configuration
 
@@ -35,27 +17,24 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x95c
+.text           0x00000000      0xa04
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
                 0x00000000                start
                 0x000001d8                sw_mult
  *(.text*)
- .text          0x00000230      0x2ec build/firmware.o
+ .text          0x00000230      0x7d4 build/firmware.o
                 0x00000230                irq_handler
                 0x00000248                initialise
                 0x0000035c                Multiply
-                0x00000384                get_needed_bytes
-                0x000003b0                save_compression
-                0x0000045c                HashFunction
-                0x000004dc                closest_difference
-                0x000004e8                print_compressed_image
- .text.startup  0x0000051c      0x418 build/firmware.o
-                0x0000051c                main
- .text          0x00000934        0x0 build/start.o
- .text          0x00000934       0x28 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
-                0x00000934                __lshrdi3
+                0x00000394                get_needed_bytes
+                0x000003c8                save_compression
+                0x00000434                HashFunction
+                0x000004b4                closest_difference
+                0x000004c0                print_compressed_image
+                0x000004f0                main
+ .text          0x00000a04        0x0 build/start.o
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
@@ -63,13 +42,11 @@ Linker script and memory map
  .data          0x00002000       0x10 build/firmware.o
                 0x00002000                header
  .data          0x00002010        0x0 build/start.o
- .data          0x00002010        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 .bss            0x00002010      0x400
  .bss           0x00002010      0x400 build/firmware.o
                 0x00002010                compressed_image
  .bss           0x00002410        0x0 build/start.o
- .bss           0x00002410        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a(_lshrdi3.o)
 
 .sbss           0x00002410        0x1
  .sbss          0x00002410        0x1 build/firmware.o
