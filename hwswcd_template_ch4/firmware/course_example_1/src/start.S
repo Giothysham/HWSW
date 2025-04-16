@@ -133,11 +133,11 @@ do_reset:
     csrrw x0, mtvec, x2
 
     /* enable general interrupt */
-    csrrwi x0, mstatus, 8
+    /*csrrwi x0, mstatus, 8*/
 
     /* allow all external interrupts */
-    addi x2, zero, -1
-    csrrw x0, mie, x2
+    /*addi x2, zero, -1*/
+    /*csrrw x0, mie, x2*/
 
 
 
