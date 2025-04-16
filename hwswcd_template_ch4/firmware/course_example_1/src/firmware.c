@@ -146,7 +146,7 @@ int main(void) {
     
     for(unsigned char i=0;i<4;i++) {
         //printf("%02X ", header.magic[i]);
-        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
+        save_compression(header.magic[i], 1); // + position after ADDR
         position++;
     }
 
