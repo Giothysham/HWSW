@@ -118,7 +118,7 @@ void print_compressed_image() {
 
 int main(void) {
 
-    TCNT_stop();
+    // TCNT_stop();
 
     unsigned char r[C_HEIGHT][C_WIDTH];
     unsigned char g[C_HEIGHT][C_WIDTH];
