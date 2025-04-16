@@ -4,10 +4,10 @@
 #define C_WIDTH 8
 #define C_HEIGHT 8
 
-#define COMPRESSED_IMAGE_DEST_ADDR 0x80000000
+#define OUTPORT 0x80000000
 #define COMPRESSED_IMAGE_SIZE 1024
 
-//unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
+unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
     char     magic[4];        // magic bytes "qoif"
@@ -94,7 +94,7 @@ void save_compression(unsigned long long int val, unsigned char digits) {
         index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
-		*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
+		compressed_image[position] = index; // + position after ADDR
 		position++;
 	}
 }
@@ -106,6 +106,12 @@ unsigned int HashFunction(unsigned char r, unsigned char g, unsigned char b, uns
 unsigned char closest_difference(unsigned char current, unsigned char prev) {
     signed char diff = (current >= prev) ? current - prev : 256 - (prev - current);
     return diff;
+}
+
+print_compressed_image() {
+    for(int i=0;i<position;i++) {
+        *((volatile unsigned int*)OUTPORT) = compressed_image[i]; // + position after ADDR
+    }
 }
 
 int main(void) {
@@ -146,7 +152,8 @@ int main(void) {
     
     for(int i=0;i<4;i++) {
         //printf("%02X ", header.magic[i]);
-        *((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
+        //*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
+        compressed_image[position] = header.magic[i];
         position++;
     }
 
