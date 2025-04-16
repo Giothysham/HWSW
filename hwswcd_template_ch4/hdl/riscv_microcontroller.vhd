@@ -53,6 +53,7 @@ architecture Behavioural of riscv_microcontroller is
     signal ce : STD_LOGIC_VECTOR(2 downto 0);
     signal dmem_do_tcnt : STD_LOGIC_VECTOR(31 downto 0);
     signal leds : STD_LOGIC_VECTOR(31 downto 0);
+    signal output: std_logic_vector (31 downto 0);
 
     -- INTERRUPTS
     signal linked_interrupts : STD_LOGIC_VECTOR(31 downto 0);
@@ -150,10 +151,10 @@ begin
     begin
         if rising_edge(clock) then 
             if reset = '1' then 
-                leds <= C_GND;
+                output <= C_GND;
             else
                 if dmem_we = '1' and dmem_a = x"80000000" then 
-                    leds <= dmem_di;
+                    output <= dmem_di;
                 end if;
             end if;
         end if;
