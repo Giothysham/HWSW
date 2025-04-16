@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 #include "tcnt.h"
 
@@ -16,7 +16,7 @@
 unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
-    char     magic[4];        // magic bytes "qoif"
+    char     magic[4];       // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
     unsigned char  channels;   // 3 = RGB, 4 = RGBA
@@ -113,8 +113,8 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
 
 void print_compressed_image() {
     for(int i=0;i<position;i++) {
-        //LED = compressed_image[i]; // + position after ADDR
-        printf("%02X ", compressed_image[i]);
+        LED = compressed_image[i]; // + position after ADDR
+        //printf("%02X ", compressed_image[i]);
     }
 }
 
