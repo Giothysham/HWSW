@@ -13,9 +13,9 @@ MKDIR = mkdir
 ARCHITECTURE = rv32i_zicsr
 ABI = ilp32
 
-CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding -mno-c --std=c99
-SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding -mno-c --std=c99
-LDFLAGS = -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march=$(ARCHITECTURE) -mabi=$(ABI) -mno-c -nostartfiles
+CFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding -no-c --std=c99
+SFLAGS = -c -Os -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding -no-c --std=c99
+LDFLAGS = -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march=$(ARCHITECTURE) -mabi=$(ABI) -no-c -nostartfiles
 
 LIBS =
 
