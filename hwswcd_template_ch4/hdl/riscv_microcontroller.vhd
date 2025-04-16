@@ -145,6 +145,19 @@ begin
             end if;
         end if;
     end process;
+    
+    PREG_OUTPUT: process(clock)
+    begin
+        if rising_edge(clock) then 
+            if reset = '1' then 
+                leds <= C_GND;
+            else
+                if dmem_we = '1' and dmem_a = x"80000000" then 
+                    leds <= dmem_di;
+                end if;
+            end if;
+        end if;
+    end process;
 
     wrapped_timer_inst00: component wrapped_timer generic map(G_WIDTH => C_WIDTH) port map (
         clock => clock,
