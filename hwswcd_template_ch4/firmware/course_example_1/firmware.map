@@ -20,27 +20,28 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xf5c
+.text           0x00000000      0xfec
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000       0x90 build/start.o
                 0x00000000                start
  *(.text*)
- .text          0x00000090       0xd8 build/tcnt.o
+ .text          0x00000090       0x68 build/tcnt.o
                 0x00000090                TCNT_start
-                0x000000c0                TCNT_start_div8
-                0x000000fc                TCNT_start_div16
-                0x00000138                TCNT_stop
- .text          0x00000168      0xdf4 build/firmware.o
-                0x00000168                irq_handler
-                0x000001ac                initialise
-                0x00000490                Multiply
-                0x000004fc                get_needed_bytes
-                0x00000544                save_compression
-                0x00000628                HashFunction
-                0x000006d8                closest_difference
-                0x00000724                main
- .text          0x00000f5c        0x0 build/start.o
+                0x000000a4                TCNT_start_div8
+                0x000000c4                TCNT_start_div16
+                0x000000e4                TCNT_stop
+ .text          0x000000f8      0x7ac build/firmware.o
+                0x000000f8                irq_handler
+                0x0000011c                initialise
+                0x000007b8                Multiply
+                0x000007e4                get_needed_bytes
+                0x000007fc                save_compression
+                0x00000854                HashFunction
+                0x00000898                closest_difference
+ .text.startup  0x000008a4      0x748 build/firmware.o
+                0x000008a4                main
+ .text          0x00000fec        0x0 build/start.o
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
@@ -55,16 +56,17 @@ Linker script and memory map
  .bss           0x00002010        0x0 build/firmware.o
  .bss           0x00002010        0x0 build/start.o
 
-.sbss           0x00002010        0x8
- .sbss          0x00002010        0x8 build/firmware.o
-                0x00002010                position
-                0x00002014                bool
+.sbss           0x00002010        0x5
+ .sbss          0x00002010        0x5 build/firmware.o
+                0x00002010                bool
+                0x00002014                position
 
-.rodata         0x00002018     0x1000
+.rodata         0x00002015     0x1003
                 0x00001000                        . = 0x1000
- *fill*         0x00002018     0x1000 
+ *fill*         0x00002015     0x1000 
  *(.rodata)
                 0x00003018                        . = ALIGN (0x4)
+ *fill*         0x00003015        0x3 
  FILL mask 0xff
 
 /DISCARD/
