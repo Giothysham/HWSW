@@ -153,7 +153,7 @@ begin
             if reset = '1' then 
                 output <= C_GND;
             else
-                if dmem_we = '1' and dmem_a = x"90000000" then 
+                if dmem_we = '1' and dmem_a(31 downto 28) = x"9" then 
                     output <= dmem_di;
                 end if;
             end if;
