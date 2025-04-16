@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "tcnt.h"
 
 #define LED_BASEAxDDRESS 0x80000000
@@ -111,8 +113,8 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
 
 void print_compressed_image() {
     for(int i=0;i<position;i++) {
-        LED = compressed_image[i]; // + position after ADDR
-        //printf("%02X ", compressed_image[i]);
+        //LED = compressed_image[i]; // + position after ADDR
+        printf("%02X ", compressed_image[i]);
     }
 }
 
