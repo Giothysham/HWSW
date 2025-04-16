@@ -399,10 +399,10 @@ Disassembly of section .text:
  5cc:	fe442683          	lw	a3,-28(s0)
  5d0:	0ff6f693          	andi	a3,a3,255
  5d4:	fed42223          	sw	a3,-28(s0)
- 5d8:	800006b7          	lui	a3,0x80000
+ 5d8:	900006b7          	lui	a3,0x90000
  5dc:	fe442603          	lw	a2,-28(s0)
  5e0:	0ff67613          	andi	a2,a2,255
- 5e4:	00c68023          	sb	a2,0(a3) # 80000000 <bool+0x7fffdfec>
+ 5e4:	00c68023          	sb	a2,0(a3) # 90000000 <bool+0x8fffdfec>
  5e8:	000026b7          	lui	a3,0x2
  5ec:	0106c683          	lbu	a3,16(a3) # 2010 <position>
  5f0:	00168693          	addi	a3,a3,1
@@ -530,26 +530,26 @@ Disassembly of section .text:
  7c0:	fbc42703          	lw	a4,-68(s0)
  7c4:	03f00793          	addi	a5,zero,63
  7c8:	fce7dce3          	bge	a5,a4,7a0 <main+0x7c>
- 7cc:	800007b7          	lui	a5,0x80000
+ 7cc:	900007b7          	lui	a5,0x90000
  7d0:	00002737          	lui	a4,0x2
  7d4:	00070713          	addi	a4,a4,0 # 2000 <header>
  7d8:	00074703          	lbu	a4,0(a4)
- 7dc:	00e78023          	sb	a4,0(a5) # 80000000 <bool+0x7fffdfec>
- 7e0:	800007b7          	lui	a5,0x80000
+ 7dc:	00e78023          	sb	a4,0(a5) # 90000000 <bool+0x8fffdfec>
+ 7e0:	900007b7          	lui	a5,0x90000
  7e4:	00002737          	lui	a4,0x2
  7e8:	00070713          	addi	a4,a4,0 # 2000 <header>
  7ec:	00174703          	lbu	a4,1(a4)
- 7f0:	00e78023          	sb	a4,0(a5) # 80000000 <bool+0x7fffdfec>
- 7f4:	800007b7          	lui	a5,0x80000
+ 7f0:	00e78023          	sb	a4,0(a5) # 90000000 <bool+0x8fffdfec>
+ 7f4:	900007b7          	lui	a5,0x90000
  7f8:	00002737          	lui	a4,0x2
  7fc:	00070713          	addi	a4,a4,0 # 2000 <header>
  800:	00274703          	lbu	a4,2(a4)
- 804:	00e78023          	sb	a4,0(a5) # 80000000 <bool+0x7fffdfec>
- 808:	800007b7          	lui	a5,0x80000
+ 804:	00e78023          	sb	a4,0(a5) # 90000000 <bool+0x8fffdfec>
+ 808:	900007b7          	lui	a5,0x90000
  80c:	00002737          	lui	a4,0x2
  810:	00070713          	addi	a4,a4,0 # 2000 <header>
  814:	00374703          	lbu	a4,3(a4)
- 818:	00e78023          	sb	a4,0(a5) # 80000000 <bool+0x7fffdfec>
+ 818:	00e78023          	sb	a4,0(a5) # 90000000 <bool+0x8fffdfec>
  81c:	000027b7          	lui	a5,0x2
  820:	00078793          	addi	a5,a5,0 # 2000 <header>
  824:	0047a783          	lw	a5,4(a5)
