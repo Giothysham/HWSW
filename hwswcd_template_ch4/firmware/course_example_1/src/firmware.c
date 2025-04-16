@@ -1,5 +1,5 @@
 #include "tcnt.h"
-//#include <stdio.h>
+#include <stdio.h>
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
@@ -10,7 +10,7 @@
 //unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
 
 struct qoi_header {
-    char     magic[4];   // magic bytes "qoif"
+    char     magic[4];        // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
     unsigned int height;     // image height in pixels (BE)
     unsigned char  channels;   // 3 = RGB, 4 = RGBA
@@ -93,8 +93,8 @@ void save_compression(unsigned long long int val, int digits) {
 	for (i = max-8; i >= 0; i -= 8) {
         index = (val) >> i;
         index = index & 0xFF;
-        //printf("%02X ", index);
-		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
+        printf("%02X ", index);
+		//*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
 		position++;
 	}
 }
@@ -140,15 +140,19 @@ int main(void) {
 
     /* Initialisation */
     initialise(r, g, b, a);
-    for(unsigned char i=0;i<64;i++) {
+    for(int i=0;i<64;i++) {
         running_array[i] = 0;
     }
     
-    for(unsigned char i=0;i<4;i++) {
-        //printf("%02X ", header.magic[i]);
-        save_compression(header.magic[i], 1); // + position after ADDR
-        position++;
-    }
+    // for(int i=0;i<4;i++) {
+    //     printf("%02X ", header.magic[i]);
+    //     //*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
+    //     position++;
+    // }
+    *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[0];
+    *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[1];
+    *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[2];
+    *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[3];
 
     save_compression(header.width, 4);
     save_compression(header.height, 4);
