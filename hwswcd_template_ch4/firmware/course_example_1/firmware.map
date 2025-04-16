@@ -17,24 +17,25 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xa04
+.text           0x00000000      0xb5c
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
                 0x00000000                start
                 0x000001d8                sw_mult
  *(.text*)
- .text          0x00000230      0x7d4 build/firmware.o
+ .text          0x00000230      0x2c8 build/firmware.o
                 0x00000230                irq_handler
                 0x00000248                initialise
-                0x0000035c                Multiply
-                0x00000394                get_needed_bytes
-                0x000003c8                save_compression
-                0x00000434                HashFunction
-                0x000004b4                closest_difference
-                0x000004c0                print_compressed_image
-                0x000004f0                main
- .text          0x00000a04        0x0 build/start.o
+                0x00000364                Multiply
+                0x00000390                get_needed_bytes
+                0x000003bc                save_compression
+                0x00000430                HashFunction
+                0x000004bc                closest_difference
+                0x000004c8                print_compressed_image
+ .text.startup  0x000004f8      0x664 build/firmware.o
+                0x000004f8                main
+ .text          0x00000b5c        0x0 build/start.o
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
