@@ -75,8 +75,8 @@ unsigned int Multiply(unsigned int a, unsigned int b) {
     return result;
 }
 
-int get_needed_bytes(long int number) {
-    int count = 0;
+unsigned char get_needed_bytes(unsigned long long int number) {
+    unsigned char count = 0;
     do {
         count++;
         number >>= 8;
@@ -84,7 +84,7 @@ int get_needed_bytes(long int number) {
     return count;
 }
 
-void save_compression(unsigned long long int val, int digits) {
+void save_compression(unsigned long long int val, unsigned char digits) {
 	unsigned int index, max;
 	int i; /* !! must be signed, because of the check 'i>=0' */
 
@@ -150,9 +150,13 @@ int main(void) {
     //     position++;
     // }
     *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[0];
+    position++;
     *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[1];
+    position++;
     *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[2];
+    position++;
     *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = header.magic[3];
+    position++;
 
     save_compression(header.width, 4);
     save_compression(header.height, 4);
