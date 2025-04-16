@@ -10,7 +10,7 @@ CC=$(TOOLCHAIN_PREFIX)gcc
 RM = rm -rf
 MKDIR = mkdir
 
-ARCHITECTURE = rv32i_zicsr
+ARCHITECTURE = rv32i
 ABI = ilp32
 
 CFLAGS = -c -O0 -march=$(ARCHITECTURE) -mabi=$(ABI) -ffreestanding --std=c99
