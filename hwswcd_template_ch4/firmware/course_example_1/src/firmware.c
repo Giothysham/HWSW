@@ -1,5 +1,5 @@
 #include "tcnt.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 #define C_WIDTH 8
 #define C_HEIGHT 8
@@ -93,8 +93,8 @@ void save_compression(unsigned long long int val, int digits) {
 	for (i = max-8; i >= 0; i -= 8) {
         index = (val) >> i;
         index = index & 0xFF;
-        printf("%02X ", index);
-		//*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
+        //printf("%02X ", index);
+		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
 		position++;
 	}
 }
