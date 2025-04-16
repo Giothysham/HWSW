@@ -20,7 +20,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0xa54
+.text           0x00000000      0xa84
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
@@ -32,16 +32,16 @@ Linker script and memory map
                 0x00000244                TCNT_stop
                 0x00000258                TCNT_start_div8
                 0x00000280                TCNT_start_div16
- .text          0x000002a8      0x7ac build/firmware.o
+ .text          0x000002a8      0x7dc build/firmware.o
                 0x000002a8                irq_handler
                 0x000002cc                initialise
                 0x000003e0                Multiply
                 0x00000418                get_needed_bytes
                 0x0000044c                save_compression
-                0x000004b8                HashFunction
-                0x00000538                closest_difference
-                0x00000544                main
- .text          0x00000a54        0x0 build/start.o
+                0x000004b4                HashFunction
+                0x00000534                closest_difference
+                0x00000540                main
+ .text          0x00000a84        0x0 build/start.o
 
 .data           0x00002000       0x10
                 0x00000000                        . = 0x0
@@ -51,23 +51,22 @@ Linker script and memory map
                 0x00002000                header
  .data          0x00002010        0x0 build/start.o
 
-.bss            0x00002010      0x400
+.bss            0x00002010        0x0
  .bss           0x00002010        0x0 build/tcnt.o
- .bss           0x00002010      0x400 build/firmware.o
-                0x00002010                compressed_image
- .bss           0x00002410        0x0 build/start.o
+ .bss           0x00002010        0x0 build/firmware.o
+ .bss           0x00002010        0x0 build/start.o
 
-.sbss           0x00002410        0x5
- .sbss          0x00002410        0x5 build/firmware.o
-                0x00002410                bool
-                0x00002414                position
+.sbss           0x00002010        0x5
+ .sbss          0x00002010        0x5 build/firmware.o
+                0x00002010                bool
+                0x00002014                position
 
-.rodata         0x00002415     0x1003
+.rodata         0x00002015     0x1003
                 0x00001000                        . = 0x1000
- *fill*         0x00002415     0x1000 
+ *fill*         0x00002015     0x1000 
  *(.rodata)
-                0x00003418                        . = ALIGN (0x4)
- *fill*         0x00003415        0x3 
+                0x00003018                        . = ALIGN (0x4)
+ *fill*         0x00003015        0x3 
  FILL mask 0xff
 
 /DISCARD/
