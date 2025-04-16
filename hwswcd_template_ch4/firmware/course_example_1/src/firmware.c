@@ -94,7 +94,10 @@ void save_compression(unsigned long long int val, int digits) {
         index = val >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
-		*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
+        for (int i= 0; i<20; i++) {
+           int a = 0;
+        }
+		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = index; // + position after ADDR
 		position++;
 	}
 }
@@ -144,15 +147,14 @@ int main(void) {
         running_array[i] = 0;
     }
     
-    // for(int i=0;i<4;i++) {
-    //     printf("%02X ", header.magic[i]);
-    //     //*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
-    //     position++;
-    // }
-    *((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[0];
-    *((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[1];
-    *((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[2];
-    *((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[3];
+    for(int i=0;i<4;i++) {
+        //printf("%02X ", header.magic[i]);
+        for (int i= 0; i<20; i++) {
+            int a = 0;
+         }
+        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
+        position++;
+    }
 
     save_compression(header.width, 4);
     save_compression(header.height, 4);
