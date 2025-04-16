@@ -120,47 +120,45 @@ Disassembly of section .text:
  1b0:	00000117          	auipc	sp,0x0
  1b4:	e6010113          	addi	sp,sp,-416 # 10 <trap_vector>
  1b8:	30511073          	csrrw	zero,mtvec,sp
- 1bc:	30045073          	csrrwi	zero,mstatus,8
- 1c0:	fff00113          	addi	sp,zero,-1
- 1c4:	30411073          	csrrw	zero,mie,sp
- 1c8:	330000ef          	jal	ra,4f8 <main>
- 1cc:	00100073          	ebreak
- 1d0:	328000ef          	jal	ra,4f8 <main>
- 1d4:	0540006f          	jal	zero,228 <done>
+ 1bc:	33c000ef          	jal	ra,4f8 <main>
+ 1c0:	00100073          	ebreak
+ 1c4:	334000ef          	jal	ra,4f8 <main>
+ 1c8:	0540006f          	jal	zero,21c <done>
 
-000001d8 <sw_mult>:
- 1d8:	ff410113          	addi	sp,sp,-12
- 1dc:	00112023          	sw	ra,0(sp)
- 1e0:	00512223          	sw	t0,4(sp)
- 1e4:	00612423          	sw	t1,8(sp)
- 1e8:	00051463          	bne	a0,zero,1f0 <sw_mult_init>
- 1ec:	0280006f          	jal	zero,214 <sw_mult_exit>
+000001cc <sw_mult>:
+ 1cc:	ff410113          	addi	sp,sp,-12
+ 1d0:	00112023          	sw	ra,0(sp)
+ 1d4:	00512223          	sw	t0,4(sp)
+ 1d8:	00612423          	sw	t1,8(sp)
+ 1dc:	00051463          	bne	a0,zero,1e4 <sw_mult_init>
+ 1e0:	0280006f          	jal	zero,208 <sw_mult_exit>
 
-000001f0 <sw_mult_init>:
- 1f0:	00058333          	add	t1,a1,zero
- 1f4:	fff50293          	addi	t0,a0,-1
- 1f8:	00029663          	bne	t0,zero,204 <sw_mult_loop>
- 1fc:	00058533          	add	a0,a1,zero
- 200:	0140006f          	jal	zero,214 <sw_mult_exit>
+000001e4 <sw_mult_init>:
+ 1e4:	00058333          	add	t1,a1,zero
+ 1e8:	fff50293          	addi	t0,a0,-1
+ 1ec:	00029663          	bne	t0,zero,1f8 <sw_mult_loop>
+ 1f0:	00058533          	add	a0,a1,zero
+ 1f4:	0140006f          	jal	zero,208 <sw_mult_exit>
 
-00000204 <sw_mult_loop>:
- 204:	00b30333          	add	t1,t1,a1
- 208:	fff28293          	addi	t0,t0,-1
- 20c:	fe029ce3          	bne	t0,zero,204 <sw_mult_loop>
- 210:	00030533          	add	a0,t1,zero
+000001f8 <sw_mult_loop>:
+ 1f8:	00b30333          	add	t1,t1,a1
+ 1fc:	fff28293          	addi	t0,t0,-1
+ 200:	fe029ce3          	bne	t0,zero,1f8 <sw_mult_loop>
+ 204:	00030533          	add	a0,t1,zero
 
-00000214 <sw_mult_exit>:
- 214:	00012083          	lw	ra,0(sp)
- 218:	00412283          	lw	t0,4(sp)
- 21c:	00812303          	lw	t1,8(sp)
- 220:	00c10113          	addi	sp,sp,12
- 224:	00008067          	jalr	zero,0(ra)
+00000208 <sw_mult_exit>:
+ 208:	00012083          	lw	ra,0(sp)
+ 20c:	00412283          	lw	t0,4(sp)
+ 210:	00812303          	lw	t1,8(sp)
+ 214:	00c10113          	addi	sp,sp,12
+ 218:	00008067          	jalr	zero,0(ra)
 
-00000228 <done>:
- 228:	0000006f          	jal	zero,228 <done>
+0000021c <done>:
+ 21c:	0000006f          	jal	zero,21c <done>
 
-0000022c <error>:
- 22c:	0000006f          	jal	zero,22c <error>
+00000220 <error>:
+ 220:	0000006f          	jal	zero,220 <error>
+	...
 
 00000230 <irq_handler>:
  230:	00457513          	andi	a0,a0,4
