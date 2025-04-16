@@ -87,6 +87,7 @@ unsigned char get_needed_bytes(unsigned long long int number) {
 void save_compression(unsigned long long int val, unsigned char digits) {
 	unsigned int index, max;
 	int i; /* !! must be signed, because of the check 'i>=0' */
+    char x;
 
 	max = digits << 3;
 
@@ -94,7 +95,10 @@ void save_compression(unsigned long long int val, unsigned char digits) {
         index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
-		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = index; // + position after ADDR
+        x = "0123456789ABCDEF"[index >> 4];
+        *((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = x;
+        x = "0123456789ABCDEF"[index & 0xF];
+		*((volatile unsigned char*) (COMPRESSED_IMAGE_DEST_ADDR + position)) = x; // + position after ADDR
 		position++;
 	}
 }
