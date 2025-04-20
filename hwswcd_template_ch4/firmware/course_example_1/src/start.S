@@ -115,8 +115,8 @@ do_reset:
     addi x31, x0, 0
 
     /* set stack pointer */
-    lui x2, %hi(4*1024-32)
-    addi x2, x2, %lo(4*1024-32)
+    //lui x2, %hi(4*1024-32)
+    //addi x2, x2, %lo(4*1024-32)
 
     /* set gp and tp */
     lui gp, %hi(0xdeadbeef)
