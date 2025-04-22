@@ -494,7 +494,7 @@ Disassembly of section .text:
  6f8:	01412e83          	lw	t4,20(sp)
  6fc:	00400f13          	addi	t5,zero,4
  700:	ff800793          	addi	a5,zero,-8
- 704:	2e8f8863          	beq	t6,s0,9f4 <main+0x4f0>
+ 704:	308f8463          	beq	t6,s0,a0c <main+0x508>
  708:	40970733          	sub	a4,a4,s1
  70c:	00270513          	addi	a0,a4,2
  710:	410585b3          	sub	a1,a1,a6
@@ -514,7 +514,7 @@ Disassembly of section .text:
  748:	ffe00813          	addi	a6,zero,-2
  74c:	1b05c663          	blt	a1,a6,8f8 <main+0x3f4>
  750:	00100893          	addi	a7,zero,1
- 754:	2ab8da63          	bge	a7,a1,a08 <main+0x504>
+ 754:	2cb8d663          	bge	a7,a1,a20 <main+0x51c>
  758:	02050593          	addi	a1,a0,32
  75c:	0ff5f593          	andi	a1,a1,255
  760:	03f00813          	addi	a6,zero,63
@@ -524,7 +524,7 @@ Disassembly of section .text:
  770:	00f54863          	blt	a0,a5,780 <main+0x27c>
  774:	40b60633          	sub	a2,a2,a1
  778:	ffc00713          	addi	a4,zero,-4
- 77c:	28e65e63          	bge	a2,a4,a18 <main+0x514>
+ 77c:	2ae65a63          	bge	a2,a4,a30 <main+0x52c>
  780:	fe000737          	lui	a4,0xfe000
  784:	00e465b3          	or	a1,s0,a4
  788:	01800693          	addi	a3,zero,24
@@ -660,85 +660,91 @@ Disassembly of section .text:
  990:	0007a023          	sw	zero,0(a5) # 80000000 <header+0x7fffe000>
  994:	00100713          	addi	a4,zero,1
  998:	00e7a023          	sw	a4,0(a5)
- 99c:	0007a023          	sw	zero,0(a5)
+ 99c:	00200713          	addi	a4,zero,2
  9a0:	00e7a023          	sw	a4,0(a5)
- 9a4:	0007a023          	sw	zero,0(a5)
+ 9a4:	00300713          	addi	a4,zero,3
  9a8:	00e7a023          	sw	a4,0(a5)
- 9ac:	25c12083          	lw	ra,604(sp)
- 9b0:	25812403          	lw	s0,600(sp)
- 9b4:	0007a023          	sw	zero,0(a5)
+ 9ac:	00400713          	addi	a4,zero,4
+ 9b0:	00e7a023          	sw	a4,0(a5)
+ 9b4:	00500713          	addi	a4,zero,5
  9b8:	00e7a023          	sw	a4,0(a5)
- 9bc:	25412483          	lw	s1,596(sp)
- 9c0:	25012903          	lw	s2,592(sp)
- 9c4:	24c12983          	lw	s3,588(sp)
- 9c8:	24812a03          	lw	s4,584(sp)
- 9cc:	24412a83          	lw	s5,580(sp)
- 9d0:	24012b03          	lw	s6,576(sp)
- 9d4:	23c12b83          	lw	s7,572(sp)
- 9d8:	23812c03          	lw	s8,568(sp)
- 9dc:	23412c83          	lw	s9,564(sp)
- 9e0:	23012d03          	lw	s10,560(sp)
- 9e4:	22c12d83          	lw	s11,556(sp)
- 9e8:	00000513          	addi	a0,zero,0
- 9ec:	26010113          	addi	sp,sp,608
- 9f0:	00008067          	jalr	zero,0(ra)
- 9f4:	00aba023          	sw	a0,0(s7)
- 9f8:	00094703          	lbu	a4,0(s2)
- 9fc:	000b4583          	lbu	a1,0(s6)
- a00:	000a4603          	lbu	a2,0(s4)
- a04:	db9ff06f          	jal	zero,7bc <main+0x2b8>
- a08:	01064c63          	blt	a2,a6,a20 <main+0x51c>
- a0c:	08c8d663          	bge	a7,a2,a98 <main+0x594>
- a10:	40b70533          	sub	a0,a4,a1
- a14:	40b30633          	sub	a2,t1,a1
- a18:	d6cf44e3          	blt	t5,a2,780 <main+0x27c>
- a1c:	0140006f          	jal	zero,a30 <main+0x52c>
- a20:	40b60633          	sub	a2,a2,a1
- a24:	ffc00513          	addi	a0,zero,-4
- a28:	d4a64ce3          	blt	a2,a0,780 <main+0x27c>
- a2c:	40b70533          	sub	a0,a4,a1
- a30:	01c12703          	lw	a4,28(sp)
- a34:	d4e696e3          	bne	a3,a4,780 <main+0x27c>
- a38:	00850693          	addi	a3,a0,8
- a3c:	02058713          	addi	a4,a1,32
- a40:	00469693          	slli	a3,a3,0x4
- a44:	00871713          	slli	a4,a4,0x8
- a48:	00d76733          	or	a4,a4,a3
- a4c:	00860613          	addi	a2,a2,8
- a50:	000086b7          	lui	a3,0x8
- a54:	00c76733          	or	a4,a4,a2
- a58:	00d76733          	or	a4,a4,a3
- a5c:	41f75813          	srai	a6,a4,0x1f
- a60:	00800693          	addi	a3,zero,8
- a64:	00800513          	addi	a0,zero,8
- a68:	0080006f          	jal	zero,a70 <main+0x56c>
- a6c:	00000693          	addi	a3,zero,0
- a70:	01f00893          	addi	a7,zero,31
- a74:	40d888b3          	sub	a7,a7,a3
- a78:	00181593          	slli	a1,a6,0x1
- a7c:	00d75633          	srl	a2,a4,a3
- a80:	011595b3          	sll	a1,a1,a7
- a84:	00c5e633          	or	a2,a1,a2
- a88:	0ff67613          	andi	a2,a2,255
- a8c:	00cba023          	sw	a2,0(s7)
- a90:	fca68ee3          	beq	a3,a0,a6c <main+0x568>
- a94:	d1dff06f          	jal	zero,7b0 <main+0x2ac>
- a98:	01c12503          	lw	a0,28(sp)
- a9c:	cea692e3          	bne	a3,a0,780 <main+0x27c>
- aa0:	00270713          	addi	a4,a4,2
- aa4:	00258593          	addi	a1,a1,2
- aa8:	00259593          	slli	a1,a1,0x2
- aac:	00471713          	slli	a4,a4,0x4
- ab0:	00b76733          	or	a4,a4,a1
- ab4:	00260613          	addi	a2,a2,2
- ab8:	00c76733          	or	a4,a4,a2
- abc:	04076713          	ori	a4,a4,64
- ac0:	800006b7          	lui	a3,0x80000
- ac4:	00e6a023          	sw	a4,0(a3) # 80000000 <header+0x7fffe000>
- ac8:	00094703          	lbu	a4,0(s2)
- acc:	000b4583          	lbu	a1,0(s6)
- ad0:	000a4603          	lbu	a2,0(s4)
- ad4:	ce9ff06f          	jal	zero,7bc <main+0x2b8>
+ 9bc:	25c12083          	lw	ra,604(sp)
+ 9c0:	25812403          	lw	s0,600(sp)
+ 9c4:	00600713          	addi	a4,zero,6
+ 9c8:	00e7a023          	sw	a4,0(a5)
+ 9cc:	00700713          	addi	a4,zero,7
+ 9d0:	00e7a023          	sw	a4,0(a5)
+ 9d4:	25412483          	lw	s1,596(sp)
+ 9d8:	25012903          	lw	s2,592(sp)
+ 9dc:	24c12983          	lw	s3,588(sp)
+ 9e0:	24812a03          	lw	s4,584(sp)
+ 9e4:	24412a83          	lw	s5,580(sp)
+ 9e8:	24012b03          	lw	s6,576(sp)
+ 9ec:	23c12b83          	lw	s7,572(sp)
+ 9f0:	23812c03          	lw	s8,568(sp)
+ 9f4:	23412c83          	lw	s9,564(sp)
+ 9f8:	23012d03          	lw	s10,560(sp)
+ 9fc:	22c12d83          	lw	s11,556(sp)
+ a00:	00000513          	addi	a0,zero,0
+ a04:	26010113          	addi	sp,sp,608
+ a08:	00008067          	jalr	zero,0(ra)
+ a0c:	00aba023          	sw	a0,0(s7)
+ a10:	00094703          	lbu	a4,0(s2)
+ a14:	000b4583          	lbu	a1,0(s6)
+ a18:	000a4603          	lbu	a2,0(s4)
+ a1c:	da1ff06f          	jal	zero,7bc <main+0x2b8>
+ a20:	01064c63          	blt	a2,a6,a38 <main+0x534>
+ a24:	08c8d663          	bge	a7,a2,ab0 <main+0x5ac>
+ a28:	40b70533          	sub	a0,a4,a1
+ a2c:	40b30633          	sub	a2,t1,a1
+ a30:	d4cf48e3          	blt	t5,a2,780 <main+0x27c>
+ a34:	0140006f          	jal	zero,a48 <main+0x544>
+ a38:	40b60633          	sub	a2,a2,a1
+ a3c:	ffc00513          	addi	a0,zero,-4
+ a40:	d4a640e3          	blt	a2,a0,780 <main+0x27c>
+ a44:	40b70533          	sub	a0,a4,a1
+ a48:	01c12703          	lw	a4,28(sp)
+ a4c:	d2e69ae3          	bne	a3,a4,780 <main+0x27c>
+ a50:	00850693          	addi	a3,a0,8
+ a54:	02058713          	addi	a4,a1,32
+ a58:	00469693          	slli	a3,a3,0x4
+ a5c:	00871713          	slli	a4,a4,0x8
+ a60:	00d76733          	or	a4,a4,a3
+ a64:	00860613          	addi	a2,a2,8
+ a68:	000086b7          	lui	a3,0x8
+ a6c:	00c76733          	or	a4,a4,a2
+ a70:	00d76733          	or	a4,a4,a3
+ a74:	41f75813          	srai	a6,a4,0x1f
+ a78:	00800693          	addi	a3,zero,8
+ a7c:	00800513          	addi	a0,zero,8
+ a80:	0080006f          	jal	zero,a88 <main+0x584>
+ a84:	00000693          	addi	a3,zero,0
+ a88:	01f00893          	addi	a7,zero,31
+ a8c:	40d888b3          	sub	a7,a7,a3
+ a90:	00181593          	slli	a1,a6,0x1
+ a94:	00d75633          	srl	a2,a4,a3
+ a98:	011595b3          	sll	a1,a1,a7
+ a9c:	00c5e633          	or	a2,a1,a2
+ aa0:	0ff67613          	andi	a2,a2,255
+ aa4:	00cba023          	sw	a2,0(s7)
+ aa8:	fca68ee3          	beq	a3,a0,a84 <main+0x580>
+ aac:	d05ff06f          	jal	zero,7b0 <main+0x2ac>
+ ab0:	01c12503          	lw	a0,28(sp)
+ ab4:	cca696e3          	bne	a3,a0,780 <main+0x27c>
+ ab8:	00270713          	addi	a4,a4,2
+ abc:	00258593          	addi	a1,a1,2
+ ac0:	00259593          	slli	a1,a1,0x2
+ ac4:	00471713          	slli	a4,a4,0x4
+ ac8:	00b76733          	or	a4,a4,a1
+ acc:	00260613          	addi	a2,a2,2
+ ad0:	00c76733          	or	a4,a4,a2
+ ad4:	04076713          	ori	a4,a4,64
+ ad8:	800006b7          	lui	a3,0x80000
+ adc:	00e6a023          	sw	a4,0(a3) # 80000000 <header+0x7fffe000>
+ ae0:	00094703          	lbu	a4,0(s2)
+ ae4:	000b4583          	lbu	a1,0(s6)
+ ae8:	000a4603          	lbu	a2,0(s4)
+ aec:	cd1ff06f          	jal	zero,7bc <main+0x2b8>
 
 Disassembly of section .data:
 
