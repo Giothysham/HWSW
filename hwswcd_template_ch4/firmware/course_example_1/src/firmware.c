@@ -226,22 +226,8 @@ int main(void) {
         rle = -1;
     }
 
-    int i = 0;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x00;
-    i++;
-    LED = 0x01;
+    LED = 0x00000000;
+    LED = 0x00000001;
 
     return 0;
 }
