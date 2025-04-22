@@ -152,7 +152,7 @@ int main(void) {
     save_compression(header.height, 4);
 
     LED = header.channels;
-    LED = header.colorspace;
+    LED = 0x00;
     // save_compression(header.channels, 1);
     // save_compression(header.colorspace, 1);
 
