@@ -11,10 +11,6 @@
 #define C_WIDTH 8
 #define C_HEIGHT 8
 
-#define COMPRESSED_IMAGE_SIZE 1024
-
-unsigned char compressed_image[COMPRESSED_IMAGE_SIZE];
-
 struct qoi_header {
     char     magic[4];       // magic bytes "qoif"
     unsigned int width;      // image width in pixels (BE)
@@ -32,8 +28,6 @@ struct qoi_header header = {
     .channels = 3,
     .colorspace = 0
 };
-
-unsigned char position = 0;
 
 void irq_handler(unsigned int cause) {
 
@@ -97,9 +91,7 @@ void save_compression(unsigned long long int val, unsigned char digits) {
         index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
-		compressed_image[position] = index; // + position after ADDR
-        LED = compressed_image[position]; // + position after ADDR
-		position++;
+        LED = index;
 	}
 }
 
@@ -112,12 +104,6 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
     return diff;
 }
 
-void print_compressed_image() {
-    for(int i=0;i<position;i++) {
-        LED = compressed_image[i]; // + position after ADDR
-        //printf("%02X ", compressed_image[i]);
-    }
-}
 
 int main(void) {
 
@@ -160,9 +146,7 @@ int main(void) {
     for(int i=0;i<4;i++) {
         //printf("%02X ", header.magic[i]);
         //*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
-        compressed_image[position] = header.magic[i];
-        LED = compressed_image[position]; // + position after ADDR
-        position++;
+        LED = index;
     }
 
     save_compression(header.width, 4);
@@ -245,8 +229,6 @@ int main(void) {
 
     unsigned long long int ending = 1;
     save_compression(ending, 8);
-
-    //print_compressed_image();
 
     return 0;
 }
