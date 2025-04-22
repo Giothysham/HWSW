@@ -203,7 +203,7 @@ int main(void) {
                             save_compression(result, 5);
                         }
                         else{
-                            unsigned long long int result = 0xFE00000000 | value;
+                            unsigned long long int result = 0xFE000000 | value;
                             save_compression(result, 4);
                         }
                         
