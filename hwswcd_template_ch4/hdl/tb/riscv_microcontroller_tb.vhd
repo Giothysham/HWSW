@@ -31,6 +31,7 @@ architecture Behavioural of riscv_microcontroller_tb is
     signal sys_reset : STD_LOGIC;
     signal external_irq : STD_LOGIC;
     signal gpio_leds : STD_LOGIC_VECTOR(3 downto 0);
+    signal riscv_clock : std_logic;
 
     -- constants
     constant C_ZEROES: STD_LOGIC_VECTOR(G_DATA_WIDTH-1 downto 0) := (others => '0');
@@ -63,7 +64,8 @@ begin
         gpio_leds => gpio_leds,
         dmem_we_out => dmem_we,
         dmem_a_out => dmem_ad,
-        dmem_di_out => dmem_di
+        dmem_di_out => dmem_di,
+        riscv_clock => riscv_clock
     );
 
 
@@ -99,7 +101,7 @@ begin
         G_DATA_WIDTH => G_DATA_WIDTH,
         FNAME_OUT_FILE => FNAME_OUT_FILE
     ) port map(
-        clock => sys_clock,
+        clock => riscv_clock,
         reset => sys_reset,
         di => dmem_di,
         ad => dmem_ad,

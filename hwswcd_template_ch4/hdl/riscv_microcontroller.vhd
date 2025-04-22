@@ -21,6 +21,7 @@ entity riscv_microcontroller is
         sys_clock : in STD_LOGIC;
         sys_reset : in STD_LOGIC;
         external_irq : in STD_LOGIC;
+        riscv_clock : out std_logic;
         gpio_leds : out STD_LOGIC_VECTOR(3 downto 0);
         dmem_we_out : out STD_LOGIC;
         dmem_a_out : out STD_LOGIC_VECTOR(31 downto 0);
@@ -80,6 +81,8 @@ begin
     dmem_we_out <= dmem_we;
     dmem_a_out <= dmem_a;
     dmem_di_out <= dmem_di;
+    
+    riscv_clock <= ce(0);
 
 
     -------------------------------------------------------------------------------
