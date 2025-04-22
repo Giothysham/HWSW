@@ -142,13 +142,12 @@ int main(void) {
     for(int i=0;i<64;i++) {
         running_array[i] = 0;
     }
-    
-    for(int i=0;i<4;i++) {
-        //printf("%02X ", header.magic[i]);
-        //*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
-        LED = index;
-    }
 
+    save_compression(header.magic[0], 1);
+    save_compression(header.magic[1], 1);
+    save_compression(header.magic[2], 1);
+    save_compression(header.magic[3], 1);
+    
     save_compression(header.width, 4);
     save_compression(header.height, 4);
     save_compression(header.channels, 1);
