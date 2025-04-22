@@ -227,11 +227,11 @@ int main(void) {
     }
 
     LED = 0x00;
+    LED = 0x01;
     LED = 0x00;
+    LED = 0x01;
     LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
+    LED = 0x01;
     LED = 0x00;
     LED = 0x01;
 
