@@ -425,13 +425,13 @@ Disassembly of section .text:
  5e4:	00f62023          	sw	a5,0(a2) # 80000000 <header+0x7fffe000>
  5e8:	ff870713          	addi	a4,a4,-8
  5ec:	feb712e3          	bne	a4,a1,5d0 <main+0xcc>
- 5f0:	00d84783          	lbu	a5,13(a6)
- 5f4:	00c84f83          	lbu	t6,12(a6)
+ 5f0:	00c84f83          	lbu	t6,12(a6)
+ 5f4:	00d84783          	lbu	a5,13(a6)
  5f8:	fff00d93          	addi	s11,zero,-1
- 5fc:	00f62023          	sw	a5,0(a2)
- 600:	00000913          	addi	s2,zero,0
- 604:	00800593          	addi	a1,zero,8
- 608:	01f62023          	sw	t6,0(a2)
+ 5fc:	01f62023          	sw	t6,0(a2)
+ 600:	00f62023          	sw	a5,0(a2)
+ 604:	00000913          	addi	s2,zero,0
+ 608:	00800593          	addi	a1,zero,8
  60c:	0ff00793          	addi	a5,zero,255
  610:	00000a93          	addi	s5,zero,0
  614:	00000c13          	addi	s8,zero,0
@@ -749,4 +749,4 @@ Disassembly of section .data:
     2006:	0000                	.insn	2, 0x
     2008:	0008                	.insn	2, 0x0008
     200a:	0000                	.insn	2, 0x
-    200c:	00000003          	lb	zero,0(zero) # 0 <start>
+    200c:	00005503          	lhu	a0,0(zero) # 0 <start>
