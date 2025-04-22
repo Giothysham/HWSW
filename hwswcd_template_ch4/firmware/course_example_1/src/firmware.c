@@ -227,7 +227,8 @@ int main(void) {
     }
 
     unsigned long long int ending = 1;
-    save_compression(ending, 8);
+    save_compression(0,4);
+    save_compression(ending, 4);
 
     return 0;
 }
