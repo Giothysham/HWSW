@@ -426,7 +426,7 @@ Disassembly of section .text:
  5e8:	ff870713          	addi	a4,a4,-8
  5ec:	feb712e3          	bne	a4,a1,5d0 <main+0xcc>
  5f0:	00c84f83          	lbu	t6,12(a6)
- 5f4:	00d84783          	lbu	a5,13(a6)
+ 5f4:	05500793          	addi	a5,zero,85
  5f8:	fff00d93          	addi	s11,zero,-1
  5fc:	01f62023          	sw	t6,0(a2)
  600:	00f62023          	sw	a5,0(a2)
@@ -749,4 +749,4 @@ Disassembly of section .data:
     2006:	0000                	.insn	2, 0x
     2008:	0008                	.insn	2, 0x0008
     200a:	0000                	.insn	2, 0x
-    200c:	00005503          	lhu	a0,0(zero) # 0 <start>
+    200c:	00006603          	.insn	4, 0x6603
