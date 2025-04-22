@@ -227,9 +227,9 @@ int main(void) {
     }
 
     LED = 0x00;
-    LED = 0x01;
-    LED = 0x02;
-    LED = 0x03;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
     LED = 0x04;
     LED = 0x05;
     LED = 0x06;
