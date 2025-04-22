@@ -143,10 +143,10 @@ int main(void) {
         running_array[i] = 0;
     }
 
-    save_compression(header.magic[0], 1);
-    save_compression(header.magic[1], 1);
-    save_compression(header.magic[2], 1);
-    save_compression(header.magic[3], 1);
+    LED = 0x71;
+    LED = 0x6F;
+    LED = 0x69;
+    LED = 0x66;
     
     save_compression(header.width, 4);
     save_compression(header.height, 4);
@@ -227,8 +227,7 @@ int main(void) {
     }
 
     unsigned long long int ending = 1;
-    save_compression(0,4);
-    save_compression(ending, 4);
+    save_compression(ending, 8);
 
     return 0;
 }
