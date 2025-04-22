@@ -98,7 +98,7 @@ void save_compression(unsigned long long int val, unsigned char digits) {
         index = index & 0xFF;
         //printf("%02X ", index);
 		compressed_image[position] = index; // + position after ADDR
-        //LED = compressed_image[position]; // + position after ADDR
+        LED = compressed_image[position]; // + position after ADDR
 		position++;
 	}
 }
@@ -161,7 +161,7 @@ int main(void) {
         //printf("%02X ", header.magic[i]);
         //*((volatile unsigned int*) (COMPRESSED_IMAGE_DEST_ADDR)) = header.magic[i]; // + position after ADDR
         compressed_image[position] = header.magic[i];
-        //LED = compressed_image[position]; // + position after ADDR
+        LED = compressed_image[position]; // + position after ADDR
         position++;
     }
 
@@ -246,7 +246,7 @@ int main(void) {
     unsigned long long int ending = 1;
     save_compression(ending, 8);
 
-    print_compressed_image();
+    //print_compressed_image();
 
     return 0;
 }
