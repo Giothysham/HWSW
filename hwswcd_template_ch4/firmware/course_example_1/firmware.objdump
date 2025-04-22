@@ -698,7 +698,7 @@ Disassembly of section .text:
  a28:	d4a64ce3          	blt	a2,a0,780 <main+0x27c>
  a2c:	40b70533          	sub	a0,a4,a1
  a30:	01c12703          	lw	a4,28(sp)
- a34:	d4d716e3          	bne	a4,a3,780 <main+0x27c>
+ a34:	d4e696e3          	bne	a3,a4,780 <main+0x27c>
  a38:	00850693          	addi	a3,a0,8
  a3c:	02058713          	addi	a4,a1,32
  a40:	00469693          	slli	a3,a3,0x4
@@ -724,7 +724,7 @@ Disassembly of section .text:
  a90:	fca68ee3          	beq	a3,a0,a6c <main+0x568>
  a94:	d1dff06f          	jal	zero,7b0 <main+0x2ac>
  a98:	01c12503          	lw	a0,28(sp)
- a9c:	ced512e3          	bne	a0,a3,780 <main+0x27c>
+ a9c:	cea692e3          	bne	a3,a0,780 <main+0x27c>
  aa0:	00270713          	addi	a4,a4,2
  aa4:	00258593          	addi	a1,a1,2
  aa8:	00259593          	slli	a1,a1,0x2
