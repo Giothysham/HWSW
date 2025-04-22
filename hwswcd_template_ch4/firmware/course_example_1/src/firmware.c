@@ -226,8 +226,14 @@ int main(void) {
         rle = -1;
     }
 
-    unsigned long long int ending = 1;
-    save_compression(ending, 8);
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x00;
+    LED = 0x01;
 
     return 0;
 }
