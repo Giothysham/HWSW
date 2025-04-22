@@ -25,8 +25,8 @@ struct qoi_header header = {
     .magic = {'q', 'o', 'i', 'f'},
     .width = C_WIDTH,
     .height = C_HEIGHT,
-    .channels = 3,
-    .colorspace = 0
+    .channels = 0x03,
+    .colorspace = 0x55
 };
 
 void irq_handler(unsigned int cause) {
@@ -151,8 +151,8 @@ int main(void) {
     save_compression(header.width, 4);
     save_compression(header.height, 4);
 
-    LED = header.colorspace;
     LED = header.channels;
+    LED = header.colorspace;
     // save_compression(header.channels, 1);
     // save_compression(header.colorspace, 1);
 
