@@ -658,15 +658,15 @@ Disassembly of section .text:
  988:	fcb68ee3          	beq	a3,a1,964 <main+0x460>
  98c:	800007b7          	lui	a5,0x80000
  990:	0007a023          	sw	zero,0(a5) # 80000000 <header+0x7fffe000>
- 994:	0007a023          	sw	zero,0(a5)
- 998:	0007a023          	sw	zero,0(a5)
+ 994:	00100713          	addi	a4,zero,1
+ 998:	00e7a023          	sw	a4,0(a5)
  99c:	0007a023          	sw	zero,0(a5)
- 9a0:	0007a023          	sw	zero,0(a5)
+ 9a0:	00e7a023          	sw	a4,0(a5)
  9a4:	0007a023          	sw	zero,0(a5)
- 9a8:	25c12083          	lw	ra,604(sp)
- 9ac:	25812403          	lw	s0,600(sp)
- 9b0:	0007a023          	sw	zero,0(a5)
- 9b4:	00100713          	addi	a4,zero,1
+ 9a8:	00e7a023          	sw	a4,0(a5)
+ 9ac:	25c12083          	lw	ra,604(sp)
+ 9b0:	25812403          	lw	s0,600(sp)
+ 9b4:	0007a023          	sw	zero,0(a5)
  9b8:	00e7a023          	sw	a4,0(a5)
  9bc:	25412483          	lw	s1,596(sp)
  9c0:	25012903          	lw	s2,592(sp)
