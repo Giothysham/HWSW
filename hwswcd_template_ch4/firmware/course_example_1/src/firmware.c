@@ -26,7 +26,7 @@ struct qoi_header header = {
     .width = C_WIDTH,
     .height = C_HEIGHT,
     .channels = 3,
-    .colorspace = 0
+    .colorspace = 0,
 };
 
 void irq_handler(unsigned int cause) {
