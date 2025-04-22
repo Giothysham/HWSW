@@ -153,6 +153,9 @@ int main(void) {
     LED = header.channels;
     LED = header.colorspace;
 
+    // save_compression(header.channels, 1);
+    // save_compression(header.colorspace, 1);
+
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
         for(unsigned char w=0;w<C_WIDTH;w++) {
