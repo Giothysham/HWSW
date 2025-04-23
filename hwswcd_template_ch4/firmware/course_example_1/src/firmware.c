@@ -25,8 +25,6 @@ int main(void) {
     LED = SENSOR_get_width();
     LED = SENSOR_get_height();
 
-    SENSOR_CR |= SENSOR_CR_RE; // Start the sensor
-
     return 0;
 }
 

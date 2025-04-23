@@ -139,8 +139,6 @@ do_reset:
     lui x2, %hi(4*1024-32)
     addi x2, x2, %lo(4*1024-32)
 
-
-
     /* call main function */
     jal ra, main
 
