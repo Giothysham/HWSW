@@ -143,7 +143,6 @@ do_reset:
     jal ra, main
 
     /* trap */
-    ebreak
 
     j done
 
