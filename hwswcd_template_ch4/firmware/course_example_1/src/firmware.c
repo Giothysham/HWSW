@@ -19,10 +19,12 @@ int main(void) {
 
     LED = SENSOR_fetch();
 
+    LED = 0xaabbccdd;
+
     LED = SENSOR_SR;
 
-    LED = SENSOR_get_width();
-    LED = SENSOR_get_height();
+    // LED = SENSOR_get_width();
+    // LED = SENSOR_get_height();
 
     return 0;
 }
