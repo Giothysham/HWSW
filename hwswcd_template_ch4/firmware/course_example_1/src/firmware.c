@@ -44,8 +44,8 @@ void irq_handler(unsigned int cause) {}
 
 int main(void) {
 
-    unsigned char C_WIDTH = SENSOR_get_width();
-    unsigned char C_HEIGHT = SENSOR_get_height();
+    // unsigned char C_WIDTH = SENSOR_get_width();
+    // unsigned char C_HEIGHT = SENSOR_get_height();
 
     unsigned char r[C_HEIGHT][C_WIDTH];
     unsigned char g[C_HEIGHT][C_WIDTH];
@@ -53,15 +53,15 @@ int main(void) {
     unsigned char a[C_HEIGHT][C_WIDTH];
     
     //initialise(r, g, b, a);
-    // for (unsigned char h = 0; h < C_HEIGHT; h++) {
-    //     for (unsigned char w = 0; w < C_WIDTH; w++) {
-    //         unsigned int pixel = SENSOR_fetch();
-    //         r[h][w] = (pixel >> 24) & 0xFF;
-    //         g[h][w] = (pixel >> 16) & 0xFF;
-    //         b[h][w] = (pixel >> 8)  & 0xFF;
-    //         a[h][w] = (pixel >> 0)  & 0xFF;
-    //     }
-    // }
+    for (unsigned char h = 0; h < C_HEIGHT; h++) {
+        for (unsigned char w = 0; w < C_WIDTH; w++) {
+            unsigned int pixel = SENSOR_fetch();
+            r[h][w] = (pixel >> 24) & 0xFF;
+            g[h][w] = (pixel >> 16) & 0xFF;
+            b[h][w] = (pixel >> 8)  & 0xFF;
+            a[h][w] = (pixel >> 0)  & 0xFF;
+        }
+    }
     
     unsigned char r_prev = 0;
     unsigned char g_prev = 0;
