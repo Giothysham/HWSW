@@ -27,11 +27,11 @@ int main(void) {
 
     number = 0xaabbccdd;
 
-    number = SENSOR_get_width();
+    LED = SENSOR_get_width();
 
     number = 0xbbbbccdd;
 
-    number = SENSOR_get_height();
+    LED = SENSOR_get_height();
 
     return 0;
 }
