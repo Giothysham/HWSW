@@ -22,8 +22,8 @@ int main(void) {
     SENSOR_fetch();
 
 
-    LED = SENSOR_get_width();
-    LED = SENSOR_get_height();
+    // LED = SENSOR_get_width();
+    // LED = SENSOR_get_height();
 
     return 0;
 }
