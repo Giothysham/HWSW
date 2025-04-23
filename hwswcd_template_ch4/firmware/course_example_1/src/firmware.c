@@ -17,21 +17,15 @@ void irq_handler(unsigned int cause) {
 
 int main(void) {
 
-    int number;
+    unsigned char number;
 
-    number = SENSOR_fetch();
+    number = SENSOR_get_width();
 
-    number = 0x00bbccdd;
+    LED = number;
 
-    number = SENSOR_SR;
+    number = SENSOR_get_height();
 
-    number = 0xaabbccdd;
-
-    LED = SENSOR_get_width();
-
-    number = 0xbbbbccdd;
-
-    LED = SENSOR_get_height();
+    LED = number;
 
     return 0;
 }
