@@ -17,7 +17,7 @@ void irq_handler(unsigned int cause) {
 
 int main(void) {
 
-    // LED = SENSOR_fetch();
+    LED = SENSOR_fetch();
 
     LED = SENSOR_SR;
 
