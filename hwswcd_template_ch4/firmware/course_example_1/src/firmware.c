@@ -21,15 +21,15 @@ int main(void) {
 
     // number = SENSOR_fetch();
 
-    number = SENSOR_SR;
+    LED = SENSOR_SR;
 
-    number = 0xaabbccdd;
+    LED = 0xaabbccdd;
 
-    number = SENSOR_get_width();
+    LED = SENSOR_get_width();
 
-    number = 0xbbbbccdd;
+    LED = 0xbbbbccdd;
 
-    number = SENSOR_get_height();
+    LED = SENSOR_get_height();
 
     return 0;
 }
