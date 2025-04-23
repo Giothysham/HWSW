@@ -66,7 +66,6 @@ unsigned char closest_difference(unsigned char current, unsigned char prev) {
     return diff;
 }
 
-
 int main(void) {
 
     unsigned char r_prev = 0;
@@ -154,7 +153,7 @@ int main(void) {
                             save_compression(result, 5);
                         }
                         else{
-                            unsigned long long int result = 0xFE000000 | value;
+                            unsigned long long int result = 0xFE000000 | (value >> 8);
                             save_compression(result, 4);
                         }
                         
@@ -188,20 +187,5 @@ int main(void) {
 
     return 0;
 }
-
-// int main(void) {
-
-//     // unsigned char number;
-
-//     // number = SENSOR_get_width();
-
-//     // LED = number;
-
-//     // number = SENSOR_get_height();
-
-//     // LED = number;
-
-//     return 0;
-// }
 
     
