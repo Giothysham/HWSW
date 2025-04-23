@@ -11,9 +11,7 @@
 
 void irq_handler(unsigned int cause) {
 
-    if (cause & 4) {
-        LED = 0xFFFFFFFF;
-    }
+        LED = 0x00FF00FF;
 
 }
 
