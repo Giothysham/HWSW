@@ -14,8 +14,8 @@
 #define SENSOR_CR_RE                    0x1
 #define SENSOR_SR_FIRST                 0x3
 
-inline unsigned char SENSOR_get_width(void);              
-inline unsigned char SENSOR_get_height(void);             
+unsigned char SENSOR_get_width(void);              
+unsigned char SENSOR_get_height(void);             
 
 unsigned int SENSOR_fetch(void);
 
