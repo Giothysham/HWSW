@@ -44,12 +44,9 @@ void irq_handler(unsigned int cause) {}
 
 int main(void) {
 
-    // unsigned char C_WIDTH = SENSOR_get_width();
-    // unsigned char C_HEIGHT = SENSOR_get_height();
-
-    unsigned char C_WIDTH = 64;
-    unsigned char C_HEIGHT = 64;
-
+    unsigned char C_WIDTH = SENSOR_get_width();
+    unsigned char C_HEIGHT = SENSOR_get_height();
+    
     unsigned char r[C_HEIGHT][C_WIDTH];
     unsigned char g[C_HEIGHT][C_WIDTH];
     unsigned char b[C_HEIGHT][C_WIDTH];
