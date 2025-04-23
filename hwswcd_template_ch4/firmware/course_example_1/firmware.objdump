@@ -43,7 +43,7 @@ Disassembly of section .text:
   84:	07e12823          	sw	t5,112(sp)
   88:	07f12a23          	sw	t6,116(sp)
   8c:	34203573          	csrrc	a0,mcause,zero
-  90:	258000ef          	jal	ra,2e8 <irq_handler>
+  90:	230000ef          	jal	ra,2c0 <irq_handler>
   94:	00012083          	lw	ra,0(sp)
   98:	00412183          	lw	gp,4(sp)
   9c:	00812203          	lw	tp,8(sp)
@@ -110,10 +110,10 @@ Disassembly of section .text:
  188:	00000f13          	addi	t5,zero,0
  18c:	00000f93          	addi	t6,zero,0
  190:	deadc1b7          	lui	gp,0xdeadc
- 194:	eef18193          	addi	gp,gp,-273 # deadbeef <main+0xdeadbbf3>
+ 194:	eef18193          	addi	gp,gp,-273 # deadbeef <main+0xdeadbc1b>
  198:	00018213          	addi	tp,gp,0
  19c:	00001137          	lui	sp,0x1
- 1a0:	00010113          	addi	sp,sp,0 # 1000 <main+0xd04>
+ 1a0:	00010113          	addi	sp,sp,0 # 1000 <main+0xd2c>
  1a4:	34011073          	csrrw	zero,mscratch,sp
  1a8:	00000117          	auipc	sp,0x0
  1ac:	e6810113          	addi	sp,sp,-408 # 10 <trap_vector>
@@ -122,8 +122,8 @@ Disassembly of section .text:
  1b8:	fff00113          	addi	sp,zero,-1
  1bc:	30411073          	csrrw	zero,mie,sp
  1c0:	00001137          	lui	sp,0x1
- 1c4:	fe010113          	addi	sp,sp,-32 # fe0 <main+0xce4>
- 1c8:	134000ef          	jal	ra,2fc <main>
+ 1c4:	fe010113          	addi	sp,sp,-32 # fe0 <main+0xd0c>
+ 1c8:	10c000ef          	jal	ra,2d4 <main>
  1cc:	0540006f          	jal	zero,220 <done>
 
 000001d0 <sw_mult>:
@@ -164,8 +164,8 @@ Disassembly of section .text:
 00000230 <SENSOR_fetch>:
  230:	820007b7          	lui	a5,0x82000
  234:	820006b7          	lui	a3,0x82000
- 238:	0046a503          	lw	a0,4(a3) # 82000004 <main+0x81fffd08>
- 23c:	0007a703          	lw	a4,0(a5) # 82000000 <main+0x81fffd04>
+ 238:	0046a503          	lw	a0,4(a3) # 82000004 <main+0x81fffd30>
+ 23c:	0007a703          	lw	a4,0(a5) # 82000000 <main+0x81fffd2c>
  240:	00176713          	ori	a4,a4,1
  244:	00e7a023          	sw	a4,0(a5)
  248:	0007a703          	lw	a4,0(a5)
@@ -173,81 +173,57 @@ Disassembly of section .text:
  250:	00e7a023          	sw	a4,0(a5)
  254:	00008067          	jalr	zero,0(ra)
 
-00000258 <SENSOR_get_width>:
- 258:	820007b7          	lui	a5,0x82000
- 25c:	0087a503          	lw	a0,8(a5) # 82000008 <main+0x81fffd0c>
- 260:	01055513          	srli	a0,a0,0x10
- 264:	0ff57513          	andi	a0,a0,255
+00000258 <TCNT_start>:
+ 258:	81000737          	lui	a4,0x81000
+ 25c:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffd2c>
+ 260:	0077e793          	ori	a5,a5,7
+ 264:	00f72023          	sw	a5,0(a4)
  268:	00008067          	jalr	zero,0(ra)
 
-0000026c <SENSOR_get_height>:
- 26c:	820007b7          	lui	a5,0x82000
- 270:	0087a503          	lw	a0,8(a5) # 82000008 <main+0x81fffd0c>
- 274:	00855513          	srli	a0,a0,0x8
- 278:	0ff57513          	andi	a0,a0,255
- 27c:	00008067          	jalr	zero,0(ra)
+0000026c <TCNT_start_div8>:
+ 26c:	810007b7          	lui	a5,0x81000
+ 270:	0007a703          	lw	a4,0(a5) # 81000000 <main+0x80fffd2c>
+ 274:	ff877713          	andi	a4,a4,-8
+ 278:	00e7a023          	sw	a4,0(a5)
+ 27c:	0007a703          	lw	a4,0(a5)
+ 280:	00176713          	ori	a4,a4,1
+ 284:	00e7a023          	sw	a4,0(a5)
+ 288:	00008067          	jalr	zero,0(ra)
 
-00000280 <TCNT_start>:
- 280:	81000737          	lui	a4,0x81000
- 284:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffd04>
- 288:	0077e793          	ori	a5,a5,7
- 28c:	00f72023          	sw	a5,0(a4)
- 290:	00008067          	jalr	zero,0(ra)
+0000028c <TCNT_start_div16>:
+ 28c:	810007b7          	lui	a5,0x81000
+ 290:	0007a703          	lw	a4,0(a5) # 81000000 <main+0x80fffd2c>
+ 294:	ff877713          	andi	a4,a4,-8
+ 298:	00e7a023          	sw	a4,0(a5)
+ 29c:	0007a703          	lw	a4,0(a5)
+ 2a0:	00276713          	ori	a4,a4,2
+ 2a4:	00e7a023          	sw	a4,0(a5)
+ 2a8:	00008067          	jalr	zero,0(ra)
 
-00000294 <TCNT_start_div8>:
- 294:	810007b7          	lui	a5,0x81000
- 298:	0007a703          	lw	a4,0(a5) # 81000000 <main+0x80fffd04>
- 29c:	ff877713          	andi	a4,a4,-8
- 2a0:	00e7a023          	sw	a4,0(a5)
- 2a4:	0007a703          	lw	a4,0(a5)
- 2a8:	00176713          	ori	a4,a4,1
- 2ac:	00e7a023          	sw	a4,0(a5)
- 2b0:	00008067          	jalr	zero,0(ra)
+000002ac <TCNT_stop>:
+ 2ac:	81000737          	lui	a4,0x81000
+ 2b0:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffd2c>
+ 2b4:	ff87f793          	andi	a5,a5,-8
+ 2b8:	00f72023          	sw	a5,0(a4)
+ 2bc:	00008067          	jalr	zero,0(ra)
 
-000002b4 <TCNT_start_div16>:
- 2b4:	810007b7          	lui	a5,0x81000
- 2b8:	0007a703          	lw	a4,0(a5) # 81000000 <main+0x80fffd04>
- 2bc:	ff877713          	andi	a4,a4,-8
- 2c0:	00e7a023          	sw	a4,0(a5)
- 2c4:	0007a703          	lw	a4,0(a5)
- 2c8:	00276713          	ori	a4,a4,2
- 2cc:	00e7a023          	sw	a4,0(a5)
+000002c0 <irq_handler>:
+ 2c0:	00ff07b7          	lui	a5,0xff0
+ 2c4:	0ff78793          	addi	a5,a5,255 # ff00ff <main+0xfefe2b>
+ 2c8:	80000737          	lui	a4,0x80000
+ 2cc:	00f72023          	sw	a5,0(a4) # 80000000 <main+0x7ffffd2c>
  2d0:	00008067          	jalr	zero,0(ra)
 
-000002d4 <TCNT_stop>:
- 2d4:	81000737          	lui	a4,0x81000
- 2d8:	00072783          	lw	a5,0(a4) # 81000000 <main+0x80fffd04>
- 2dc:	ff87f793          	andi	a5,a5,-8
- 2e0:	00f72023          	sw	a5,0(a4)
- 2e4:	00008067          	jalr	zero,0(ra)
-
-000002e8 <irq_handler>:
- 2e8:	00ff07b7          	lui	a5,0xff0
- 2ec:	0ff78793          	addi	a5,a5,255 # ff00ff <main+0xfefe03>
- 2f0:	80000737          	lui	a4,0x80000
- 2f4:	00f72023          	sw	a5,0(a4) # 80000000 <main+0x7ffffd04>
- 2f8:	00008067          	jalr	zero,0(ra)
-
-000002fc <main>:
- 2fc:	820007b7          	lui	a5,0x82000
- 300:	0087a683          	lw	a3,8(a5) # 82000008 <main+0x81fffd0c>
- 304:	ff010113          	addi	sp,sp,-16
- 308:	00112623          	sw	ra,12(sp)
- 30c:	00812423          	sw	s0,8(sp)
- 310:	aabbd737          	lui	a4,0xaabbd
- 314:	80000437          	lui	s0,0x80000
- 318:	00d42023          	sw	a3,0(s0) # 80000000 <main+0x7ffffd04>
- 31c:	cdd70713          	addi	a4,a4,-803 # aabbccdd <main+0xaabbc9e1>
- 320:	00e42023          	sw	a4,0(s0)
- 324:	f35ff0ef          	jal	ra,258 <SENSOR_get_width>
- 328:	bbbbd7b7          	lui	a5,0xbbbbd
- 32c:	00a42023          	sw	a0,0(s0)
- 330:	cdd78793          	addi	a5,a5,-803 # bbbbccdd <main+0xbbbbc9e1>
- 334:	00f42023          	sw	a5,0(s0)
- 338:	f35ff0ef          	jal	ra,26c <SENSOR_get_height>
- 33c:	00a42023          	sw	a0,0(s0)
- 340:	00c12083          	lw	ra,12(sp)
- 344:	00812403          	lw	s0,8(sp)
- 348:	00000513          	addi	a0,zero,0
- 34c:	01010113          	addi	sp,sp,16
- 350:	00008067          	jalr	zero,0(ra)
+000002d4 <main>:
+ 2d4:	ff010113          	addi	sp,sp,-16
+ 2d8:	00112623          	sw	ra,12(sp)
+ 2dc:	f55ff0ef          	jal	ra,230 <SENSOR_fetch>
+ 2e0:	820007b7          	lui	a5,0x82000
+ 2e4:	00c12083          	lw	ra,12(sp)
+ 2e8:	0087a703          	lw	a4,8(a5) # 82000008 <main+0x81fffd34>
+ 2ec:	0087a703          	lw	a4,8(a5)
+ 2f0:	00878793          	addi	a5,a5,8
+ 2f4:	0007a783          	lw	a5,0(a5)
+ 2f8:	00000513          	addi	a0,zero,0
+ 2fc:	01010113          	addi	sp,sp,16
+ 300:	00008067          	jalr	zero,0(ra)
