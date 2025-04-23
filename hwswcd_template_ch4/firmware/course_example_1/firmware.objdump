@@ -230,13 +230,24 @@ Disassembly of section .text:
 
 000002fc <main>:
  2fc:	820007b7          	lui	a5,0x82000
- 300:	00878793          	addi	a5,a5,8 # 82000008 <main+0x81fffd0c>
- 304:	0007a783          	lw	a5,0(a5)
- 308:	ff010113          	addi	sp,sp,-16
- 30c:	00112623          	sw	ra,12(sp)
- 310:	f49ff0ef          	jal	ra,258 <SENSOR_get_width>
- 314:	f59ff0ef          	jal	ra,26c <SENSOR_get_height>
- 318:	00c12083          	lw	ra,12(sp)
- 31c:	00000513          	addi	a0,zero,0
- 320:	01010113          	addi	sp,sp,16
- 324:	00008067          	jalr	zero,0(ra)
+ 300:	0087a683          	lw	a3,8(a5) # 82000008 <main+0x81fffd0c>
+ 304:	ff010113          	addi	sp,sp,-16
+ 308:	00112623          	sw	ra,12(sp)
+ 30c:	00812423          	sw	s0,8(sp)
+ 310:	aabbd737          	lui	a4,0xaabbd
+ 314:	80000437          	lui	s0,0x80000
+ 318:	00d42023          	sw	a3,0(s0) # 80000000 <main+0x7ffffd04>
+ 31c:	cdd70713          	addi	a4,a4,-803 # aabbccdd <main+0xaabbc9e1>
+ 320:	00e42023          	sw	a4,0(s0)
+ 324:	f35ff0ef          	jal	ra,258 <SENSOR_get_width>
+ 328:	bbbbd7b7          	lui	a5,0xbbbbd
+ 32c:	00a42023          	sw	a0,0(s0)
+ 330:	cdd78793          	addi	a5,a5,-803 # bbbbccdd <main+0xbbbbc9e1>
+ 334:	00f42023          	sw	a5,0(s0)
+ 338:	f35ff0ef          	jal	ra,26c <SENSOR_get_height>
+ 33c:	00a42023          	sw	a0,0(s0)
+ 340:	00c12083          	lw	ra,12(sp)
+ 344:	00812403          	lw	s0,8(sp)
+ 348:	00000513          	addi	a0,zero,0
+ 34c:	01010113          	addi	sp,sp,16
+ 350:	00008067          	jalr	zero,0(ra)
