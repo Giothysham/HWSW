@@ -110,17 +110,10 @@ int main(void) {
 
             value = SENSOR_fetch();
 
-            if(CHANNELS == 4) {
-                r_cur = (value >> 24) & 0xFF;
-                g_cur = (value >> 16) & 0xFF;
-                b_cur = (value >> 8) & 0xFF;
-                a_cur = value & 0xFF;
-            } else {
-                r_cur = (value >> 16) & 0xFF;
-                g_cur = (value >> 8) & 0xFF;
-                b_cur = value & 0xFF;
-                a_cur = 255; // Default alpha value for 3-channel mode
-            }
+            r_cur = (value >> 24) & 0xFF;
+            g_cur = (value >> 16) & 0xFF;
+            b_cur = (value >> 8) & 0xFF;
+            a_cur = value & 0xFF;
 
             if(value == value_prev) {
                 rle++;
