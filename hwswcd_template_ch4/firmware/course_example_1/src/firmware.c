@@ -17,19 +17,10 @@ void irq_handler(unsigned int cause) {
 
 int main(void) {
 
-    unsigned int number = 0;
+    // LED = SENSOR_fetch();
 
-    number = SENSOR_fetch();
-
-    LED = number;
-
-    number = SENSOR_get_width();
-
-    LED = number;
-
-    number = SENSOR_get_height();
-
-    LED = number;
+    LED = SENSOR_get_width();
+    LED = SENSOR_get_height();
 
     return 0;
 }
