@@ -23,25 +23,27 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x2f0
+.text           0x00000000      0x328
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
                 0x00000000                start
                 0x000001d0                sw_mult
  *(.text*)
- .text          0x00000230       0x28 build/sensor.o
+ .text          0x00000230       0x50 build/sensor.o
                 0x00000230                SENSOR_fetch
- .text          0x00000258       0x68 build/tcnt.o
-                0x00000258                TCNT_start
-                0x0000026c                TCNT_start_div8
-                0x0000028c                TCNT_start_div16
-                0x000002ac                TCNT_stop
- .text          0x000002c0       0x14 build/firmware.o
-                0x000002c0                irq_handler
- .text.startup  0x000002d4       0x1c build/firmware.o
-                0x000002d4                main
- .text          0x000002f0        0x0 build/start.o
+                0x00000258                SENSOR_get_width
+                0x0000026c                SENSOR_get_height
+ .text          0x00000280       0x68 build/tcnt.o
+                0x00000280                TCNT_start
+                0x00000294                TCNT_start_div8
+                0x000002b4                TCNT_start_div16
+                0x000002d4                TCNT_stop
+ .text          0x000002e8       0x14 build/firmware.o
+                0x000002e8                irq_handler
+ .text.startup  0x000002fc       0x2c build/firmware.o
+                0x000002fc                main
+ .text          0x00000328        0x0 build/start.o
 
 .data           0x00002000        0x0
                 0x00000000                        . = 0x0
