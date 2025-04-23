@@ -125,42 +125,43 @@ Disassembly of section .text:
  1c4:	fe010113          	addi	sp,sp,-32 # fe0 <main+0xd0c>
  1c8:	10c000ef          	jal	ra,2d4 <main>
  1cc:	00100073          	ebreak
- 1d0:	104000ef          	jal	ra,2d4 <main>
- 1d4:	0540006f          	jal	zero,228 <done>
+ 1d0:	0540006f          	jal	zero,224 <done>
 
-000001d8 <sw_mult>:
- 1d8:	ff410113          	addi	sp,sp,-12
- 1dc:	00112023          	sw	ra,0(sp)
- 1e0:	00512223          	sw	t0,4(sp)
- 1e4:	00612423          	sw	t1,8(sp)
- 1e8:	00051463          	bne	a0,zero,1f0 <sw_mult_init>
- 1ec:	0280006f          	jal	zero,214 <sw_mult_exit>
+000001d4 <sw_mult>:
+ 1d4:	ff410113          	addi	sp,sp,-12
+ 1d8:	00112023          	sw	ra,0(sp)
+ 1dc:	00512223          	sw	t0,4(sp)
+ 1e0:	00612423          	sw	t1,8(sp)
+ 1e4:	00051463          	bne	a0,zero,1ec <sw_mult_init>
+ 1e8:	0280006f          	jal	zero,210 <sw_mult_exit>
 
-000001f0 <sw_mult_init>:
- 1f0:	00058333          	add	t1,a1,zero
- 1f4:	fff50293          	addi	t0,a0,-1
- 1f8:	00029663          	bne	t0,zero,204 <sw_mult_loop>
- 1fc:	00058533          	add	a0,a1,zero
- 200:	0140006f          	jal	zero,214 <sw_mult_exit>
+000001ec <sw_mult_init>:
+ 1ec:	00058333          	add	t1,a1,zero
+ 1f0:	fff50293          	addi	t0,a0,-1
+ 1f4:	00029663          	bne	t0,zero,200 <sw_mult_loop>
+ 1f8:	00058533          	add	a0,a1,zero
+ 1fc:	0140006f          	jal	zero,210 <sw_mult_exit>
 
-00000204 <sw_mult_loop>:
- 204:	00b30333          	add	t1,t1,a1
- 208:	fff28293          	addi	t0,t0,-1
- 20c:	fe029ce3          	bne	t0,zero,204 <sw_mult_loop>
- 210:	00030533          	add	a0,t1,zero
+00000200 <sw_mult_loop>:
+ 200:	00b30333          	add	t1,t1,a1
+ 204:	fff28293          	addi	t0,t0,-1
+ 208:	fe029ce3          	bne	t0,zero,200 <sw_mult_loop>
+ 20c:	00030533          	add	a0,t1,zero
 
-00000214 <sw_mult_exit>:
- 214:	00012083          	lw	ra,0(sp)
- 218:	00412283          	lw	t0,4(sp)
- 21c:	00812303          	lw	t1,8(sp)
- 220:	00c10113          	addi	sp,sp,12
- 224:	00008067          	jalr	zero,0(ra)
+00000210 <sw_mult_exit>:
+ 210:	00012083          	lw	ra,0(sp)
+ 214:	00412283          	lw	t0,4(sp)
+ 218:	00812303          	lw	t1,8(sp)
+ 21c:	00c10113          	addi	sp,sp,12
+ 220:	00008067          	jalr	zero,0(ra)
 
-00000228 <done>:
- 228:	0000006f          	jal	zero,228 <done>
+00000224 <done>:
+ 224:	0000006f          	jal	zero,224 <done>
 
-0000022c <error>:
- 22c:	0000006f          	jal	zero,22c <error>
+00000228 <error>:
+ 228:	0000006f          	jal	zero,228 <error>
+ 22c:	0000                	.insn	2, 0x
+	...
 
 00000230 <SENSOR_fetch>:
  230:	820007b7          	lui	a5,0x82000
