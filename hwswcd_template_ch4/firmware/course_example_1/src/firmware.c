@@ -1,6 +1,7 @@
 //#include <stdio.h>
 
 #include "tcnt.h"
+#include "sensor.h"
 
 #define LED_BASEAxDDRESS 0x80000000
 
@@ -20,7 +21,6 @@ int main(void) {
 
     LED = SENSOR_get_width();
     LED = SENSOR_get_height();
-
 
     return 0;
 }
