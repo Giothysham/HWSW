@@ -94,8 +94,8 @@ int main(void) {
     LED = 0x69;
     LED = 0x66;
 
-    unsigned char C_WIDTH = SENSOR_get_width();
-    unsigned char C_HEIGHT = SENSOR_get_height();
+    unsigned char C_WIDTH = 8;
+    unsigned char C_HEIGHT = 8;
     
     save_compression(C_WIDTH, 4);
     save_compression(C_HEIGHT, 4);
