@@ -109,7 +109,9 @@ int main(void) {
 
             value = SENSOR_fetch();
 
+            LED = 0x99;
             LED = value;
+            LED = 0x99;
 
             r_cur = (value >> 24) & 0xFF;
             g_cur = (value >> 16) & 0xFF;
