@@ -21,15 +21,15 @@ int main(void) {
 
     // number = SENSOR_fetch();
 
-    number = 0xaabbccdd;
-
     number = SENSOR_SR;
 
-    // number = SENSOR_get_width();
+    number = 0xaabbccdd;
+
+    number = SENSOR_get_width();
 
     number = 0xbbbbccdd;
 
-    // number = SENSOR_get_height();
+    number = SENSOR_get_height();
 
     return 0;
 }
