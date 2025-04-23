@@ -21,10 +21,13 @@ int main(void) {
 
     LED = 0xaabbccdd;
 
-    LED = SENSOR_SR;
+    // LED = SENSOR_SR;
 
-    // LED = SENSOR_get_width();
-    // LED = SENSOR_get_height();
+    LED = SENSOR_get_width();
+
+    LED = 0xbbbbccdd;
+
+    LED = SENSOR_get_height();
 
     return 0;
 }
