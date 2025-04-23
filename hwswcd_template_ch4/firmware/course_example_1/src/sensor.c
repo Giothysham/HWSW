@@ -7,10 +7,3 @@ unsigned int SENSOR_fetch(void) {
     SENSOR_CR &= ~SENSOR_CR_RE; 
     return pixeldata;
 }
-
-unsigned char SENSOR_get_width(void) {
-    return (unsigned char)((SENSOR_SR>>16) & 0xff);
-}
-unsigned char SENSOR_get_height(void) {
-    return (unsigned char)((SENSOR_SR>>8) & 0xff);
-}
