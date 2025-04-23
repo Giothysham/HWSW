@@ -215,27 +215,8 @@ Disassembly of section .text:
  2d0:	00008067          	jalr	zero,0(ra)
 
 000002d4 <main>:
- 2d4:	ff010113          	addi	sp,sp,-16
- 2d8:	00112623          	sw	ra,12(sp)
- 2dc:	f55ff0ef          	jal	ra,230 <SENSOR_fetch>
- 2e0:	800007b7          	lui	a5,0x80000
- 2e4:	aabbd737          	lui	a4,0xaabbd
- 2e8:	00a7a023          	sw	a0,0(a5) # 80000000 <main+0x7ffffd2c>
- 2ec:	cdd70713          	addi	a4,a4,-803 # aabbccdd <main+0xaabbca09>
- 2f0:	00e7a023          	sw	a4,0(a5)
- 2f4:	820006b7          	lui	a3,0x82000
- 2f8:	0086a703          	lw	a4,8(a3) # 82000008 <main+0x81fffd34>
- 2fc:	bbbbd637          	lui	a2,0xbbbbd
- 300:	cdd60613          	addi	a2,a2,-803 # bbbbccdd <main+0xbbbbca09>
- 304:	01075713          	srli	a4,a4,0x10
- 308:	0ff77713          	andi	a4,a4,255
- 30c:	00e7a023          	sw	a4,0(a5)
- 310:	00c7a023          	sw	a2,0(a5)
- 314:	0086a703          	lw	a4,8(a3)
- 318:	00c12083          	lw	ra,12(sp)
- 31c:	00000513          	addi	a0,zero,0
- 320:	00875713          	srli	a4,a4,0x8
- 324:	0ff77713          	andi	a4,a4,255
- 328:	00e7a023          	sw	a4,0(a5)
- 32c:	01010113          	addi	sp,sp,16
- 330:	00008067          	jalr	zero,0(ra)
+ 2d4:	820007b7          	lui	a5,0x82000
+ 2d8:	00878793          	addi	a5,a5,8 # 82000008 <main+0x81fffd34>
+ 2dc:	0007a783          	lw	a5,0(a5)
+ 2e0:	00000513          	addi	a0,zero,0
+ 2e4:	00008067          	jalr	zero,0(ra)
