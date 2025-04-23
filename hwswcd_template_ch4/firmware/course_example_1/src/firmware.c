@@ -9,7 +9,7 @@
 
 #define LED (*(volatile unsigned int *) LED_REG0_ADDRESS)
 
-#define CHANNELS 0x03
+#define CHANNELS 3
 #define COLOURPSACE 0x00
 
 void irq_handler(unsigned int cause) {
@@ -110,6 +110,18 @@ int main(void) {
 
             value = SENSOR_fetch();
 
+            if(CHANNELS == 4) {
+                r_cur = (value >> 24) & 0xFF;
+                g_cur = (value >> 16) & 0xFF;
+                b_cur = (value >> 8) & 0xFF;
+                a_cur = value & 0xFF;
+            } else {
+                r_cur = (value >> 16) & 0xFF;
+                g_cur = (value >> 8) & 0xFF;
+                b_cur = value & 0xFF;
+                a_cur = 255; // Default alpha value for 3-channel mode
+            }
+
             if(value == value_prev) {
                 rle++;
             } else {
@@ -118,18 +130,6 @@ int main(void) {
                     unsigned long long int result = 0b11000000 + rle;
                     save_compression(result, get_needed_bytes(result));
                     rle = -1;
-                }
-
-                if(CHANNELS == 4) {
-                    r_cur = (value >> 24) & 0xFF;
-                    g_cur = (value >> 16) & 0xFF;
-                    b_cur = (value >> 8) & 0xFF;
-                    a_cur = value & 0xFF;
-                } else {
-                    r_cur = (value >> 16) & 0xFF;
-                    g_cur = (value >> 8) & 0xFF;
-                    b_cur = value & 0xFF;
-                    a_cur = 255; // Default alpha value for 3-channel mode
                 }
 
                 index = HashFunction(r_cur, g_cur, b_cur, a_cur);
