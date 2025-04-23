@@ -293,6 +293,20 @@ package PKG_hwswcd is
         first : out std_logic
       );
     end component sensor;
+    
+   component wrapped_sensor is
+    generic(
+        G_PIXELS : natural := 3750
+    );
+    port(
+        clock : in STD_LOGIC;
+        reset : in STD_LOGIC;
+        iface_di : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+        iface_a : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+        iface_we : in STD_LOGIC;
+        iface_do : out STD_LOGIC_VECTOR(C_WIDTH-1 downto 0)
+    );
+    end component wrapped_sensor;
 
 end package;
 
