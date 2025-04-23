@@ -19,7 +19,7 @@ entity riscv_microcontroller_tb is
     generic (
         G_DATA_WIDTH : integer := 32;
         G_DEPTH_LOG2 : integer := 11;
-        FNAME_OUT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\hwswcd_template_ch4\firmware\course_example_1\simulation_output.dat"
+        FNAME_OUT_FILE : string := "D:\School\MA\HWSW\Source_code\HWSW\QOI\firmware\course_example_1\simulation_output.dat"
     );
 end entity riscv_microcontroller_tb;
 

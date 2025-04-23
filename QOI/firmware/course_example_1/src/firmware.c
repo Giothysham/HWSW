@@ -87,14 +87,14 @@ int main(void) {
     for(int i=0;i<64;i++) {
         running_array[i] = 0;
     }
-
+    
     LED = 0x71;
     LED = 0x6F;
     LED = 0x69;
     LED = 0x66;
 
-    unsigned char C_WIDTH = 8;
-    unsigned char C_HEIGHT = 8;
+    unsigned char C_WIDTH = SENSOR_get_width();
+    unsigned char C_HEIGHT = SENSOR_get_height();
     
     save_compression(C_WIDTH, 4);
     save_compression(C_HEIGHT, 4);
