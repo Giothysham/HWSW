@@ -1,6 +1,4 @@
-//#include <stdio.h>
-
-#include "tcnt.h"
+#include <stdio.h>
 
 #define LED_BASEAxDDRESS 0x80000000
 
@@ -90,8 +88,8 @@ void save_compression(unsigned long long int val, unsigned char digits) {
 	for (i = max - 8; i >= 0; i -= 8) {
         index = (val) >> i;
         index = index & 0xFF;
-        //printf("%02X ", index);
-        LED = index;
+        printf("%02X ", index);
+        //LED = index;
 	}
 }
 
@@ -143,16 +141,16 @@ int main(void) {
         running_array[i] = 0;
     }
 
-    LED = 0x71;
-    LED = 0x6F;
-    LED = 0x69;
-    LED = 0x66;
+    // LED = 0x71;
+    // LED = 0x6F;
+    // LED = 0x69;
+    // LED = 0x66;
     
     save_compression(header.width, 4);
     save_compression(header.height, 4);
 
-    LED = 0X03;
-    LED = 0X00;
+    // LED = 0X03;
+    // LED = 0X00;
 
     // LED = header.channels;
     // LED = header.colorspace;
@@ -232,14 +230,14 @@ int main(void) {
         rle = -1;
     }
 
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x00;
-    LED = 0x01;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x00;
+    // LED = 0x01;
 
     return 0;
 }
