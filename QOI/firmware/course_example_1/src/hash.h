@@ -10,6 +10,6 @@
 #define HASH_OUT                      (*(volatile unsigned int *) HASH_REG1_ADDRESS)
 
 void HASH_write(unsigned hash_data);
-unsigned int HASH_compute(void);
+unsigned char HASH_compute(void);
 
 #endif
