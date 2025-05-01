@@ -112,6 +112,8 @@ int main(void) {
 
             value = SENSOR_fetch();
 
+            HASH_write(value);
+
             r_cur = (value >> 24) & 0xFF;
             g_cur = (value >> 16) & 0xFF;
             b_cur = (value >> 8) & 0xFF;
@@ -127,7 +129,7 @@ int main(void) {
                     rle = -1;
                 }
 
-                index = HASH_compute(value);
+                index = HASH_compute();
 
                 if(running_array[index] == value) {
                     unsigned long long int result = 0b00000000 + index;
