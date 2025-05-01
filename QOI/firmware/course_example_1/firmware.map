@@ -7,6 +7,9 @@ Discarded input sections
  .comment       0x00000000       0x1c build/tcnt.o
  .riscv.attributes
                 0x00000000       0x25 build/tcnt.o
+ .comment       0x00000000       0x1c build/hash.o
+ .riscv.attributes
+                0x00000000       0x25 build/hash.o
  .comment       0x00000000       0x1c build/firmware.o
  .riscv.attributes
                 0x00000000       0x25 build/firmware.o
@@ -23,7 +26,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x878
+.text           0x00000000      0x88c
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
@@ -37,28 +40,32 @@ Linker script and memory map
                 0x0000026c                TCNT_start_div8
                 0x0000028c                TCNT_start_div16
                 0x000002ac                TCNT_stop
- .text          0x000002c0      0x108 build/firmware.o
-                0x000002c0                irq_handler
-                0x000002d8                Multiply
-                0x00000304                get_needed_bytes
-                0x00000330                save_compression
-                0x00000378                HashFunction
-                0x000003bc                closest_difference
- .text.startup  0x000003c8      0x4b0 build/firmware.o
-                0x000003c8                main
- .text          0x00000878        0x0 build/start.o
+ .text          0x000002c0       0x14 build/hash.o
+                0x000002c0                HASH_compute
+ .text          0x000002d4      0x108 build/firmware.o
+                0x000002d4                irq_handler
+                0x000002ec                Multiply
+                0x00000318                get_needed_bytes
+                0x00000344                save_compression
+                0x0000038c                HashFunction
+                0x000003d0                closest_difference
+ .text.startup  0x000003dc      0x4b0 build/firmware.o
+                0x000003dc                main
+ .text          0x0000088c        0x0 build/start.o
 
 .data           0x00002000        0x0
                 0x00000000                        . = 0x0
  *(.data)
  .data          0x00002000        0x0 build/sensor.o
  .data          0x00002000        0x0 build/tcnt.o
+ .data          0x00002000        0x0 build/hash.o
  .data          0x00002000        0x0 build/firmware.o
  .data          0x00002000        0x0 build/start.o
 
 .bss            0x00002000        0x0
  .bss           0x00002000        0x0 build/sensor.o
  .bss           0x00002000        0x0 build/tcnt.o
+ .bss           0x00002000        0x0 build/hash.o
  .bss           0x00002000        0x0 build/firmware.o
  .bss           0x00002000        0x0 build/start.o
 
@@ -78,6 +85,7 @@ Linker script and memory map
  *(.riscv.attributes)
 LOAD build/sensor.o
 LOAD build/tcnt.o
+LOAD build/hash.o
 LOAD build/firmware.o
 LOAD build/start.o
 LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
