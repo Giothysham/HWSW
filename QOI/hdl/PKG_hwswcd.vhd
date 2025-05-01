@@ -38,6 +38,7 @@ package PKG_hwswcd is
     constant C_LED_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8000";
     constant C_TIMER_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8100";
     constant C_SENSOR_BASE_ADDRESS_MASK : std_logic_vector (C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8200";
+    constant C_HASH_BASE_ADDRESS_MASK : std_logic_vector (C_WIDTH-1 downto C_PERIPHERAL_MASK_LOWINDEX) := x"8300";
 
     constant C_MRO_xF11_MVENDORID : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0) := x"01234568";
     constant C_MRO_xF14_MHARTID : STD_LOGIC_VECTOR(C_WIDTH-1 downto 0) := x"CAFEBABE";
@@ -307,6 +308,18 @@ package PKG_hwswcd is
         iface_do : out STD_LOGIC_VECTOR(C_WIDTH-1 downto 0)
     );
     end component wrapped_sensor;
+    
+    component hashcomputer is
+    port(
+        clock : in STD_LOGIC;
+        reset : in STD_LOGIC;
+        iface_di : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+        iface_a : in STD_LOGIC_VECTOR(C_WIDTH-1 downto 0);
+        iface_we : in STD_LOGIC;
+        iface_do : out STD_LOGIC_VECTOR(C_WIDTH-1 downto 0)
+    );
+    end component;
+
 
 end package;
 
