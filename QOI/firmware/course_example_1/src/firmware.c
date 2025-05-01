@@ -102,10 +102,6 @@ int main(void) {
     LED = 0X03;
     LED = 0X00;
 
-
-    TCNT_CMP = 0xffffffff;
-    TCNT_start();
-
     /* Loop over pixels */
     for(unsigned char h=0;h<C_HEIGHT;h++) {
         for(unsigned char w=0;w<C_WIDTH;w++) {
@@ -189,10 +185,6 @@ int main(void) {
     LED = 0x00;
     LED = 0x00;
     LED = 0x01;
-
-    TCNT_stop();
-
-    LED = TCNT_VAL;
 
     return 0;
 }
