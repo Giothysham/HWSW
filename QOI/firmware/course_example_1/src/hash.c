@@ -5,8 +5,8 @@ void HASH_write(unsigned hash_data) {
     // No need to read from the output register here, as we are just writing
 }
 
-unsigned int HASH_compute(void) {
-    unsigned int hash_value;
+unsigned char HASH_compute(void) {
+    unsigned char hash_value;
     hash_value = HASH_OUT; // Read the hash value from the output register
     return hash_value;
 }
