@@ -2,6 +2,7 @@
 
 #include "tcnt.h"
 #include "sensor.h"
+#include "hash.h"
 
 #define LED_BASEAxDDRESS 0x80000000
 
@@ -56,9 +57,9 @@ void save_compression(unsigned long long int val, unsigned char digits) {
 	}
 }
 
-unsigned int HashFunction(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
-    return (Multiply(r, 3) + Multiply(g, 5) + Multiply(b, 7)+ Multiply(a, 11)) & 0x3F;
-}
+// unsigned int HashFunction(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
+//     return (Multiply(r, 3) + Multiply(g, 5) + Multiply(b, 7)+ Multiply(a, 11)) & 0x3F;
+// }
 
 unsigned char closest_difference(unsigned char current, unsigned char prev) {
     signed char diff = (current >= prev) ? current - prev : 256 - (prev - current);
@@ -126,7 +127,7 @@ int main(void) {
                     rle = -1;
                 }
 
-                index = HashFunction(r_cur, g_cur, b_cur, a_cur);
+                index = HASH_compute(value);
 
                 if(running_array[index] == value) {
                     unsigned long long int result = 0b00000000 + index;
