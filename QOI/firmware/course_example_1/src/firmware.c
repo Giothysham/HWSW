@@ -108,8 +108,6 @@ int main(void) {
 
             value = SENSOR_fetch();
 
-            HASH_write(value);
-
             r_cur = (value >> 24) & 0xFF;
             g_cur = (value >> 16) & 0xFF;
             b_cur = (value >> 8) & 0xFF;
@@ -118,7 +116,8 @@ int main(void) {
             if(value == value_prev) {
                 rle++;
             } else {
-
+                HASH_write(value);
+                
                 if(rle > -1 || rle == 62) {
                     unsigned long long int result = 0b11000000 + rle;
                     save_compression(result, get_needed_bytes(result));
