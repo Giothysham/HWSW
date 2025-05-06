@@ -57,7 +57,7 @@ int main(void) {
     unsigned char rv; //temporary storage
     unsigned char index; //index for running array
     unsigned int value; //value of current pixel (8*3bit RGB + 8bit A)
-    unsigned int value_prev = 0; //value of previous pixel (8*3bit RGB + 8bit A)
+    unsigned int value_prev = 0x000000ff; //value of previous pixel (8*3bit RGB + 8bit A)
 
     /* Initialisation */
     for(int i=0;i<64;i++) {
