@@ -84,10 +84,10 @@ int main(void) {
 
             value = SENSOR_fetch();
 
-            r_cur = (value >> 24) & 0xFF;
-            g_cur = (value >> 16) & 0xFF;
-            b_cur = (value >> 8) & 0xFF;
-            a_cur = value & 0xFF;
+            // r_cur = (value >> 24) & 0xFF;
+            // g_cur = (value >> 16) & 0xFF;
+            // b_cur = (value >> 8) & 0xFF;
+            // a_cur = value & 0xFF;
 
             if(value == value_prev) {
                 rle++;
@@ -143,6 +143,8 @@ int main(void) {
             g_prev = g_cur;
             b_prev = b_cur;
             a_prev = a_cur;
+
+            SENSOR_next_pixel();
         }
     }
 
