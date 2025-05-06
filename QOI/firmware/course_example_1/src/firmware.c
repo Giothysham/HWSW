@@ -141,7 +141,7 @@ int main(void) {
                 
             } 
 
-            // value_prev = value;
+            value_prev = value;
             // r_prev = r_cur;
             // g_prev = g_cur;
             // b_prev = b_cur;
