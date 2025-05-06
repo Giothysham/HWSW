@@ -109,11 +109,11 @@ int main(void) {
             value = SENSOR_fetch();
 
             r_cur = (value >> 24) & 0xFF;
-            LED = 0xB00B1E5;
+            LED = 0xB00B1E51;
             g_cur = (value >> 16) & 0xFF;
-            LED = 0xB00B1E5;
+            LED = 0xB00B1E52;
             b_cur = (value >> 8) & 0xFF;
-            LED = 0xB00B1E5;
+            LED = 0xB00B1E53;
             a_cur = value & 0xFF;
 
             if(value == value_prev) {
