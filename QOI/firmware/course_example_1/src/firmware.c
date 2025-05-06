@@ -48,13 +48,14 @@ void save_compression(unsigned long long int val, unsigned char digits) {
 	int i; /* !! must be signed, because of the check 'i>=0' */
 
 	max = digits << 3;
-
+    LED = 0xB00B1E54;
 	for (i = max - 8; i >= 0; i -= 8) {
         index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
         LED = index;
 	}
+    LED = 0xB00B1E55;
 }
 
 // unsigned int HashFunction(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
@@ -109,11 +110,8 @@ int main(void) {
             value = SENSOR_fetch();
 
             r_cur = (value >> 24) & 0xFF;
-            LED = 0xB00B1E51;
             g_cur = (value >> 16) & 0xFF;
-            LED = 0xB00B1E52;
             b_cur = (value >> 8) & 0xFF;
-            LED = 0xB00B1E53;
             a_cur = value & 0xFF;
 
             if(value == value_prev) {
@@ -139,10 +137,12 @@ int main(void) {
                     db = closest_difference(b_cur, b_prev);
 
                     if(dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev) {
+                        LED = 0xB00B1E51;
                         unsigned long long int result = 0b01000000
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
+                        LED = 0xB00B1E52;
                         save_compression(result, 1);
                     } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev) {
                         unsigned long long int result = 0b1000000000000000
