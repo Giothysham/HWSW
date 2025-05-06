@@ -20,42 +20,17 @@ void irq_handler(unsigned int cause) {
 
 }
 
-unsigned int Multiply(unsigned int a, unsigned int b) {
-    unsigned int result = 0;
-
-    while (b > 0) {
-        if (b & 1) { 
-            result += a;
-        }
-        a <<= 1; 
-        b >>= 1; 
-    }
-
-    return result;
-}
-
-unsigned char get_needed_bytes(unsigned long long int number) {
-    unsigned char count = 0;
-    do {
-        count++;
-        number >>= 8;
-    } while (number != 0);
-    return count;
-}
-
 void save_compression(unsigned long long int val, unsigned char digits) {
 	unsigned int index, max;
 	int i; /* !! must be signed, because of the check 'i>=0' */
 
 	max = digits << 3;
-    LED = 0xB00B1E54;
 	for (i = max - 8; i >= 0; i -= 8) {
         index = (val) >> i;
         index = index & 0xFF;
         //printf("%02X ", index);
         LED = index;
 	}
-    LED = 0xB00B1E55;
 }
 
 // unsigned int HashFunction(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
@@ -121,7 +96,8 @@ int main(void) {
                 
                 if(rle > -1 || rle == 62) {
                     unsigned long long int result = 0b11000000 + rle;
-                    save_compression(result, 1);
+                    //save_compression(result, 1);
+                    LED = result;
                     rle = -1;
                 }
 
@@ -129,7 +105,8 @@ int main(void) {
 
                 if(running_array[index] == value) {
                     unsigned long long int result = 0b00000000 + index;
-                    save_compression(result, 1);
+                    //save_compression(result, 1);
+                    LED = result;
                 } else {
                     running_array[index] = value;
                     dr = closest_difference(r_cur, r_prev);
@@ -137,27 +114,29 @@ int main(void) {
                     db = closest_difference(b_cur, b_prev);
 
                     if(dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev) {
-                        LED = 0xB00B1E51;
                         unsigned long long int result = 0b01000000
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
-                        LED = 0xB00B1E52;
-                        save_compression(result, 1);
+                        //save_compression(result, 1);
+                        LED = result;
                     } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev) {
                         unsigned long long int result = 0b1000000000000000
                                         | ((dg + 32) << 8)
                                         | ((dr - dg + 8) << 4)
                                         | (db - dg + 8);
-                        save_compression(result, 2);
+                        //save_compression(result, 2);
+                        LED = result;
                     } else {
                         if(CHANNELS == 4){
                             unsigned long long int result = 0xFF00000000 | value;
-                            save_compression(result, 5);
+                            //save_compression(result, 5);
+                            LED = result;
                         }
                         else{
                             unsigned long long int result = 0xFE000000 | (value >> 8);
-                            save_compression(result, 4);
+                            //save_compression(result, 4);
+                            LED = result;
                         }
                         
                     }
@@ -175,7 +154,8 @@ int main(void) {
 
     if(rle > -1 || rle == 62) {
         unsigned long long int result = 0b11000000 + rle;
-        save_compression(result, 1);
+        //save_compression(result, 1);
+        LED = result;
         rle = -1;
     }
 
