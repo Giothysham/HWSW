@@ -302,7 +302,7 @@ Disassembly of section .text:
  3fc:	0007a023          	sw	zero,0(a5)
  400:	0ffa7a13          	andi	s4,s4,255
  404:	00000a93          	addi	s5,zero,0
- 408:	00000413          	addi	s0,zero,0
+ 408:	0ff00413          	addi	s0,zero,255
  40c:	fff00913          	addi	s2,zero,-1
  410:	00100b13          	addi	s6,zero,1
  414:	00200c13          	addi	s8,zero,2
