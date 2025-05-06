@@ -96,8 +96,7 @@ int main(void) {
                 
                 if(rle > -1 || rle == 62) {
                     unsigned long long int result = 0b11000000 + rle;
-                    //save_compression(result, 1);
-                    LED = result;
+                    save_compression(result, 1);
                     rle = -1;
                 }
 
@@ -105,8 +104,7 @@ int main(void) {
 
                 if(running_array[index] == value) {
                     unsigned long long int result = 0b00000000 + index;
-                    //save_compression(result, 1);
-                    LED = result;
+                    save_compression(result, 1);
                 } else {
                     running_array[index] = value;
                     dr = closest_difference(r_cur, r_prev);
@@ -118,25 +116,21 @@ int main(void) {
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
-                        //save_compression(result, 1);
-                        LED = result;
+                        save_compression(result, 1);
                     } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev) {
                         unsigned long long int result = 0b1000000000000000
                                         | ((dg + 32) << 8)
                                         | ((dr - dg + 8) << 4)
                                         | (db - dg + 8);
-                        //save_compression(result, 2);
-                        LED = result;
+                        save_compression(result, 2);
                     } else {
                         if(CHANNELS == 4){
                             unsigned long long int result = 0xFF00000000 | value;
-                            //save_compression(result, 5);
-                            LED = result;
+                            save_compression(result, 5);
                         }
                         else{
                             unsigned long long int result = 0xFE000000 | (value >> 8);
-                            //save_compression(result, 4);
-                            LED = result;
+                            save_compression(result, 4);
                         }
                         
                     }
@@ -154,8 +148,7 @@ int main(void) {
 
     if(rle > -1 || rle == 62) {
         unsigned long long int result = 0b11000000 + rle;
-        //save_compression(result, 1);
-        LED = result;
+        save_compression(result, 1);
         rle = -1;
     }
 
