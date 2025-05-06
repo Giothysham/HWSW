@@ -107,17 +107,20 @@ int main(void) {
                     save_compression(result, 1);
                 } else {
                     running_array[index] = value;
-                    dr = closest_difference(r_cur, r_prev);
-                    dg = closest_difference(g_cur, g_prev);
-                    db = closest_difference(b_cur, b_prev);
+                    // dr = closest_difference(r_cur, r_prev);
+                    // dg = closest_difference(g_cur, g_prev);
+                    // db = closest_difference(b_cur, b_prev);
 
-                    if(dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev) {
+                    int state = SENSOR_difference();
+                    //dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev
+                    if(state == 1) {
                         unsigned long long int result = 0b01000000
                                         | ((dr + 2) << 4)
                                         | ((dg + 2) << 2)
                                         | (db + 2);
                         save_compression(result, 1);
-                    } else if (dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev) {
+                        //dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev
+                    } else if (state == 2) {
                         unsigned long long int result = 0b1000000000000000
                                         | ((dg + 32) << 8)
                                         | ((dr - dg + 8) << 4)
@@ -138,13 +141,12 @@ int main(void) {
                 
             } 
 
-            value_prev = value;
-            r_prev = r_cur;
-            g_prev = g_cur;
-            b_prev = b_cur;
-            a_prev = a_cur;
+            // value_prev = value;
+            // r_prev = r_cur;
+            // g_prev = g_cur;
+            // b_prev = b_cur;
+            // a_prev = a_cur;
 
-            SENSOR_next_pixel();
         }
     }
 
