@@ -21,5 +21,6 @@
 
 unsigned int SENSOR_fetch(void);
 unsigned int SENSOR_difference(void);
+void SENSOR_next(void);
 
 #endif
