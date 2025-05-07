@@ -112,16 +112,15 @@ int main(void) {
                     // db = closest_difference(b_cur, b_prev);
 
                     int result = SENSOR_difference();
-                    int state = result & 0xFFFFFFC0;
                     //dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev
-                    if(state == 0x40) {
+                    if(result & 0xFFFFFFC0 == 0x40) {
                         // unsigned long long int result = 0b01000000
                         //                 | ((dr + 2) << 4)
                         //                 | ((dg + 2) << 2)
                         //                 | (db + 2);
                         save_compression(result, 1);
                         //dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev
-                    } else if (state == 0x8000) {
+                    } else if (result & 0xFFFFC000 == 0x8000) {
                         // unsigned long long int result = 0b1000000000000000
                         //                 | ((dg + 32) << 8)
                         //                 | ((dr - dg + 8) << 4)
