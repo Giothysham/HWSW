@@ -26,32 +26,32 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x5d4
+.text           0x00000000      0x5b8
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
                 0x00000000                start
                 0x000001d0                sw_mult
  *(.text*)
- .text          0x00000230       0x54 build/sensor.o
+ .text          0x00000230       0x38 build/sensor.o
                 0x00000230                SENSOR_fetch
-                0x00000258                SENSOR_difference
-                0x00000264                SENSOR_next
- .text          0x00000284       0x68 build/tcnt.o
-                0x00000284                TCNT_start
-                0x00000298                TCNT_start_div8
-                0x000002b8                TCNT_start_div16
-                0x000002d8                TCNT_stop
- .text          0x000002ec       0x1c build/hash.o
-                0x000002ec                HASH_write
-                0x000002f8                HASH_compute
- .text          0x00000308       0x6c build/firmware.o
-                0x00000308                irq_handler
-                0x00000320                save_compression
-                0x00000368                closest_difference
- .text.startup  0x00000374      0x260 build/firmware.o
-                0x00000374                main
- .text          0x000005d4        0x0 build/start.o
+                0x0000023c                SENSOR_difference
+                0x00000248                SENSOR_next
+ .text          0x00000268       0x68 build/tcnt.o
+                0x00000268                TCNT_start
+                0x0000027c                TCNT_start_div8
+                0x0000029c                TCNT_start_div16
+                0x000002bc                TCNT_stop
+ .text          0x000002d0       0x1c build/hash.o
+                0x000002d0                HASH_write
+                0x000002dc                HASH_compute
+ .text          0x000002ec       0x6c build/firmware.o
+                0x000002ec                irq_handler
+                0x00000304                save_compression
+                0x0000034c                closest_difference
+ .text.startup  0x00000358      0x260 build/firmware.o
+                0x00000358                main
+ .text          0x000005b8        0x0 build/start.o
 
 .data           0x00002000        0x0
                 0x00000000                        . = 0x0
