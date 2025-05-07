@@ -26,7 +26,7 @@ RAM              0x00002000         0x00002000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x59c
+.text           0x00000000      0x58c
                 0x00000000                        . = 0x0
  *(.init)
  .init          0x00000000      0x230 build/start.o
@@ -49,9 +49,9 @@ Linker script and memory map
                 0x000002ec                irq_handler
                 0x00000304                save_compression
                 0x0000034c                closest_difference
- .text.startup  0x00000358      0x244 build/firmware.o
+ .text.startup  0x00000358      0x234 build/firmware.o
                 0x00000358                main
- .text          0x0000059c        0x0 build/start.o
+ .text          0x0000058c        0x0 build/start.o
 
 .data           0x00002000        0x0
                 0x00000000                        . = 0x0
