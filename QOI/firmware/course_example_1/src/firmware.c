@@ -111,20 +111,21 @@ int main(void) {
                     // dg = closest_difference(g_cur, g_prev);
                     // db = closest_difference(b_cur, b_prev);
 
-                    int state = SENSOR_difference();
+                    int result = SENSOR_difference();
+                    int state = result & 0xFFFFFFC0;
                     //dr >= -2 && dr <= 1 && dg >= -2 && dg <= 1 && db >= -2 && db <= 1 && a_cur == a_prev
-                    if(state == 1) {
-                        unsigned long long int result = 0b01000000
-                                        | ((dr + 2) << 4)
-                                        | ((dg + 2) << 2)
-                                        | (db + 2);
+                    if(state == 0x40) {
+                        // unsigned long long int result = 0b01000000
+                        //                 | ((dr + 2) << 4)
+                        //                 | ((dg + 2) << 2)
+                        //                 | (db + 2);
                         save_compression(result, 1);
                         //dg >= -32 && dg <= 31 && (dr - dg) >= -8 && (dr - dg) <= 7 && (db - dg) >= -8 && (db - dg) <= 7 && a_cur == a_prev
-                    } else if (state == 2) {
-                        unsigned long long int result = 0b1000000000000000
-                                        | ((dg + 32) << 8)
-                                        | ((dr - dg + 8) << 4)
-                                        | (db - dg + 8);
+                    } else if (state == 0x8000) {
+                        // unsigned long long int result = 0b1000000000000000
+                        //                 | ((dg + 32) << 8)
+                        //                 | ((dr - dg + 8) << 4)
+                        //                 | (db - dg + 8);
                         save_compression(result, 2);
                     } else {
                         if(CHANNELS == 4){
